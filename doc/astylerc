@@ -1,0 +1,11 @@
+# This file can be used with the Artistic Style utility to automate keybrd style
+# Artistic Style is a console application for formatting C++ and Java source code
+# http://sourceforge.net/projects/astyle/files/
+# The following lines where used to format keybrd C++ .h .cpp and Arduino sketch .ino files
+
+--style=vtk 
+--indent-classes
+--keep-one-line-blocks
+--indent=spaces=4
+--convert-tabs
+--max-code-length=100
