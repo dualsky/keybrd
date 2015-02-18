@@ -1,6 +1,6 @@
 /* keybrd_DH_2233_bb.ino layout:
  *  D/3/&/mouseOn   R/$/upA/upM/upA K/8/5/arrowOn   tenKeyOff   tenKeyOn
- *  normal          Shift           NAS             NAS Lock    MF
+ *  normal          Shift           NAS             NAS Lock    MF Lock
  */
 //Arduino library files
 #include <Keyboard.h>
@@ -8,7 +8,7 @@
 #include <Wire.h>
 
 //keybrd library files
-#include <l_scancodes.h>
+#include <objects_scancode.h>
 #include <m_MouseButton.h>
 #include <m_MouseMove.h>
 #include <l_Key_1.h>

@@ -6,20 +6,18 @@
 #include "c_Matrix.h"
 class c_Row_Ex;
 
-/* Class c_Matrix_MCP23018 is composted of pin numbers and registers for the MCP23018 I/O expander.
- * The Matrix is wired to the I/O expander, which scans and reads the matrix.
- *
- * portB pins are wired to rows
- * portA pins are wired to columns
- *
+/* Class c_Matrix_MCP23018 strobes portB and reads portA on the MCP23018 I/O expander.
  * ptrsRows and scanMatrix() are inherited from c_Matrix
- * Description of I/O expander is in doc/wiring_MCP23018_for_keybrd.md
+ *
+ * strobe portB (pin numbers  3 to 10)
+ * read   portA (pin numbers 20 to 27)
+ * anode (banded end) of diodes point torwards port B
+ * pinout diagram is in doc/connecting_MCP23018_to_keyboard.md
  */
 class c_Matrix_MCP23018: public c_Matrix
 {
     private:
         //MCP23018 register addresses
-        //assumes banded ends of diodes point torwards port B of MCP23018
         static const uint8_t addr = 0x20;       //0x20 is address when ADDR pin is grounded
 
         static const uint8_t gpioCol = 0x12;    //address of all general purpose pins on port A

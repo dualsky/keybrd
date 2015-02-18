@@ -1,4 +1,3 @@
-// Teensy 2.0
 #ifndef C_M_TEENSY_H
 #define C_M_TEENSY_H
 #include <Arduino.h>
@@ -7,13 +6,12 @@
 class c_Row_Ex;
 
 /* Class c_Matrix_Teensy2 strobes portF and reads portB on the Teensy2 micro controller.
- *
- * The Teensy2 ports are wired to the Matrix.
- * portF pin numbers 0,1,    4,5,6,7 are wired to rows
- * portB pin numbers 0,1,2,3,4,5,6,7 are wired to columns
- *
  * ptrsRows and scanMatrix() are inherited from c_Matrix
- * Description of Teensy2 is in doc/wiring_teensy2_for_keybrd.md
+ *
+ * strobe portF pin names 0,1,    4,5,6,7 (pin numbers 21, 20, 19, 18, 17, 16)
+ * read   portB pin names 0,1,2,3,4,5,6,7 (pin numbers 0, 1, 2, 3, 13, 14, 15, 4)
+ * anode (banded end) of diodes point torwards port F
+ * pinout diagram is in doc/connecting_teensy2_to_keyboard.md
  */
 class c_Matrix_Teensy2: public c_Matrix
 {

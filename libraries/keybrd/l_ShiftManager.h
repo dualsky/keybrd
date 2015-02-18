@@ -5,7 +5,7 @@
 #include "l_Code_Shift.h"
 
 /* Class l_ShiftManager is used on multi-layered keyboards.
- * It is composed of an array of pointers to l_Code_Shift.
+ * It is composed of an array of l_Code_Shift pointers, one for each shift key.
  * It can manage any number of shift keys.
  *
  * l_ShiftManager changes and restores the shift state for l_Code_SS and l_Code_SNS as needed:

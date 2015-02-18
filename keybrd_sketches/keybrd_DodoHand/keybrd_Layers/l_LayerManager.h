@@ -5,7 +5,7 @@
 #include <inttypes.h>
 
 /* l_LayerManager for the DodoHand keybaord.
- * Pass initial layer id for "Noramal" layer to constructor.
+ * Pass initial layer id for "Normal" layer to constructor.
  *
  * The layer scheme is based on the DataHand keyboard described in DataHandProIIUserGuide.pdf.
  * l_LayerManager keeps track of activeLayer and lockedLayer.

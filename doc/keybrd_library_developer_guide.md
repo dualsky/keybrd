@@ -11,7 +11,7 @@ This guide will help you design your new class to fit into the keybrd library.
 
 ## Who This Guide is For
 This guide is for the maintainers and developers of the keybrd library.
-It is assumed the reader is familiar with C/C++ language including pointers and object-oriented programming concepts.
+It is assumed the reader is familiar with C/C++ language including pointers, static class variables, and object-oriented programming concepts.
 
 ## Class-name prefixes
 Class-name prefixes make more sense if you look at the class inheritance diagrams in the next section.

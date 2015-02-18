@@ -6,7 +6,7 @@
 
 /* class c_Matrix is an abstract base class.
  * Derived Matrix class contains pin numbers and registers for a Micro controller or I/O expander
- * Each Matrix is wired to a Micro controller or I/O expander, which scans and reads the matrix.
+ * Each Matrix is connected to a Micro controller or I/O expander, which scans and reads the matrix.
  */
 class c_Matrix
 {

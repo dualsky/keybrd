@@ -6,13 +6,13 @@ void c_Matrix_Teensy2::begin()
     DDRF = B11111111;                           //set all port F pins to outputs
 }
 
-//strobe a row (F pins) and then read a column (B pins)
-//use port manipulation to read one row of pins
+/* strobe portF and then read portB
+ * in keybrd nomenclature, portF would be the row and portB would be the column
+ * in hardware, the assignments of row or column to matrix is arbirary
+ */
 uint8_t c_Matrix_Teensy2::scanRow(const uint8_t rowN)
 {
-    //port F has 6 pins for up to 6 rows.  row numbers wired to pin numbers F 0,1,    4,5,6,7
-    //port B has 8 pins for up to 8 cols.  col numbers wired to pin numbers B 0,1,2,3,4,5,6,7
-    //map FPins[rowN] to port-F pin numbers ('B' in parameter denotes binary notation)
+    //FPins[rowN] is array of port-B pin names that are strobed
     const uint8_t FPins[6] = { 1<<0, 1<<1,             1<<4,  1<<5, 1<<6, 1<<7 };
 
     PORTF = ~FPins[rowN];   //strobe: set active row pin to low, and set inactive row pins to high

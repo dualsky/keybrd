@@ -19,7 +19,7 @@ void c_RowWait::delay()
  * WAIT is the distance between each x.
  * All samples left of brackets are one value, and all samples on right are the opposite value.
  * The sample values inside the brackets don't matter, as long as they all have the same value.
- * Worst case is samples just inside bounce time boundary
+ * Worst case is left and right samples barely inside bounce time boundary
  *      SWITCH_BOUNCE           SAMPLE_COUNT
  *      [x      ]               1
  *      [x     x]               2
@@ -28,14 +28,13 @@ void c_RowWait::delay()
  *
  * SAMPLE_COUNT value:
  * SAMPLE_COUNT is the number of consecutive equal samples needed to debounce.
- * It is a macro because it is used to define array size of samples[SAMPLE_COUNT].
+ * It is a macro because it is used to define array size of samples[SAMPLE_COUNT] in c_Row_Ex.
  * SAMPLE_COUNT should be at lease 2.
- * Multiple samples are for error correction on I2C I/O expander and shorten response time
- * Multiple samples are not needed for Teensy matrix.
- * But code for two different sample sizes would consume more space than the samples.
+ * Multiple samples are for error correction on I2C I/O expander and shorten response time.
+ * On keyboards without I/O expander, multiple samples only shorten response time.
  * Larger SAMPLE_COUNTs are more reliable but consume more memory, where
- *      SAMPLE_COUNT*ROW_COUNT = bytes of memeory consumed by keyboard
- * So don't make SAMPLE_COUNT too large, SAMPLE_COUNT = 4 is very reliable.
+ *      SAMPLE_COUNT*ROW_COUNT = bytes of memory consumed by keyboard
+ * So don't make SAMPLE_COUNT too large, SAMPLE_COUNT = 4 is very reliable for I2C error correction.
  *
  * Switch bounce times:
  * Cherry MX has 5msec bounce time http://www.cherrycorp.com/english/switches/key/mx.htm

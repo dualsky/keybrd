@@ -1,22 +1,20 @@
 keybrd Library User's Guide
 ===========================
-keybrd library is an open source library for creating custom-keyboard firmware.
-This guide shows you how to set up an environment for creating keybrd firmware.
+This guide shows you how to set up Arduiono IDE and keybrd library.
 We also cover how to compile and load keybrd firmware onto the keyboard's processor.
 
 ## Who This Guide is for
 This guide is for users that want to develop custom keyboard firmware using the keybrd library.
-It is assumed the reader is familiar with Object Oriented programming.
-
-## Caveates
-The current version of keybrd firmware is limited to 8x8 matrices, which is well suited for most split keyboards that have a processor in each half.
-However, most one-piece keyboards need a larger matrix.
-16x8 matrix capability is planned for a later version of the keybrd library.
+It is assumed the reader is familiar with C/C++ language including pointers, static class variables, and composition.
 
 ## Getting Started with Teensy2.0, Arduino IDE, and keybrd
-You will need a Teensy2.0 and an Arduino IDE to use the keybrd library and run the keyboard.
+A **keybrd sketch** is an C++ file that uses the keybrd library to define keyboard firmware.
+The Arduiono IDE is free, easy to setup, and simple to use.
+The Arduino IDE compiles the keybrd sketch to make an executable keyboard firmware.
+The firmware is then loaded onto the keyboard's Teensy2.0 microcontroller.
+The result is a keyboard that is compatible with standard USB keyboard drivers.
 
-Teensy2.0 is a USB-based microcontroller (uC) development system.
+Teensy2.0 is a USB-based microcontroller development system.  It runs the keyboard.
 A good way to get familiar with Teesny2.0 is [Teensy Getting Started](http://www.pjrc.com/teensy/first_use.html).
 
 Teensyduino is a software add-on for the Arduino IDE that allows it to compile to Teensy2.0
@@ -86,25 +84,21 @@ Compile and load:
 * Click the Upload button.
 * The Teensy boot loader window opens, press and release the tiny pushbutton on the Teensy circuit board.
 
-## keybrd Sketch Naming Conventions
-Sketches in the keybrd repository use the following naming conventions.
+## Sample keybrd Sketches
+Sample keybrd sketches are in the keybrd_sketches folder, grouped by layer scheme.
+The sketches use the following naming conventions.
 
-    keybrd_type_1234_feature_layout_version.ino
+    keybrd_layerScheme_1234_feature_layout_version.ino
 
 where
 * **keybrd** is a literal string
-* **type** is layer system e.g. single-layer, multi-layer, DualMode, DodoHand
+* **layerScheme** is layer scheme name e.g. single-layer, multi-layer, DualMode, DodoHand
 * **1** is matrixCount
 * **2** is max rowCount (use letters ABCDEFG for rowCount 10 to 16)
 * **3** is max colCount (use letters ABCDEFG for colCount 10 to 16)
 * **4** is layerCount
 * **feature** is distinguishing feature of keybrd e.g. bb (breadboard), LEDs, sound, lock
 * **layout** is keyboard layout e.g. QWERTY
-* **version** is number
+* **version** is version number
 
-**keybrd** and **type** are mandatory, remaining parts are optional.
-
-Format and object naming conventions for keybrd sketch files are described in:
-* keybrd_single-layer_1221_style_guide.ino
-* keybrd_multi-layer_2232_style_guide.ino
-
+**keybrd** and **layerScheme** are mandatory, remaining parts are optional.

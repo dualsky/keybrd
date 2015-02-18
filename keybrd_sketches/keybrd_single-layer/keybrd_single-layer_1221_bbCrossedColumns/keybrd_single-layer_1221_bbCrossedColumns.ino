@@ -1,6 +1,9 @@
-/* keybrd_single-layer_1221_bb.ino, 4-key layout:
+/* keybrd_single-layer_1221_bbCrossedColumns.ino 4-key layout:
         a       b
-        shift   shift
+        1       2
+For doc/tutorial_2_keybrd_single-layer.md ## When Layout and Matrix are Incongruent
+The keyboard is pictured in breadboard_keyboard_2x2_crossColumns.JPG
+The column-matrix wires cross.
 */
 // ********** INCLUDES **********
 //Arduino library files
@@ -12,17 +15,16 @@
 #include <c_Row_Ex.h>
 #include <c_RowWait.h>
 #include <c_Matrix_Teensy2.h>
-#include <c_Matrix_MCP23018.h>
 #include <c_Keybrd.h>
 #include <l_LayerManager.h>
 
 // ********** ROWS *************
 //row0
-c_Key* const ptrsKey_0[] = {     &k_a,           &k_b         };
+c_Key* const ptrsKey_0[] = { &k_a,    &k_b };
 c_Row_Ex row_0(ptrsKey_0, 2);
 
 //row1
-c_Key* const ptrsKey_1[] = {     &k_shift_L,     &k_shift_R   };
+c_Key* const ptrsKey_1[] = { &k_2,    &k_1 };
 c_Row_Ex row_1(ptrsKey_1, 2);
 
 c_RowWait rowWait(2, 10);

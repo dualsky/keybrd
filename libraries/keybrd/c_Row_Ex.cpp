@@ -93,7 +93,7 @@ void c_Row_Ex::pressRelease(const uint8_t switchStates)
  * I2C and TWI protocals do not include any Packet Error Checking (PEC).
  * The goal of Marty's debounce routine is to reject spurious signals,
  * which is useful when conecting split keyboards with a cable using I2C or TWI.
- * keyboard worked with 3-meter long telephone wire between MCP23018 I/O expander and Teensy2.0
+ * Tested on split keyboard with 3-meter long telephone wire between I/O expander and Teensy2.0
  *
  * Marty's debounce algorithm:
  * periodically read samples and update the state when a number consecutive samples are equal.

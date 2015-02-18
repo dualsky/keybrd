@@ -21,7 +21,7 @@ Here are a few items that will make the pull request process go smoothly:
 Contributors need to fork, clone, push, fetch, and submit pull requests.
 A good place to learn these is [boot camp](https://help.github.com/categories/bootcamp/).
 
-You will also need [Teensyduino + Arduino IDE](URL to keybrd_library_users_guide.md #Getting Started) and [Git](http://git-scm.com/downloads) installed on your computer.
+You will also need [Teensyduino + Arduino IDE](doc/keybrd_library_user_guide.md#getting-started-with-teensy20-arduino-ide-and-keybrd) and [Git](http://git-scm.com/downloads) installed on your computer.
 
 The local .gitignore file whitelists the keybrd_sketches and keybrd directories.
 Put patterns of your editor's generated temporary files in [.gitignore_global]( https://help.github.com/articles/ignoring-files/#create-a-global-gitignore).
@@ -39,7 +39,7 @@ Change Request template:
 <how it is useful, if not obviouse from the descrption>
 ```
 ### Consistent Style
-Follow our style guide and naming conventions in [keybrd_library_developers_guide.md](https://github.com/wolfv6/keybrd/blob/master/keybrds/doc/keybrd_library_developer_guide.md).
+Follow our style guide and naming conventions in [keybrd Library Developer's Guide](doc/keybrd_library_developer_guide.md).
 
 ### Good Commit Messages
 There are only two formatting rules for commit messages:
@@ -82,12 +82,12 @@ If a problem is found, click the line number containing the error and leave a co
 
 ### Manual Testing on Keyboards
 Manual testing requires a keyboard testing environment:
-* appropriate microprocessor installed in keyboard
+* appropriate microcontroller installed in keyboard
 * Arduino IDE installed on computer
 
 Once the testing environment is setup, download the code and start testing it:
 1. fetch topic branch from pull requester (Contributor)
-2. compile and load firmware onto keyboard's microprocessor
+2. compile and load firmware onto keyboard's microcontroller
 3. manually type on the keyboard
 
 If a problem is found, notify the author by commenting in the pull request.

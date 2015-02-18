@@ -1,0 +1,56 @@
+keybrd Tutorial
+The tutorial 0 lays the foundation for tutorials 1 and 2.
+After reading these tutorials you will be able to understand a keybrd sketch and be able to modify it to suite your own keyboard design.
+
+A **keybrd sketch** is an C++ file that uses the keybrd library to define keyboard firmware.
+
+It is assumed the reader is familiar with C/C++ language including pointers, static class variables, and composition.
+
+## Keyboard Nomenclature
+**[scancode](http://en.wikipedia.org/wiki/Scancode)** -
+Is an integer assigned to a key position on keyboard.
+The keyboard sends a scancode to the PC for every key press and release.
+
+**[Layer](http://deskthority.net/wiki/Layer)** -
+Are key bindings provided by the keyboard firmware.
+The standard [IBM PC keyboard](http://en.wikipedia.org/wiki/IBM_PC_keyboard) has one layer.
+Many compact keyboards have an additional [Fn layer](http://en.wikipedia.org/wiki/Fn_key).
+The [Neo layout](http://neo-layout.org/index_en.html) has 6 layers.
+
+**Layer code** - is an integer assigned to a layer.
+
+**Layer scheme** - is a system for changing layers while typing.
+
+**[bounce](http://en.wikipedia.org/wiki/Switch#Contact_bounce)** -
+Mechanical switch contacts are made of springy metals.
+When the contacts close, they bounce apart one or more times before making steady contact.
+
+## Structure of a keybrd Sketch
+The keybrd object has a hierarchal structure (listed below).
+Each level of the keybrd hierarchy is composed of interchangeable objects.
+These objects are instantiated by classes (the links below are to the class header files).
+todo: link the file names, and link level name to parent class
+
+1. keybrd is composed of 1 or 2 matrices
+ * [c_Keybrd.h](../libraries/keybrd/c_Keybrd.h)
+2. Matrix is composed of rows and scans the pins of a micro processor or I/O expander
+ * [c_Matrix_Teensy2.h](../libraries/keybrd/c_Matrix_Teensy2.h)
+ * [c_Matrix_MCP23018.h](../libraries/keybrd/c_Matrix_MCP23018.h)
+3. Row is composed of keys
+ * [c_Row_Ex.h](../libraries/keybrd/c_Row_Ex.h)
+4. Single-layer keys are composed of USB scancodes
+ * [k_Key_1.h](../libraries/keybrd/k_Key_1.h)
+ * [k_Key_Null.h](../libraries/keybrd/k_Key_Null.h)
+ * [k_keycodes.h](../libraries/keybrd/k_keycodes.h)
+5. Multi-layered keys are composed of codes, one code per layer
+ * [l_Key_1.h](../libraries/keybrd/l_Key_1.h)
+ * [l_Key_Layered.h](../libraries/keybrd/l_Key_Layered.h)
+6. Codes can be USB scancodes or layer codes
+ * [l_Code_S.h](../libraries/keybrd/l_Code_S.h)
+ * [l_Code_SS.h](../libraries/keybrd/l_Code_SS.h)
+ * [l_Code_SNS.h](../libraries/keybrd/l_Code_SNS.h)
+ * [l_Code_Shift.h](../libraries/keybrd/l_Code_Shift.h)
+ * [l_Code_Null.h](../libraries/keybrd/l_Code_Null.h)
+ * [l_scancodes.h](../libraries/keybrd/l_scancodes.h)
+ * [l_scancodesNotShifted.h](../libraries/keybrd/l_scancodesNotShifted.h)
+

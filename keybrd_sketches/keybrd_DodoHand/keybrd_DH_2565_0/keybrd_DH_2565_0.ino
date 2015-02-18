@@ -6,7 +6,7 @@
 #include <Wire.h>
 
 //keybrd library files
-#include <l_scancodes.h>
+#include <objects_scancode.h>
 #include <m_MouseButton.h>
 #include <m_MouseMove.h>
 #include <l_Code_00.h>
@@ -111,8 +111,7 @@ meaning:                pinky   ring    middle  index
 */
 
 // ********** LEFT KEYS ***********
-//              Modes   =  Normal       NAS             NAS             MF              MF
-//              Layers  =  normal       10KeyOff        10KeyOn         mouseOn         arrowOn
+//Layers:                 {normal,      10KeyOff,       10KeyOn,        mouseOn,        arrowOn };
 //North keys row
 l_Code* ptrsCodes_Ln0[] = {&s_q,        &s_exclamation, &s_exclamation,&s_F2,           &s_F2   };
 l_Key_Layered k_Ln0(ptrsCodes_Ln0);
@@ -187,8 +186,7 @@ l_Key_1 k_Ltp(&s_enter);
 l_Key_1 k_Ltu(&l_normal);
 
 // ********** RIGHT KEYS ***********
-//              Modes   =  Normal       NAS             NAS             MF              MF
-//              Layers  =  normal       10KeyOff        10KeyOn         mouseOn         arrowOn
+//Layers:                 {normal,      10KeyOff,       10KeyOn,        mouseOn,        arrowOn };
 //North keys row
 l_Code * ptrsCodes_Rn0[]= {&s_p,        &s_rightParen,  &s_asterisk,    &s_pageUp,      &s_pageUp};
 l_Key_Layered k_Rn0(ptrsCodes_Rn0);

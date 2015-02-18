@@ -20,11 +20,15 @@ void c_Matrix_MCP23018::begin()
     Wire.endTransmission();
 }
 
+/* strobe portB and then read portA
+ * in keybrd nomenclature, portB would be the row and portA would be the column
+ * in hardware, the assignments of row or column to matrix is arbirary
+ */
 uint8_t c_Matrix_MCP23018::scanRow(const uint8_t rowN)
 {
-    //MCP23018, port B has pin numbers 0,1,2,3,4,5,6,7
-    //BPin[] maps rowN to port-B-pin numbers (binary notation)
+    //BPin[] is array of port-B pin names that are strobed
     const uint8_t BPin[8] = { 1<<0, 1<<1, 1<<2, 1<<3, 1<<4,  1<<5, 1<<6, 1<<7 };
+
 
     // strobe: set active row pin to low, and set inactive row pins to high
     Wire.beginTransmission(addr);

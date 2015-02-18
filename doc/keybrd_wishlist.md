@@ -13,7 +13,7 @@ The list is ordered by priority, with highest priority on top.
 
 The keybrd Wishlist
 -------------------
-Finish keybrd tutorial (work in progress).
+16x16 matrix capability (10x11=110 keys on Teensy2)
 
 Add keybrd matrix for PCA9655E-D I/O expander, and test on breadboard.
 

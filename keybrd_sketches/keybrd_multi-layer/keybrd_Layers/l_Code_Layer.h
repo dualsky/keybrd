@@ -5,7 +5,8 @@
 #include "l_Code.h"
 #include "l_LayerManager.h"
 
-/* Class l_Code_Layer is composed of a layerCode, which it sends to LayerManager when pressed.
+/* Class l_Code_Layer is composed of a layerCode.
+ * When the layer code is pressed, the active layer changes to that layer code.
  */
 class l_Code_Layer: public l_Code
 {
