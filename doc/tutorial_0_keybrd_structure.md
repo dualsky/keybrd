@@ -1,8 +1,7 @@
-keybrd Tutorial
-The tutorial 0 lays the foundation for tutorials 1 and 2.
+keybrd Tutorial 0 - keybrd single-layer
+=======================================
+keybrd tutorial 0 lays the foundation for tutorials 1 and 2.
 After reading these tutorials you will be able to understand a keybrd sketch and be able to modify it to suite your own keyboard design.
-
-A **keybrd sketch** is an C++ file that uses the keybrd library to define keyboard firmware.
 
 It is assumed the reader is familiar with C/C++ language including pointers, static class variables, and composition.
 
@@ -22,14 +21,17 @@ The [Neo layout](http://neo-layout.org/index_en.html) has 6 layers.
 **Layer scheme** - is a system for changing layers while typing.
 
 **[bounce](http://en.wikipedia.org/wiki/Switch#Contact_bounce)** -
-Mechanical switch contacts are made of springy metals.
+Keyboard switches are made of moving contacts.
 When the contacts close, they bounce apart one or more times before making steady contact.
+A debouncer removes the bounce so that a key press is sent to the computer only once.
 
 ## Structure of a keybrd Sketch
-The keybrd object has a hierarchal structure (listed below).
-Each level of the keybrd hierarchy is composed of interchangeable objects.
-These objects are instantiated by classes (the links below are to the class header files).
-todo: link the file names, and link level name to parent class
+A **keybrd sketch** is a source code file that defines a keybrd object.
+When the keybrd sketch is compiled and run, the keybrd object scans the keyboard matrix.
+If a key is pressed, the keybrd object sends a scancod to the computer.
+
+The keybrd object has the hierarchal composition listed below.
+Each level has a numbered description followed by bulleted classes.
 
 1. keybrd is composed of 1 or 2 matrices
  * [c_Keybrd.h](../libraries/keybrd/c_Keybrd.h)

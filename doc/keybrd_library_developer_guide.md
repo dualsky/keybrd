@@ -1,8 +1,7 @@
 keybrd Library Developer's Guide
 ================================
-This guide contains naming conventions, class diagrams, and a style guide.
+This guide contains naming conventions, diagrams, and a style guide.
 Class naming conventions and class diagrams are helpful for understanding the structure of the keybrd library.
-Using the style guide makes it easier for the next programmer to understand your code.
 
 Some keyboard designs require new classes.  The most common need for custom classes are:
  * matrices for keyboard micro processors and I/O expanders
@@ -129,6 +128,7 @@ The keybrd libraries compile on the Arduino IDE and make extensive use of the fo
 * **ITEM_COUNT** is a constant number of items.
 
 ## Style Guide
+Following the style guide makes it easier for the next programmer to understand your code.
 * For class names, use Class-name prefixes (see section below) followed by CamelCase.
 * For function names, use camelCase starting with lowercase letter.
 * For constant names, use ALL_CAPS_AND_UNDERSCORE.

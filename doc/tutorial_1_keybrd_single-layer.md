@@ -5,14 +5,14 @@ keybrd Tutorial 1 - keybrd single-layer
 We will step though a sketch for a simple keyboard.
 Open the sketch [keybrd_single-layer_1221_bb.ino](../keybrd_sketches/keybrd_single-layer/keybrd_single-layer_1221_bb/keybrd_single-layer_1221_bb.ino) and follow along.
 
-The keybrd sketch will run on either [breadboard keyboard](todo).
+The keybrd sketch will run on either [breadboard keyboard](https://github.com/wolfv6/breadboard_keyboard).
 
 Here is the keybrd's layout.
 
- | Layout | **0** | **1** |  
- |:------:|-------|-------|  
- |  **0** | a     | b     |  
- |  **1** | shift | shift |  
+| Layout | **0** | **1** |  
+|:------:|-------|-------|  
+|  **0** | a     | b     |  
+|  **1** | shift | shift |  
 
 Row and column numbers are in the headers.
 Each cell in the table's body is a key.
@@ -72,26 +72,28 @@ is the placements of keys on a keyboard.
 is the keys plus row and column connections.
 
 On some keyboards, the layout and matrix are incongruent.
-for example, this keyboard has column wires that cross diagonally:
-	[todo pic of 2x2 breadboard with crossed col wires]
+For example, this keyboard has column wires that cross diagonally:
+
+![2x2 breadboard keyboard with crossColumns](https://github.com/wolfv6/breadboard_keyboard/blob/master/images/breadboard_keyboard_2x2_crossColumns.jpg "2x2 breadboard keyboard with crossColumns")
+
 In preparation of the keybrd sketch, we create separate tables for layout and matrix.
 
 Here is the keyboard's **layout table**:
 
- | row\col | **0** | **1** |  
- |:-------:|-------|-------|
- |  **0**  | a     | b     |  
- |  **1**  | 1     | 2     |  
+| row\col | **0** | **1** |  
+|:-------:|-------|-------|
+|  **0**  | a     | b     |  
+|  **1**  | 1     | 2     |  
 
 Row and column numbers are in the headers.
 Each cell in the table's body is a key.
 
 Here is the keyboard's **matrix table**:
 
- |   Pin  | **B0** | **B1** |  
- |:------:|--------|--------|  
- | **F0** | a      | b      |  
- | **F1** | 2      | 1      |  
+|   Pin  | **B0** | **B1** |  
+|:------:|--------|--------|  
+| **F0** | a      | b      |  
+| **F1** | 2      | 1      |  
 
 The microcontroller's pin numbers are in the headers.
 Each cell in the table's body contains a key
@@ -99,8 +101,8 @@ Each cell in the table's body contains a key
 
 Here is how to make a matrix table:
 * Refer to the
-  [switch matrix](todo breadboard_keyboard_2x2_crossColumns.JPG),
-  [pin out diagram](todo connecting_teensy2_to_keyboard.md), and
+  [matrix](https://github.com/wolfv6/breadboard_keyboard/blob/master/images/breadboard_keyboard_2x2_crossColumns.jpg),
+  [pin out diagram](https://github.com/wolfv6/breadboard_keyboard/blob/master/connecting_teensy2_to_keyboard.md), and
   [c_Matrix_Teensy2.cpp](../libraries/keybrd/c_Matrix_Teensy2.cpp) > scanRow() > FPins[] array.
 * Set up a spreadsheet headers like this
   [matrix table](../keybrd_sketches/keybrd_multi-layer/keybrd_multi-layer_1221_bbCrossedColumns/keybrd_single-layer_1221_bbCrossedColumns_tables.ods)

@@ -1,4 +1,6 @@
 /* keybrd_DodoHand/keybrd_DH_2565_0.ino DataHand QWERTY layout
+ * for DodoHand project on https://github.com/dodohand/dodohand
+ * and https://geekhack.org/index.php?topic=41422.0
  */
 // ********** INCLUDES *********
 #include <Keyboard.h>

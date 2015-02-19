@@ -1,21 +1,22 @@
 keybrd Library for Creating Keyboard Firmware
 =============================================
+keybrd library is an open source library for creating custom-keyboard firmware.
+keybrd library can handle keyboards with any configuration:
+* one-piece
+* split with I/O expander
+* single-layer
+* multiple-layer
+
+keybrd library leverages the Arduino environment to create keyboard firmware that is compatible with standard USB keyboard drivers.
+
 > The public API should not be considered stable.
 > Currently the keybrd library is limited to 8x8 matrices, which is enough for compact or split keyboards.
 > 16x16 matrix capability is under development for one-piece full-size keyboards.
 
-keybrd library is an open source library for creating custom-keyboard firmware.
-keybrd library can handle keyboards with any configuration:
-	one-piece
-	split with I/O expander
-	single-layer
-	multiple-layer
-keybrd library leverages the Arduino environment to create keyboard firmware that is compatible with standard USB keyboard drivers.
-
 The library runs on Teensy 2.0 microcontroller and MCP23018 I/O expander.
 A PCA9655E I/O expander will be added soon.
 
-A **keybrd sketch** is an C++ file that uses the keybrd library to define keyboard firmware.
+A **keybrd sketch** is a C++ file that uses the keybrd library to define keyboard firmware.
 Anyone familiar with C++ programming can write a keybrd sketch.
 
 Example Minimal keybrd Sketch
