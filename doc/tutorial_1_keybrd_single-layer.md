@@ -63,14 +63,14 @@ Function setup() initialized the keybrd.
 Function loop() scans the keybrd.
 
 ## When Layout and Matrix are Incongruent
-Most keyboards have keys laid out in rows and columns.
-In the preceding keyboard example, the matrix wires follow the layout's rows and columns.
+Most keyboards have keys laid out in straight rows and slightly slanted columns.
 
 **[Keyboard layout](http://en.wikipedia.org/wiki/Keyboard_layout)** -
 is the placements of keys on a keyboard.
 **[Keyboard matrix](http://deskthority.net/wiki/Matrix)** -
-is the keys plus row and column connections.
+is the electrical row and column connections to the keys.
 
+In the preceding keyboard example, the matrix rows and columns follow the layout's rows and columns.
 On some keyboards, the layout and matrix are incongruent.
 For example, this keyboard has column wires that cross diagonally:
 
@@ -112,7 +112,7 @@ Here is how to make a matrix table:
 With the finished matrix table at hand, writing the sketch is simple.
 Place keys in the arrays as they appear in the matrix table.
 
-```
+```cpp
 // ********** ROWS *************
 //row0
 c_Key* const ptrsKey_0[] = {     &k_a,     &k_b   };

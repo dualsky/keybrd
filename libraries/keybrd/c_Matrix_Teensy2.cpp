@@ -6,16 +6,16 @@ void c_Matrix_Teensy2::begin()
     DDRF = B11111111;                           //set all port F pins to outputs
 }
 
-/* strobe portF and then read portB
- * in keybrd nomenclature, portF would be the row and portB would be the column
- * in hardware, the assignments of row or column to matrix is arbirary
+/* Strobe portF and then read portB and return row state.
+ * In keybrd nomenclature, portF would be the row and portB would be the column.
+ * In hardware, the assignments of row or column to matrix is arbirary.
  */
 uint8_t c_Matrix_Teensy2::scanRow(const uint8_t rowN)
 {
-    //FPins[rowN] is array of port-B pin names that are strobed
-    const uint8_t FPins[6] = { 1<<0, 1<<1,             1<<4,  1<<5, 1<<6, 1<<7 };
+    //FPin[rowN] is array of port-B pin names that are strobed
+    const uint8_t FPin[6] = { 1<<0, 1<<1,             1<<4,  1<<5, 1<<6, 1<<7 };
 
-    PORTF = ~FPins[rowN];   //strobe: set active row pin to low, and set inactive row pins to high
+    PORTF = ~FPin[rowN];   //strobe row: set active row pin to low, set inactive row pins to high
     delayMicroseconds(1);   //wait for PORTF to update the activate low pin
     //__asm__ volatile (" " : : : "memory"); // did not work
     //asm("nop"); // did not work, see

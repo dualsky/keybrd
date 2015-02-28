@@ -20,6 +20,8 @@ The [Neo layout](http://neo-layout.org/index_en.html) has 6 layers.
 
 **Layer scheme** - is a system for changing layers while typing.
 
+**[Key Matrix](http://pcbheaven.com/wikipages/How_Key_Matrices_Works/)** - is a grid of rows and columns connected by switches
+
 **[bounce](http://en.wikipedia.org/wiki/Switch#Contact_bounce)** -
 Keyboard switches are made of moving contacts.
 When the contacts close, they bounce apart one or more times before making steady contact.

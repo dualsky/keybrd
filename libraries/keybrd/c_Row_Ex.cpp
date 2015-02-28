@@ -1,7 +1,7 @@
 #include "c_Row_Ex.h"
 
 /* process row switchStates bitwise, and send one row of key actions to USB
- * each of the following variables represent this row of switches, where each bit is one switch:
+ * the following variables are for this row of switches, where each bit is one key:
  *      switchStates
  *      all_1
  *      all_0
@@ -18,25 +18,25 @@
  * this function could be written as 3 seperate functions,
  *  but that would require passing 2 variables between functions
  */
-void c_Row_Ex::pressRelease(const uint8_t switchStates)
+void c_Row_Ex::pressRelease(const uint8_t rowState)
 {
     /* debounce
-     * takes switchStates and computes newDebounced
+     * takes rowState and computes newDebounced
      */
     uint8_t all_1 = 0B11111111;
     uint8_t all_0 = 0B00000000;
     uint8_t newDebounced;
 
-    refRowWait.delay();                         //delay between Row scans for debouncing switch
+    refRowWait.delay();                         //delay between Row scans to debounce key
 
-    samples[i] = switchStates;                  //insert switchStates into ring buffer
+    samples[i] = rowState;                      //insert rowState into ring buffer
 
     if (++i >= SAMPLE_COUNT)
         {
         i = 0;                                  //wrap write index to beginning of ring buffer
         }
 
-    for (uint8_t j = 0; j < SAMPLE_COUNT; j++) //traverse ring buffer
+    for (uint8_t j = 0; j < SAMPLE_COUNT; j++)  //traverse ring buffer
         {
         all_1 &= samples[j];                    //1 if all samples are 1
         all_0 |= samples[j];                    //0 if all samples are 0
@@ -71,7 +71,7 @@ void c_Row_Ex::pressRelease(const uint8_t switchStates)
     uint8_t colBit;                             //column-bit map
     uint8_t col;                                //row index corresponding to a key pointer
 
-    for (colBit=1, col=0; col<COLS_COUNT; colBit=colBit<<1, col++) // for each switch in row
+    for (colBit=1, col=0; col<COLS_COUNT; colBit=colBit<<1, col++) // for each key in row
         {
         if (colBit & isFallingEdge)             //if button was released
             {
@@ -85,7 +85,7 @@ void c_Row_Ex::pressRelease(const uint8_t switchStates)
         }
 }
 
-/* Debounce uses multiple samples to debounces a switch states,
+/* Debounce uses multiple samples to debounces switch states,
  * where each sample contains the switch state of upto 8 switches, one bit per switch.
  *
  * Debounce uses Marty's debounce algorithm from

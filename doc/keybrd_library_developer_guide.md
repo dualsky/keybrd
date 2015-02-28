@@ -12,8 +12,9 @@ This guide will help you design your new class to fit into the keybrd library.
 This guide is for the maintainers and developers of the keybrd library.
 It is assumed the reader is familiar with C/C++ language including pointers, static class variables, and object-oriented programming concepts.
 
-## Class-name prefixes
-Class-name prefixes make more sense if you look at the class inheritance diagrams in the next section.
+## Class Naming Conventions
+Class-name prefixes are used in lieu of directory structure (Arduino does not support subdirectories)
+The Class-name prefixes make more sense if you look at the class inheritance diagrams in the next section.
 
 Each class in keybrd library has one of 4 prefixes:
 * **c_** classes common to all keybrds
@@ -22,6 +23,14 @@ Each class in keybrd library has one of 4 prefixes:
 * **m_** classes for mouse
 
 The prefix is followed by a class name proper, which is CamelCase starting with a capital.
+
+Names of inherited classes start with the base class name e.g.
+	l_Code
+	   |
+	l_Code_Layer
+Underscores delineate class inheritance levels.
+This convention leads to class names that convey information about the classes inheritance.
+For classes with multiple inheritance, name class as if it where a base class.
 
 ## Diagrams
 ### Keybrd Library Common Classes
@@ -39,12 +48,12 @@ Classes inheritance diagrams:
 ``` 
 ### Keybrd Library Single-layer Classes
 Classes inheritance diagrams:
- ``` 
+``` 
 	c_Key___________
 	  |             \
 	k_Key_1         m_Mouse
 	                /     \
-	        m_MouseMove  m_MouseButton
+	       m_Mouse_Move  m_Mouse_Button
 ``` 
 Association diagram:
 ``` 
@@ -72,7 +81,7 @@ Class inheritance diagram:
 	        /        /        /           \          \              \   \
 	l_Code_S  l_Code_SS  l_Code_SNS   l_Code_Shift  l_Code_Layer   m_Mouse
 	                                                                 /    \
-	                                                        m_MouseMove  m_MouseButton
+	                                                       m_Mouse_Move  m_Mouse_Button
 	l_ShiftManager
 
 	l_LayerManager
@@ -129,7 +138,7 @@ The keybrd libraries compile on the Arduino IDE and make extensive use of the fo
 
 ## Style Guide
 Following the style guide makes it easier for the next programmer to understand your code.
-* For class names, use Class-name prefixes (see section below) followed by CamelCase.
+* For class names, see above section "Class naming conventions"
 * For function names, use camelCase starting with lowercase letter.
 * For constant names, use ALL_CAPS_AND_UNDERSCORE.
 * Use constants rather than macros, except for header guards.
@@ -143,7 +152,6 @@ not
 
     void printArray( char* array);
 
-* Do not use namespaces.
 * Do not use new or malloc (to make memory leaks impossible).
 * If class has any non-[POD](http://en.wikipedia.org/wiki/Plain_old_data_structure) data members, [do not inline constructors and destructors](http://www.chromium.org/developers/coding-style/cpp-dos-and-donts).
 

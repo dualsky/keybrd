@@ -2,12 +2,11 @@
 
 void c_Matrix::scanMatrix()
 {
-    uint8_t rowState;                           //state for row of switches, one bit per switch
+    uint8_t switchStates;                           //state for row of keys, one bit per key
 
-    for (uint8_t i = 0; i < ROW_COUNT; i++)
+    for (uint8_t rowN = 0; rowN < ROW_COUNT; rowN++)
         {
-        rowState = scanRow(i);
-        ptrsRows[i]->pressRelease(rowState);
+        switchStates= scanRow(rowN);
+        ptrsRows[rowN]->pressRelease(switchStates);
         }
 }
-
