@@ -1,6 +1,6 @@
-/* keybrd_single-layer_1221_bb.ino, 4-key layout:
-        a       b
-        shift   shift
+/* keybrd_single-layer_1231_bb.ino, 6-key layout:
+        1       2       3
+        a       b       c
 */
 // ********** INCLUDES **********
 //Arduino library files
@@ -23,14 +23,23 @@
 #include <l_LayerManager.h>
 
 // ************ TRANSFORMS *************
-// *********** ROWS OF KEYS ************
-//row0
-c_Key* const ptrsKey_0[] = {     &k_a,           &k_b         };
-c_Row_Ex row_0(ptrsKey_0, 2);
+//this macro function transforms layout to matrix rows
+#define TRANSFORM( \
+        K00, K01, K02, \
+        K10, K11, K12  \
+) \
+c_Key* const ptrsKey_0[] = { &k_##K00, &k_##K01, &k_##K02 }; \
+c_Key* const ptrsKey_1[] = { &k_##K10, &k_##K11, &k_##K12 };
 
-//row1
-c_Key* const ptrsKey_1[] = {     &k_shift_L,     &k_shift_R   };
-c_Row_Ex row_1(ptrsKey_1, 2);
+// ************** LAYOUT ***************
+TRANSFORM(
+1,  2,  3,
+a,  b,  c)
+
+// *********** ROWS OF KEYS ************
+//row objects
+c_Row_Ex row_0(ptrsKey_0, 3);
+c_Row_Ex row_1(ptrsKey_1, 3);
 
 //static variables
 c_Row_Ex* const ptrsRow[] = { &row_0, &row_1 };
@@ -41,20 +50,20 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
 
 /*************** ROW PORTS *************
  * row: 0   1
- * pin: B2  F1
+ * pin: F0  F1
  */
-c_UCRowPort rowPortB(PORTB, DDRB, 1<<2 );//todo rename? rowPort_B
-c_UCRowPort rowPortF(PORTF, DDRF, 1<<1 );
-c_UCRowPort* rowsPorts[] = { &rowPortB, &rowPortF };
-c_UCRowPorts rows(rowsPorts, 2);
+c_UCRowPort rowPort_F(PORTF, DDRF, 1<<0 | 1<<1 );//bot row keys print bot+top key, same for top row, but last col print in revers
+c_UCRowPort* rowsPorts[] = { &rowPort_F };
+c_UCRowPorts rows(rowsPorts, 1);
 
 /*************** COL PORTS *************
- * col: 0   1
- * pin: B0  B1
+ * col: 0   1   2
+ * pin: B0  B1  C7
  */
-c_UCColPort colPortB(PORTB, DDRB, PINB, 1<<0 | 1<<1 );
-c_UCColPort* colPorts[] = { &colPortB };
-c_UCColPorts cols(colPorts, 1);
+c_UCColPort colPort_C(PORTC, DDRC, PINC, 1<<7 );
+c_UCColPort colPort_B(PORTB, DDRB, PINB, 1<<0 | 1<<1 );
+c_UCColPort* colPorts[] = { &colPort_C, &colPort_B };
+c_UCColPorts cols(colPorts, 2);
 
 // ************** MATRIX ***************
 //matrix

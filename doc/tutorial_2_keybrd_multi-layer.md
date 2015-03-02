@@ -93,6 +93,10 @@ The c_Keybrd constructor as two parameters:
 2. the array's size
 
 ### MANAGERS
+Layouts can include shifted keys like ~!@#$%^&*()_ without the user pressing the shift key.
+The keybrd libraries shiftManager automatically takes care of the USB scancode details.
+When a '%' key is pressed, the keyboard sends scancodes MODIFIERKEY_SHIFT and KEY_5.
+
 ShiftManager automatically changes and restores shift state for l_Code_SS scancode objects.
 For example, when s_exclamation is pressed, shiftManager sends a MODIFIERKEY_SHIFT scancode to the computer, then s_exclamation sends a KEY_1 scancode, and then shiftManager releases the MODIFIERKEY_SHIFT.
 
@@ -157,7 +161,7 @@ Here is the keyboard's **matrix table**:
 
 The microcontroller's pin numbers are in the headers.
 Each cell in the table's body contains a layout coordinate of that key
-(the bottom coordinates are swapped compared to the layout because the column wires are crossed).
+(the bottom coordinates are swapped compared to the layout because the column wire cross).
 
 Here is how to make a matrix table:
 * Refer to the

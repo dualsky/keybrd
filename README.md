@@ -6,6 +6,10 @@ keybrd library can handle keyboards with any configuration:
 * split with I/O expander
 * single-layer
 * multiple-layer
+* shifted keys
+
+Layouts can include shifted keys like ~!@#$%^&*()_ without the user pressing the shift key.
+The keybrd libraries shiftManager automatically takes care of the scancode details.
 
 keybrd library leverages the Arduino environment to create keyboard firmware that is compatible with standard USB keyboard drivers.
 

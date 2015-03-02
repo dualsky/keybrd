@@ -94,8 +94,8 @@ where
 * **keybrd** is a literal string
 * **layerScheme** is layer scheme name e.g. single-layer, multi-layer, DualMode, DodoHand
 * **1** is matrixCount
-* **2** is max rowCount (use letters ABCDEFG for rowCount 10 to 16)
-* **3** is max colCount (use letters ABCDEFG for colCount 10 to 16)
+* **2** is layout's max rowCount (letters ABCDEFG for rowCount 10 to 16)
+* **3** is layout's max colCount (letters ABCDEFG for colCount 10 to 16)
 * **4** is layerCount
 * **feature** is distinguishing feature of keybrd e.g. bb (breadboard), LEDs, sound, lock
 * **layout** is keyboard layout e.g. QWERTY

@@ -68,7 +68,7 @@ Most keyboards have keys laid out in straight rows and slightly slanted columns.
 **[Keyboard layout](http://en.wikipedia.org/wiki/Keyboard_layout)** -
 is the placements of keys on a keyboard.
 **[Keyboard matrix](http://deskthority.net/wiki/Matrix)** -
-is the electrical row and column connections to the keys.
+is the row and column electrical connections to the keys.
 
 In the preceding keyboard example, the matrix rows and columns follow the layout's rows and columns.
 On some keyboards, the layout and matrix are incongruent.
