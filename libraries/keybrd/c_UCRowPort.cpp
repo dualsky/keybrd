@@ -8,19 +8,19 @@ void c_UCRowPort::scanRowPort(c_UCColPorts *const cols, uint8_t& rowN) //rowN is
     uint8_t rowState;                           //state of row's keys, one bit per col
 
     //for every pin of row port
-    for ( pin = 1; pin > 0; pin = pin << 1)
+    for ( pin = 1; pin > 0; pin = pin << 1)     //shift pin until overflow
     {
         if (pin & pins)                         //if scan pin
         {
             //strobe on
-            DDR |= pins;                        //configure direction: 1=Output
-            PORT &= ~pins;                      //set output: 0=Low Output
+            DDR |= pin;                         //configure direction to 1=Output todo:move to begin
+            PORT &= ~pin;                       //set output to 0=Low
 
             cols->readColPorts();               //read the row's columns
 
             //strobe off
-            DDR &= ~pins;                       //configure direction: 0=Input
-            PORT &= ~pins;                      //configure input: 0=Normal
+            DDR &= ~pin;                        //configure direction to 0=Input
+            PORT &= ~pin;                       //configure input to 0=Normal todo:duplicates above?
 
             //process rowState after strobe is turned off
             rowState = cols->computeRowState();

@@ -11,8 +11,6 @@
 #include <objects_key.h>
 #include <c_Row_Ex.h>
 #include <c_RowWait.h>
-//#include <c_Matrix_Teensy2.h>
-//#include <c_Matrix_MCP23018.h>
 #include <c_UCRowPort.h>
 #include <c_UCRowPorts.h>
 #include <c_UCColPort.h>
@@ -23,30 +21,32 @@
 #include <l_LayerManager.h>
 
 /*************** TRANSFORM *************
-This macro function transforms layout to matrix rows.
+TRANSFORM() is a macro function that transforms layout to matrix rows.
 Layout is the placements of keys on a keyboard.
 Matrix is the electrical row and column connections to the keys.
 Matrix rows and columns are distinguishable by diode orientation.
-Diode anodes point to matrix rows.  Diode cathodes point to matrix columns.
+The keybrd library defines matrix rows as connected to diode anodes,
+and matrix columns as connected to diode cathodes.
 
 The transform function parameters list contians the layout coordinates.
 Each "K" is followed by row-col layout coordinates.
 Row coordinates start with 0 on top.  Col coordinates start with 0 on left.
 
-Function body contains the matrix.
-Rows and columns are pins, in the order listed in rowsPorts[] and colPorts[] arrays (below).
-Each "&k_##" is followed by layout coordinates.
+The function body contains the matrix.
+Rows and columns are labeled after connected pin names (in array names and comment below body).
+Pin names are in the order listed in rowsPorts[] and colPorts[] arrays (below).
+Each "&k_##" element is followed by layout coordinates.
 The layout coordinates map to the row-col pins.
 */
 #define TRANSFORM( \
         K00, K01, K02, \
         K10, K11, K12  \
 ) \
-c_Key* const ptrsKey_0[] = { &k_##K10, &k_##K00 }; \
-c_Key* const ptrsKey_1[] = { &k_##K11, &k_##K01 }; \
-c_Key* const ptrsKey_2[] = { &k_##K12, &k_##K02 };
-//                            pin B2    pin F1
-//todo name arrays after pins, after swaping ports??
+c_Key* const ptrsKey_C7[] = { &k_##K10, &k_##K00 }; \
+c_Key* const ptrsKey_B0[] = { &k_##K11, &k_##K01 }; \
+c_Key* const ptrsKey_B1[] = { &k_##K12, &k_##K02 };
+//                              pin B2    pin F1
+
 // ************** LAYOUT ***************
 TRANSFORM(
 a,  b,  c,
@@ -54,9 +54,9 @@ a,  b,  c,
 
 // *********** ROWS OF KEYS ************
 //row objects
-c_Row_Ex row_0(ptrsKey_0, 2);
-c_Row_Ex row_1(ptrsKey_1, 2);
-c_Row_Ex row_2(ptrsKey_2, 2);
+c_Row_Ex row_0(ptrsKey_C7, 2);
+c_Row_Ex row_1(ptrsKey_B0, 2);
+c_Row_Ex row_2(ptrsKey_B1, 2);
 
 //static variables
 c_Row_Ex* const ptrsRow[] = { &row_0, &row_1, &row_2 };
@@ -65,18 +65,18 @@ c_Row_Ex* const* const c_UCRowPort::ptrsRows = ptrsRow;
 c_RowWait rowWait(3, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
 
-/*************** ROW PORTS ************* ANODE PORTS??
- * row: 0   1   2
- * pin: C7  B0  B1
+/*************** ROW PORTS *************
+ * row: 0   1   2       matrix "row" are vertical on this keyboard
+ * pin: C7  B0  B1      diode anodes connect to these pins
  */
 c_UCRowPort rowPort_C(PORTC, DDRC, 1<<7 );
-c_UCRowPort rowPort_B(PORTB, DDRB, 1<<0 | 1<<1 );//portB strobing both row pins for one reading
+c_UCRowPort rowPort_B(PORTB, DDRB, 1<<0 | 1<<1 );
 c_UCRowPort* rowPorts[] = { &rowPort_C, &rowPort_B };
 c_UCRowPorts rows(rowPorts, 2);
 
-/*************** COL PORTS ************* CATHODE PORTS??
- * col: 0   1
- * pin: B2  F1
+/*************** COL PORTS *************
+ * col: 0   1           matrix "col" are horizontal on this keyboard
+ * pin: B2  F1          diode cathodes connect to these pins
  */
 c_UCColPort colPort_B(PORTB, DDRB, PINB, 1<<2 );
 c_UCColPort colPort_F(PORTF, DDRF, PINF, 1<<1 );

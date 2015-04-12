@@ -73,7 +73,7 @@ If it isn't already plugged in, plug the USB cable into the computer and Teensy2
 
 > CAUTION: It is possible to loose control of your keyboard to bad firmware.
 > If the keybrd has a mouse object, it is also possible to loose control of your mouse.
-> The processor is capable of sending characters and mouse commands at USB connection speeds.
+> USB keyboard protocol is capable of sending characters and mouse commands at upto 500 per second.
 > Take the following precautions before uploading an untested keyboard program to Teensy:
 > * Save all files and park the cursor in an empty editor.
 > That way you can immediately see if the processor starts spewing characters.

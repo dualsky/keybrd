@@ -5,10 +5,11 @@
 #include "c_UCColPorts.h"
 #include "c_Row_Ex.h"
 
-/* one microcontroller port with pins connected to matrix rows
+/* One microcontroller port with pins connected to matrix rows
+ * Port is scanned from pin 0 up.
  * https://www.pjrc.com/teensy/pins.html explains registers
  */
-class c_UCRowPort //2
+class c_UCRowPort
 { 
     private:
         volatile unsigned char& PORT;           //PORT register

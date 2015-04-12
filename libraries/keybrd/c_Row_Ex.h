@@ -11,7 +11,7 @@
  * It has switch debouncer and I2C error correction
  * The "Ex" in "c_Row_Ex" is for I/O Expander which uses I2C.
  *
- * pressRelease() function process the row:
+ * pressRelease() function processes the row:
  *      debounce the switches
  *      detect falling or rising edge
  *      call key's press() or release()
@@ -22,7 +22,7 @@ class c_Row_Ex
         static c_RowWait& refRowWait;           //delay between Row scans for debouncing switch
         uint8_t samples[SAMPLE_COUNT];          //ring buffer, where each sample is a row scan
         uint8_t i;                              //ring buffer's current write index
-        uint8_t debounced;                      //each bit is debounced value of row's switch
+        uint8_t debounced;                      //each bit is a debounced value of row's key
 
         c_Key*const *const ptrsKeys;            //row is composed of an array of Keys
         const uint8_t COLS_COUNT;               //number of keys in row

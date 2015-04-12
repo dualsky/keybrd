@@ -46,6 +46,21 @@ Classes inheritance diagrams:
  
 	c_Key                                           c_Key is an abstract base class
 ``` 
+### Keybrd Library Matrix Classes
+Classes inheritance diagrams:
+``` 
+        c_Matrix
+        /       \
+c_Matrix_Exp   c_Matrix_UC
+``` 
+Association diagram:
+``` 
+         c_Matrix_UC
+        /           \
+c_UCRowPorts   _ c_UCColPorts
+       |    __/      |
+c_UCRowPort      c_UCColPort
+``` 
 ### Keybrd Library Single-layer Classes
 Classes inheritance diagrams:
 ``` 

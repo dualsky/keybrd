@@ -6,7 +6,7 @@
 
 /* all the microcontroller ports connected to matrix columns
  */
-class c_UCColPorts //3
+class c_UCColPorts
 {
     private:
         c_UCColPort *const *const ports;        //array of ports connected to matrix columns

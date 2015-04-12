@@ -5,11 +5,10 @@
 
 /* One microcontroller port with pins connected to matrix columns.
  * The constructor initialization list configures column's DDRx and PORTx to read Input.
- * Accessing the PIN and DDR register via offset from the PORT registers was not done
- * because some devices have odd register arrangements for some ports.
+ * Port is read from pin 0 up.
  * https://www.pjrc.com/teensy/pins.html explains registers
  */
-class c_UCColPort //4
+class c_UCColPort
 {
     private:
         const volatile unsigned char& PORT;     //PORT register

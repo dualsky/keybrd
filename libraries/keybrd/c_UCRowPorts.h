@@ -6,7 +6,7 @@
 
 /* all the microcontroller ports connected to matrix rows
  */
-class c_UCRowPorts //1
+class c_UCRowPorts
 {
     private:
         c_UCRowPort *const *const ports;        //array of ports connected to matrix row

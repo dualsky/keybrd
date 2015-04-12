@@ -1,6 +1,6 @@
 /* keybrd_single-layer_1221_bb.ino, 4-key layout:
+        1       2
         a       b
-        shift   shift
 */
 // ********** INCLUDES **********
 //Arduino library files
@@ -25,11 +25,11 @@
 // ************ TRANSFORMS *************
 // *********** ROWS OF KEYS ************
 //row0
-c_Key* const ptrsKey_0[] = {     &k_a,           &k_b         };
+c_Key* const ptrsKey_0[] = {     &k_1,     &k_2   };
 c_Row_Ex row_0(ptrsKey_0, 2);
 
 //row1
-c_Key* const ptrsKey_1[] = {     &k_shift_L,     &k_shift_R   };
+c_Key* const ptrsKey_1[] = {    &k_a,      &k_b    };
 c_Row_Ex row_1(ptrsKey_1, 2);
 
 //static variables
@@ -41,7 +41,7 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
 
 /*************** ROW PORTS *************
  * row: 0   1
- * pin: B2  F1
+ * pin: B2  F1              - testing row with pins from two different ports
  */
 c_UCRowPort rowPortB(PORTB, DDRB, 1<<2 );//todo rename? rowPort_B
 c_UCRowPort rowPortF(PORTF, DDRF, 1<<1 );
