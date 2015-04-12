@@ -19,6 +19,10 @@ class c_UCRowPort
     public:
         c_UCRowPort(volatile unsigned char& p, volatile unsigned char& d, const uint8_t pns):
                 PORT(p), DDR(d), pins(pns) {}
+
+        //initialize c_UCRowPort object
+        void begin();
+
         static c_Row_Ex *const *const ptrsRows;//todo change to parent type c_Row
 
         void scanRowPort(c_UCColPorts *const cols, uint8_t& rowN); //rowN is row number

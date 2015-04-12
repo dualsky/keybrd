@@ -7,11 +7,13 @@
 //#include "c_UCColPorts.h"todo delete
 class c_UCColPorts;
 
-/* The keyboard's matrix is composed of rows and columns.
-Matrix is the electrical row and column connections to the keys.
-Matrix rows and columns are distinguishable by diode orientation.
+/* The keyboard's physical matrix is composed of rows and columns.
+The rows and columns are connected to the keys.
+The rows and columns are distinguishable by diode orientation.
 The keybrd library defines matrix rows as connected to diode anodes,
 and matrix columns as connected to diode cathodes.
+
+c_Matrix_UC is composed of rows and cols.
 
 objects are chained in this sequence:
     1. c_UCRowPorts
@@ -28,9 +30,9 @@ class c_Matrix_UC : public c_Matrix
     public:
         c_Matrix_UC(c_UCRowPorts *const r, c_UCColPorts *const c): rows(r), cols(c) {}
 
-        //dummy function for c_Keybrd::begin()
-        void begin() { }
-        
+        //initialize c_Matrix_UC object
+        void begin();
+
         //scan matrix one time
         void scanMatrix();
 };
