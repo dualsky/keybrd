@@ -4,7 +4,7 @@
 #include <inttypes.h>
 #include "c_Matrix.h"
 #include "c_UCRowPorts.h"
-//#include "c_UCColPorts.h"todo delete
+
 class c_UCColPorts;
 
 /* The keyboard's physical matrix is composed of rows and columns.

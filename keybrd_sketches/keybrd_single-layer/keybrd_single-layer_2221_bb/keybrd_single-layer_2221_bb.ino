@@ -74,8 +74,9 @@ c_Matrix_Exp matrix_L(ptrsRow_L, ROWS_L_COUNT, 0x20, 0x12, 0x0C, 0x13, 0x01);
 c_Matrix_UC matrix_R(&rows, &cols);
 
 // ************** KEYBOARD *************
-c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
-c_Keybrd keybrd(ptrsMatrix, 2);
+//c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
+c_Matrix* const ptrsMatrix[] = { &matrix_R };
+c_Keybrd keybrd(ptrsMatrix, 1);
 
 // **************** RUN ****************
 void setup() { keybrd.begin(); }

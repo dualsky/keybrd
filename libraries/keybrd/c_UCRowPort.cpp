@@ -18,7 +18,7 @@ void c_UCRowPort::scanRowPort(c_UCColPorts *const cols, uint8_t& rowN) //rowN is
         if (pin & pins)                         //if scan pin
         {
             //strobe on
-            PORT &= ~pin;                       //set output to Low
+            PORT &= ~pin;                       //set output to low
 
             cols->readColPorts();               //read the row's columns
 
