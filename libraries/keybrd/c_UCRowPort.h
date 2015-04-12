@@ -21,10 +21,10 @@ class c_UCRowPort
         //example instantiation: c_UCRowPort rowPortF(PORTF, DDRF, 1<<1 );
         c_UCRowPort(volatile unsigned char& PORTx, volatile unsigned char& DDRx,
                 const uint8_t pins):
-                PORT(PORTx), DDR(DDRx), pins(pins) {}
+                PORT(PORTx), DDR(DDRx |= pins), pins(pins) {}
 
         //initialize c_UCRowPort object
-        void begin();
+        //void begin();
 
         static c_Row_Ex *const *const ptrsRows;//todo change to parent type c_Row
 

@@ -1,5 +1,5 @@
 #include "c_UCRowPorts.h"
-
+/*
 void c_UCRowPorts::begin()
 {
     //for every row port
@@ -7,7 +7,7 @@ void c_UCRowPorts::begin()
     {
         ports[i]->begin();
     }
-}
+}*/
 
 void c_UCRowPorts::scanRowPorts(c_UCColPorts *const cols)
 {

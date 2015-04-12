@@ -31,7 +31,8 @@ class c_Matrix_UC : public c_Matrix
         c_Matrix_UC(c_UCRowPorts *const r, c_UCColPorts *const c): rows(r), cols(c) {}
 
         //initialize c_Matrix_UC object
-        void begin();
+        //dummy begin function todo: why is this needed?
+        void begin() {}
 
         //scan matrix one time
         void scanMatrix();
