@@ -1,9 +1,4 @@
 #include "c_UCRowPort.h"
-/*
-void c_UCRowPort::begin()
-{
-    DDR |= pins;                                //configure direction to 1=Output
-}*/
 
 //for each scan row, strobe the row and read it's columns
 //then send the resulting rowState to c_Row for further processing

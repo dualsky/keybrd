@@ -12,19 +12,16 @@
 class c_UCRowPort
 { 
     private:
-        volatile unsigned char& PORT;           //PORT register
         volatile unsigned char& DDR;            //Data Direction Register
+        volatile unsigned char& PORT;           //PORT register
         const uint8_t pins;                     //col pins to scan i.e. pins connected to rows
 
     public:
         //The constructor initialization list configures column's DDRx and PORTx to read Input.
-        //example instantiation: c_UCRowPort rowPortF(PORTF, DDRF, 1<<1 );
-        c_UCRowPort(volatile unsigned char& PORTx, volatile unsigned char& DDRx,
+        //example instantiation: c_UCRowPort rowPortF(DDRF, PORTF, 1<<1 );
+        c_UCRowPort(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
                 const uint8_t pins):
-                PORT(PORTx), DDR(DDRx |= pins), pins(pins) {}
-
-        //initialize c_UCRowPort object
-        //void begin();
+                DDR(DDRx |= pins), PORT(PORTx), pins(pins) {}
 
         static c_Row_Ex *const *const ptrsRows;//todo change to parent type c_Row
 

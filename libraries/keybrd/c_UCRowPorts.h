@@ -15,9 +15,6 @@ class c_UCRowPorts
     public:
         c_UCRowPorts(c_UCRowPort *const p[], const uint8_t pc): ports(p), PORT_COUNT(pc) {}
 
-        //initialize c_UCRowPorts object
-        //void begin();
-
         //scan matrix one time
         void scanRowPorts(c_UCColPorts *const cols);
 };

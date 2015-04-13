@@ -17,7 +17,7 @@
 #include <c_UCRowPorts.h>
 #include <c_UCColPort.h>
 #include <c_UCColPorts.h>
-#include <c_Matrix_UC.h>
+#include <c_Matrix_AVR.h>
 
 #include <c_Keybrd.h>
 #include <l_LayerManager.h>
@@ -43,8 +43,8 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
  * row: 0   1
  * pin: B2  F1              - testing row with pins from two different ports
  */
-c_UCRowPort rowPortB(PORTB, DDRB, 1<<2 );//todo rename? rowPort_B
-c_UCRowPort rowPortF(PORTF, DDRF, 1<<1 );
+c_UCRowPort rowPortB(DDRB, PORTB, 1<<2 );//todo rename? rowPort_B
+c_UCRowPort rowPortF(DDRF, PORTF, 1<<1 );
 c_UCRowPort* rowsPorts[] = { &rowPortB, &rowPortF };
 c_UCRowPorts rows(rowsPorts, 2);
 
@@ -52,13 +52,13 @@ c_UCRowPorts rows(rowsPorts, 2);
  * col: 0   1
  * pin: B0  B1
  */
-c_UCColPort colPortB(PORTB, DDRB, PINB, 1<<0 | 1<<1 );
+c_UCColPort colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 c_UCColPort* colPorts[] = { &colPortB };
 c_UCColPorts cols(colPorts, 1);
 
 // ************** MATRIX ***************
 //matrix
-c_Matrix_UC matrix(&rows, &cols);
+c_Matrix_AVR matrix(&rows, &cols);
 
 //c_Row_Ex* const ptrsRow[] = { &row_0, &row_1 };
 //c_Matrix_Teensy2 matrix(ptrsRow, 2);

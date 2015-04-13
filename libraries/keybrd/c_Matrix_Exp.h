@@ -5,7 +5,7 @@
 #include <Wire.h>
 #include "c_Matrix.h"
 class c_Row_Ex;
-//todo: rewrite documentation, copy much from c_Matrix_UC.h
+//todo: rewrite documentation, copy much from c_Matrix_AVR.h
 //todo: update connecting_MCP23018_to_keyboard.md ##keybrd sketch c_Matrix_Exp parameters
 
 /* Class c_Matrix_Exp strobes portB and reads portA on the MCP23018 I/O expander.
