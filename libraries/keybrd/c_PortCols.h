@@ -23,7 +23,7 @@ class c_PortCols
             DDR(DDRx &= ~pins), PORT(PORTx |= pins), PIN(PINx), pins(pins), portState(0) {}
 
         //read port and store it in portState
-        void readColPort();
+        void readPortCols();
 
         //copy only read-pin values from portState to rowState.
         //col is row mask, where current column bit is 1.

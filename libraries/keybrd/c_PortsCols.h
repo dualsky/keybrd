@@ -15,7 +15,7 @@ class c_PortsCols
         c_PortsCols(c_PortCols *const p[], const uint8_t pc): ports(p), PORT_COUNT(pc) {}
 
     //read every column port
-    void readColPorts();
+    void readPortsCols();
 
     //return state of row's keys, one bit per column, where 1 means key is pressed
     uint8_t computeRowState();

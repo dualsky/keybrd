@@ -25,6 +25,6 @@ class c_PortRows
 
         static c_Row_Ex *const *const ptrsRows;//todo change to parent type c_Row
 
-        void scanRowPort(c_PortsCols *const cols, uint8_t& rowN); //rowN is row number
+        void scanPortRows(c_PortsCols *const cols, uint8_t& rowN); //rowN is row number
 };
 #endif

@@ -2,5 +2,5 @@
 
 void c_Matrix_AVR::scanMatrix()
 {
-    rows->scanRowPorts(cols);
+    rows->scanPortsRows(cols);
 }

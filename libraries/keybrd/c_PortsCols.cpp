@@ -1,12 +1,12 @@
 #include "c_PortsCols.h"
 
 //read every column port
-void c_PortsCols::readColPorts()
+void c_PortsCols::readPortsCols()
 {
     //for every col port
     for (uint8_t i=0; i < PORT_COUNT; i++)
     {
-        ports[i]->readColPort();
+        ports[i]->readPortCols();
     }
 }
 

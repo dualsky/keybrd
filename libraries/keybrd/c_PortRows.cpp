@@ -2,7 +2,7 @@
 
 //for each scan row, strobe the row and read it's columns
 //then send the resulting rowState to c_Row for further processing
-void c_PortRows::scanRowPort(c_PortsCols *const cols, uint8_t& rowN) //rowN is row number
+void c_PortRows::scanPortRows(c_PortsCols *const cols, uint8_t& rowN) //rowN is row number
 {
     uint8_t pin;                                //active low for row being scanned, one bit per pin
     uint8_t rowState;                           //state of row's keys, one bit per col
@@ -15,7 +15,7 @@ void c_PortRows::scanRowPort(c_PortsCols *const cols, uint8_t& rowN) //rowN is r
             //strobe on
             PORT &= ~pin;                       //set output to low
 
-            cols->readColPorts();               //read the row's columns
+            cols->readPortsCols();               //read the row's columns
 
             //strobe off
             PORT |= pin;                       //set output to high
