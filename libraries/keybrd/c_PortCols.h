@@ -1,5 +1,5 @@
-#ifndef C_UCCOLPORT_H
-#define C_UCCOLPORT_H
+#ifndef C_PORTCOLS_H
+#define C_PORTCOLS_H
 #include <Arduino.h>
 #include <inttypes.h>
 
@@ -7,7 +7,7 @@
  * Port is read from pin 0 up.
  * https://www.pjrc.com/teensy/pins.html explains registers
  */
-class c_UCColPort
+class c_PortCols
 {
     private:
         const volatile unsigned char& DDR;      //Data Direction Register, Direction: 0=Input
@@ -17,8 +17,8 @@ class c_UCColPort
         uint8_t portState;                      //state of port pins on most recent reading
     public:
         //The constructor initialization list configures column's DDRx and PORTx to read Input.
-        //example instantiation: c_UCColPort colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
-        c_UCColPort(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
+        //example instantiation: c_PortCols colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
+        c_PortCols(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
                 volatile unsigned char& PINx, const uint8_t pins):
             DDR(DDRx &= ~pins), PORT(PORTx |= pins), PIN(PINx), pins(pins), portState(0) {}
 

@@ -1,10 +1,10 @@
-#include "c_UCColPort.h"
+#include "c_PortCols.h"
 
 /* Read port and store it in portState quickly so that strobe is on for shortest possible time.
 Reading and storing portState at once is faster than reading and saving each pin individually.
 portState will be read one pin at a time in portToRowState() after strobe is turned off.
 */
-void c_UCColPort::readColPort()
+void c_PortCols::readColPort()
 {
     portState = PIN;
 }
@@ -17,7 +17,7 @@ rowState bits align with c_Row::prtKeys[] elements by column.
 colBit is row mask, where current column bit is 1.
 rowState is state of row's keys, where pressed key bit is 1.
 */
-void c_UCColPort::portToRowState(uint8_t& colBit, uint8_t& rowState)
+void c_PortCols::portToRowState(uint8_t& colBit, uint8_t& rowState)
 {
     uint8_t pin;                                //pin mask, one bit per pin
 

@@ -1,6 +1,6 @@
-#include "c_UCRowPorts.h"
+#include "c_PortsRows.h"
 
-void c_UCRowPorts::scanRowPorts(c_UCColPorts *const cols)
+void c_PortsRows::scanRowPorts(c_PortsCols *const cols)
 {
     uint8_t rowN = 0;                           //row number
 
