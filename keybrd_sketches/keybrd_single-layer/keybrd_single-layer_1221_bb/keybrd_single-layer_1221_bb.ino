@@ -58,7 +58,7 @@ c_PortsCols cols(portsCols, 1);
 
 // ************** MATRIX ***************
 //matrix
-c_Matrix_AVR matrix(&rows, &cols);
+c_Matrix matrix(&rows, &cols);
 
 //c_Row_Ex* const ptrsRow[] = { &row_0, &row_1 };
 //c_Matrix_Teensy2 matrix(ptrsRow, 2);
