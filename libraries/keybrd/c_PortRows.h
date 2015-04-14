@@ -11,7 +11,7 @@
 class c_PortRows
 { 
     private:
-        const uint8_t pins;                     //col pins to scan i.e. pins connected to rows
+        const uint8_t pins;                     //row pins to scan i.e. pins connected to rows
 
     public:
         c_PortRows(const uint8_t pins): pins(pins) {}
