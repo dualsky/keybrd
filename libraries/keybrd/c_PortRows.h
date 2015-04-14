@@ -11,9 +11,16 @@
  */
 class c_PortRows
 { 
-    public:
-        static c_Row_Ex *const *const ptrsRows;//todo change to parent type c_Row
+    private:
+        const uint8_t pins;                     //col pins to scan i.e. pins connected to rows
 
-        virtual void scanPortRows(c_PortsCols *const cols, uint8_t& rowN)=0; //rowN is row number
+    public:
+        c_PortRows(const uint8_t pins): pins(pins) {}
+
+        static c_Row_Ex *const *const ptrsRows;//array of row pointers todo change to parent type c_Row
+
+        void scanPortRows(c_PortsCols *const cols, uint8_t& rowN); //rowN is row number
+
+        virtual void readCols(uint8_t pin, c_PortsCols *const cols)=0;
 };
 #endif

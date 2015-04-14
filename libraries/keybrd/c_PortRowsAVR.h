@@ -16,17 +16,16 @@ class c_PortRowsAVR : public c_PortRows
     private:
         volatile unsigned char& DDR;            //Data Direction Register
         volatile unsigned char& PORT;           //PORT register
-        const uint8_t pins;                     //col pins to scan i.e. pins connected to rows
 
     public:
         //The constructor initialization list configures column's DDRx and PORTx to read Input.
         //example instantiation: c_PortRowsAVR portFRows(DDRF, PORTF, 1<<1 );
         c_PortRowsAVR(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
                 const uint8_t pins):
-                DDR(DDRx |= pins), PORT(PORTx), pins(pins) {}
+            DDR(DDRx |= pins), PORT(PORTx), c_PortRows(pins) {}
 
-        static c_Row_Ex *const *const ptrsRows;//todo change to parent type c_Row
+        //static c_Row_Ex *const *const ptrsRows;//todo change to parent type c_Row
 
-        virtual void scanPortRows(c_PortsCols *const cols, uint8_t& rowN); //rowN is row number
+        virtual void readCols(uint8_t pin, c_PortsCols *const cols);
 };
 #endif
