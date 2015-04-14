@@ -1,14 +1,5 @@
 #include "c_PortCols.h"
 
-/* Read port and store it in portState quickly so that strobe is on for shortest possible time.
-Reading and storing portState at once is faster than reading and saving each pin individually.
-portState will be read one pin at a time in portToRowState() after strobe is turned off.
-*/
-void c_PortCols::readPortCols()
-{
-    portState = PIN;
-}
-
 /* Copy only read-pin values from portState to rowState.
 portState stores all pins values of port.
 Some pins may not be connected to a column.

@@ -15,7 +15,7 @@
 //#include <c_Matrix_MCP23018.h>
 #include <c_PortRowsAVR.h>
 #include <c_PortsRows.h>
-#include <c_PortCols.h>
+#include <c_PortColsAVR.h>
 #include <c_PortsCols.h>
 #include <c_Matrix_AVR.h>
 
@@ -52,7 +52,7 @@ c_PortsRows rows(portsRows, 2);
  * col: 0   1
  * pin: B0  B1
  */
-c_PortCols portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
+c_PortColsAVR portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 c_PortCols* portsCols[] = { &portBCols };
 c_PortsCols cols(portsCols, 1);
 
