@@ -13,7 +13,7 @@
 #include <c_RowWait.h>
 //#include <c_Matrix_Teensy2.h>
 //#include <c_Matrix_MCP23018.h>
-#include <c_PortRows.h>
+#include <c_PortRowsAVR.h>
 #include <c_PortsRows.h>
 #include <c_PortCols.h>
 #include <c_PortsCols.h>
@@ -34,7 +34,7 @@ c_Row_Ex row_1(ptrsKey_1, 2);
 
 //static variables
 c_Row_Ex* const ptrsRow[] = { &row_0, &row_1 };
-c_Row_Ex* const* const c_PortRows::ptrsRows = ptrsRow;
+c_Row_Ex* const* const c_PortRowsAVR::ptrsRows = ptrsRow;
 
 c_RowWait rowWait(2, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
@@ -43,18 +43,18 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
  * row: 0   1
  * pin: B2  F1              - testing row with pins from two different ports
  */
-c_PortRows rowPortB(DDRB, PORTB, 1<<2 );//todo rename? rowPort_B
-c_PortRows rowPortF(DDRF, PORTF, 1<<1 );
-c_PortRows* rowsPorts[] = { &rowPortB, &rowPortF };
-c_PortsRows rows(rowsPorts, 2);
+c_PortRowsAVR portBRows(DDRB, PORTB, 1<<2 );
+c_PortRowsAVR portFRows(DDRF, PORTF, 1<<1 );
+c_PortRows* portsRows[] = { &portBRows, &portFRows };
+c_PortsRows rows(portsRows, 2);
 
 /*************** COL PORTS *************
  * col: 0   1
  * pin: B0  B1
  */
-c_PortCols colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
-c_PortCols* colPorts[] = { &colPortB };
-c_PortsCols cols(colPorts, 1);
+c_PortCols portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
+c_PortCols* portsCols[] = { &portBCols };
+c_PortsCols cols(portsCols, 1);
 
 // ************** MATRIX ***************
 //matrix

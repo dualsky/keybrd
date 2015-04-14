@@ -17,7 +17,7 @@ class c_PortCols
         uint8_t portState;                      //state of port pins on most recent reading
     public:
         //The constructor initialization list configures column's DDRx and PORTx to read Input.
-        //example instantiation: c_PortCols colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
+        //example instantiation: c_PortCols portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
         c_PortCols(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
                 volatile unsigned char& PINx, const uint8_t pins):
             DDR(DDRx &= ~pins), PORT(PORTx |= pins), PIN(PINx), pins(pins), portState(0) {}
