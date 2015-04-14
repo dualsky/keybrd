@@ -8,7 +8,7 @@ void c_PortRowsAVR::scanPortRows(c_PortsCols *const cols, uint8_t& rowN) //rowN 
     uint8_t rowState;                           //state of row's keys, one bit per col
 
     //for every pin of row port
-    for ( pin = 1; pin > 0; pin = pin << 1)     //shift pin until overflow
+    for ( pin = 1; pin > 0; pin <<= 1)     //shift pin until overflow
     {
         if (pin & pins)                         //if scan pin
         {

@@ -13,7 +13,7 @@ void c_PortCols::portToRowState(uint8_t& colBit, uint8_t& rowState)
     uint8_t pin;                                //pin mask, one bit per pin
 
     //for every pin of port
-    for ( pin = 1; pin > 0; pin = pin << 1)     //shift pin until overflow
+    for ( pin = 1; pin > 0; pin <<= 1)     //shift pin until overflow
     {
         if (pin & pins)                         //if column pin
         {
@@ -21,7 +21,7 @@ void c_PortCols::portToRowState(uint8_t& colBit, uint8_t& rowState)
             {
                 rowState |= colBit;             //set rowState bit for this column
             }
-            colBit = colBit << 1;               //shift bit to next column
+            colBit <<= 1;                       //shift bit to next column
         }
     }
 }
