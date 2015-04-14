@@ -3,18 +3,17 @@
 #include <Arduino.h>
 #include <inttypes.h>
 
-/* One microcontroller port with pins connected to matrix columns.
+/* One IC port with some pins connected to matrix columns.
  * Port is read from pin 0 up.
- * https://www.pjrc.com/teensy/pins.html explains registers
  */
 class c_PortCols
 {
     private:
-        const uint8_t pins;                     //col pins to read i.e. pins connected to columns
+        const uint8_t PINS;                     //col pins to read i.e. pins connected to columns
     protected:
         uint8_t portState;                      //state of port pins on most recent reading
     public:
-        c_PortCols(const uint8_t pins): pins(pins), portState(0) {}
+        c_PortCols(const uint8_t p): PINS(p), portState(0) {}
 
         //read port and store it in portState
         virtual void readPortCols()=0;

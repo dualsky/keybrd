@@ -9,7 +9,7 @@ void c_PortRows::scanPortRows(c_PortsCols *const cols, uint8_t& rowN) //rowN is 
     //for every pin of row port
     for ( pin = 1; pin > 0; pin <<= 1)          //shift pin until overflow
     {
-        if (pin & pins)                         //if scan pin
+        if (pin & PINS)                         //if scan pin
         {
             readCols(pin, cols);
             rowState = cols->computeRowState();

@@ -4,7 +4,7 @@
 #include <inttypes.h>
 #include "c_PortRows.h"
 
-/* all the microcontroller ports connected to matrix rows
+/* 
  */
 class c_PortsRows
 {

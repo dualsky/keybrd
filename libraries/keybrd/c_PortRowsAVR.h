@@ -20,6 +20,6 @@ class c_PortRowsAVR : public c_PortRows
                 const uint8_t pins):
             DDR(DDRx |= pins), PORT(PORTx), c_PortRows(pins) {}
 
-        virtual void readCols(uint8_t pin, c_PortsCols *const cols);
+        virtual void readCols(const uint8_t activeLowPin, c_PortsCols *const cols);
 };
 #endif
