@@ -6,8 +6,7 @@
 #include "c_Row_Ex.h"
 
 /* class c_PortRows is an abstract base class.
- * IC port with pins connected to matrix rows
- * Port is scanned from pin 0 up.
+ * IC port with pins connected to matrix rows.
  */
 class c_PortRows
 { 
