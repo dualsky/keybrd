@@ -11,13 +11,11 @@
 #include <objects_key.h>
 #include <c_Row_Ex.h>
 #include <c_RowWait.h>
-//#include <c_Matrix_Teensy2.h>
-//#include <c_Matrix_MCP23018.h>
 #include <c_PortRowsAVR.h>
 #include <c_PortsRows.h>
 #include <c_PortColsAVR.h>
 #include <c_PortsCols.h>
-#include <c_Matrix_AVR.h>
+#include <c_Matrix.h>
 
 #include <c_Keybrd.h>
 #include <l_LayerManager.h>

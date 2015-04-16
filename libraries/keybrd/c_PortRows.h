@@ -15,9 +15,11 @@ class c_PortRows
         const uint8_t PINS;                     //row pins to scan i.e. pins connected to rows
 
     public:
+        static c_Row_Ex *const *const ptrsRows;//array of row pointers todo change to parent type c_Row
+
         c_PortRows(const uint8_t p): PINS(p) {}
 
-        static c_Row_Ex *const *const ptrsRows;//array of row pointers todo change to parent type c_Row
+        void begin() {}
 
         void scanPortRows(c_PortsCols *const cols, uint8_t& rowN); //rowN is row number
 

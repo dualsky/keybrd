@@ -6,7 +6,6 @@
 
 /* One microcontroller port with pins connected to matrix columns.
  * Port is read from pin 0 up.
- * https://www.pjrc.com/teensy/pins.html explains registers
  */
 class c_PortColsAVR : public c_PortCols
 {
@@ -16,10 +15,11 @@ class c_PortColsAVR : public c_PortCols
         const volatile unsigned char& PIN;      //PIN read register, Input: 1=Pullup Resistor
     public:
         //The constructor initialization list configures column's DDRx and PORTx to read Input.
+        //parameter PINS is bitwise, where 1 means read the pin, 0 means don't read.
         //example instantiation: c_PortColsAVR portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
         c_PortColsAVR(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
-                volatile unsigned char& PINx, const uint8_t pins):
-            DDR(DDRx &= ~pins), PORT(PORTx |= pins), PIN(PINx), c_PortCols(pins) {}
+                volatile unsigned char& PINx, const uint8_t PINS):
+            DDR(DDRx &= ~PINS), PORT(PORTx |= PINS), PIN(PINx), c_PortCols(PINS) {}
 
         //read port and store it in portState
         virtual void readPortCols();

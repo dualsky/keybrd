@@ -15,6 +15,8 @@ class c_PortsRows
     public:
         c_PortsRows(c_PortRows *const p[], const uint8_t pc): ports(p), PORT_COUNT(pc) {}
 
+        void begin();
+
         //scan matrix one time
         void scanPortsRows(c_PortsCols *const cols);
 };

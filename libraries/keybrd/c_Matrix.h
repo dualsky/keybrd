@@ -30,8 +30,8 @@ class c_Matrix
     public:
         c_Matrix(c_PortsRows *const r, c_PortsCols *const c): rows(r), cols(c) {}
 
-        //dummy begin function todo: why is this needed?
-        void begin() {}
+        //dummy begin function
+        void begin();
 
         //scanMatrix() scans each row of matrix one time
         void scanMatrix();

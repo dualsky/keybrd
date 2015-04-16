@@ -24,7 +24,7 @@ Each class in keybrd library has one of 4 prefixes:
 
 The prefix is followed by a class name proper, which is CamelCase starting with a capital.
 
-Names of inherited classes start with the base class name e.g.
+Names of inherited classes start with the base class name followed by "_" and subclass name e.g.
 	l_Code
 	   |
 	l_Code_Layer
@@ -38,9 +38,14 @@ Classes inheritance diagrams:
 ``` 
 	c_keybrd
 
-	             c_Matrix
+	c_Matrix
+	             c_PortRows
 	             /      \
-	c_Matrix_Teensy2  c_Matrix_MCP23018             one Matrix class for each type of processor
+	c_PortRows_AVR  c_PortRows_MCP23018             one PortRows class for each type of IC
+ 
+	             c_PortCols
+	             /      \
+	c_PortCols_AVR  c_PortCols_MCP23018             one PortCols class for each type of IC
  
 	c_RowEx
  
@@ -49,17 +54,15 @@ Classes inheritance diagrams:
 ### Keybrd Library Matrix Classes
 Classes inheritance diagrams:
 ``` 
-	        c_Matrix
-	        /       \
-	c_Matrix_Exp   c_Matrix_UC
+	c_Matrix
 ``` 
 Association diagram:
 ``` 
-	         c_Matrix_UC
-	        /           \
-	c_UCRowPorts   _ c_UCColPorts
-	       |    __/      |
-	c_UCRowPort      c_UCColPort
+	        c_Matrix 
+	      /         \
+	c_PortsRows _c_PortsCols
+	     |    _/     |
+	c_PortRows   c_PortCols
 ``` 
 ### Keybrd Library Single-layer Classes
 Classes inheritance diagrams:
@@ -74,9 +77,23 @@ Association diagram:
 ``` 
 	keybrd[1]
 	   |
-	matrix[1..M]
+	matrix[1..M] ________
+	   |                 \
+	portsRows[1..M]   _portsCols[1..M]	old todo delete old
+	   |            _/    |
+	portRows[1..M*R]   portCols[1..M*C]
 	   |
-	row[1..M*R]
+	row[1..M*R] ------ rowWait[1]
+	   |
+	key[1..M*R*K]
+ 
+	keybrd[1]
+	   |
+	matrix[1..M] ________
+	   |                 \
+	portRows[1..M*R]   portCols[1..M*C]
+	   |
+	row[1..M*R] ------ rowWait[1]
 	   |
 	key[1..M*R*K]
  
@@ -95,8 +112,8 @@ Class inheritance diagram:
 	         ____________________ l_Code ___________________________   \
 	        /        /        /           \          \              \   \
 	l_Code_S  l_Code_SS  l_Code_SNS   l_Code_Shift  l_Code_Layer   m_Mouse
-	                                                                 /    \
-	                                                       m_Mouse_Move  m_Mouse_Button
+	                                                                /     \
+	                                                      m_Mouse_Move  m_Mouse_Button
 	l_ShiftManager
 
 	l_LayerManager

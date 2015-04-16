@@ -8,12 +8,13 @@
  */
 class c_PortCols
 {
-    private:
-        const uint8_t PINS;                     //col pins to read i.e. pins connected to columns
     protected:
+        const uint8_t PINS;                     //col pins to read i.e. pins connected to columns
         uint8_t portState;                      //state of port pins on most recent reading
     public:
         c_PortCols(const uint8_t p): PINS(p), portState(0) {}
+
+        void begin() {}
 
         //read port and store it in portState
         virtual void readPortCols()=0;

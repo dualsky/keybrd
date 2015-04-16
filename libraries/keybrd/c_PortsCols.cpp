@@ -1,5 +1,14 @@
 #include "c_PortsCols.h"
 
+void c_PortsCols::begin()
+{
+    //for every row port
+    for (uint8_t i=0; i < PORT_COUNT; i++)
+    {
+        ports[i]->begin();                      //configure port
+    }
+}
+
 //read every column port
 void c_PortsCols::readPortsCols()
 {
