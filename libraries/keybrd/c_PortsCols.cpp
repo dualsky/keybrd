@@ -5,7 +5,7 @@ void c_PortsCols::begin()
     //for every row port
     for (uint8_t i=0; i < PORT_COUNT; i++)
     {
-        ports[i]->begin();                      //configure port
+        ptrsPorts[i]->begin();                      //configure port
     }
 }
 
@@ -15,7 +15,7 @@ void c_PortsCols::readPortsCols()
     //for every col port
     for (uint8_t i=0; i < PORT_COUNT; i++)
     {
-        ports[i]->readPortCols();
+        ptrsPorts[i]->readPortCols();
     }
 }
 
@@ -28,7 +28,7 @@ uint8_t c_PortsCols::computeRowState()
 
     for (uint8_t i=0; i < PORT_COUNT; i++)      //for every col port
     {
-        ports[i]->portToRowState(colBit, rowState);
+        ptrsPorts[i]->portToRowState(colBit, rowState);
     }
     return rowState;
 }

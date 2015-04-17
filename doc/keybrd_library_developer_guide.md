@@ -175,7 +175,8 @@ Following the style guide makes it easier for the next programmer to understand 
 * For constant names, use ALL_CAPS_AND_UNDERSCORE.
 * Use constants rather than macros, except for header guards.
 * Use header guards CLASS_NAME_H.
-* Document class in .h file, above the class declaration.
+* Prefix pointer name with "ptr" e.g. ptrRow =  &row
+* Name arrays using the plural of elements e.g. c_Row* const = ptrsRows { &row0,  &row1 };
 * Pass arrays using array notation rather than pointer notation.  Use
 
     void printArray(char[] array);
@@ -186,6 +187,7 @@ not
 
 * Do not use new or malloc (to make memory leaks impossible).
 * If class has any non-[POD](http://en.wikipedia.org/wiki/Plain_old_data_structure) data members, [do not inline constructors and destructors](http://www.chromium.org/developers/coding-style/cpp-dos-and-donts).
+* Document class in .h file, above the class declaration.
 
 (the following styles can be automated with Artistic Style, explained in doc/astylerc)
 * Indent 4 spaces.

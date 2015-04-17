@@ -19,7 +19,7 @@ void c_PortRows_MCP23018::readCols(const uint8_t activeLowPin, c_PortsCols *cons
     Wire.write(gpioVal &= ~activeLowPin);       //strobe on: set strobe pin output to low
     Wire.endTransmission();
 
-    cols->readPortsCols();                      //read the row's columns
+    cols->readPortsCols();                      //read the IC's column ports
 
     //strobe off
     Wire.beginTransmission(ADDR);

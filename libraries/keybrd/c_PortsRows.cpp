@@ -5,7 +5,7 @@ void c_PortsRows::begin()
     //for every row port
     for (uint8_t i=0; i < PORT_COUNT; i++)
     {
-        ports[i]->begin();                      //configure port
+        ptrsPorts[i]->begin();                  //configure port
     }
 }
 
@@ -16,6 +16,6 @@ void c_PortsRows::scanPortsRows(c_PortsCols *const cols)
     //for every row port
     for (uint8_t i=0; i < PORT_COUNT; i++)
     {
-        ports[i]->scanPortRows(cols, rowN);
+        ptrsPorts[i]->scanPortRows(cols, rowN);
     }
 }

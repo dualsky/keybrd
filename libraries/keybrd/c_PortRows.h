@@ -19,7 +19,7 @@ class c_PortRows
 
         c_PortRows(const uint8_t p): PINS(p) {}
 
-        void begin() {}
+        void begin() {} //derived classes for I/O expanders will override the begin() function
 
         void scanPortRows(c_PortsCols *const cols, uint8_t& rowN); //rowN is row number
 

@@ -31,8 +31,8 @@ c_Key* const ptrsKey_1[] = {    &k_a,      &k_b    };
 c_Row_Ex row_1(ptrsKey_1, 2);
 
 //static variables
-c_Row_Ex* const ptrsRow[] = { &row_0, &row_1 };
-c_Row_Ex* const* const c_PortRows::ptrsRows = ptrsRow;
+c_Row_Ex* const ptrsRows[] = { &row_0, &row_1 };
+c_Row_Ex* const* const c_PortRows::ptrsRows = ptrsRows;
 
 c_RowWait rowWait(2, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
@@ -43,23 +43,20 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
  */
 c_PortRowsAVR portBRows(DDRB, PORTB, 1<<2 );
 c_PortRowsAVR portFRows(DDRF, PORTF, 1<<1 );
-c_PortRows* portsRows[] = { &portBRows, &portFRows };
-c_PortsRows rows(portsRows, 2);
+c_PortRows* ptrsPortsRows[] = { &portBRows, &portFRows };
+c_PortsRows rows(ptrsPortsRows, 2);
 
 /*************** COL PORTS *************
  * col: 0   1
  * pin: B0  B1
  */
 c_PortColsAVR portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
-c_PortCols* portsCols[] = { &portBCols };
-c_PortsCols cols(portsCols, 1);
+c_PortCols* ptrsPortsCols[] = { &portBCols };
+c_PortsCols cols(ptrsPortsCols, 1);
 
 // ************** MATRIX ***************
 //matrix
 c_Matrix matrix(&rows, &cols);
-
-//c_Row_Ex* const ptrsRow[] = { &row_0, &row_1 };
-//c_Matrix_Teensy2 matrix(ptrsRow, 2);
 
 // ************** KEYBOARD *************
 c_Matrix* const ptrsMatrix[] = { &matrix };

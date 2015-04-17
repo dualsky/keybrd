@@ -11,12 +11,12 @@
 #include <objects_key.h>
 #include <c_Row_Ex.h>
 #include <c_RowWait.h>
-#include <c_Matrix_Exp.h>
-#include <c_UCRowPort.h>
-#include <c_UCRowPorts.h>
-#include <c_UCColPort.h>
-#include <c_UCColPorts.h>
-#include <c_Matrix_AVR.h>
+#include <c_Matrix_Exp.h>?
+#include <c_PortRows.h>
+#include <c_PortsRows.h>
+#include <c_PortCols.h>
+#include <c_PortsCols.h>
+#include <c_Matrix.h>
 
 #include <c_Keybrd.h>
 #include <l_LayerManager.h>
@@ -41,7 +41,7 @@ c_Row_Ex row_R1(ptrsKey_R1, 2);
 
 //static variables
 c_Row_Ex* const ptrsRow[] = { &row_R0, &row_R1 };
-c_Row_Ex* const* const c_UCRowPort::ptrsRows = ptrsRow;
+c_Row_Ex* const* const c_PortRows::ptrsRows = ptrsRow;
 
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
@@ -50,17 +50,17 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
  * row: 0   1
  * pin: F0  F1
  */
-c_UCRowPort rowPort_F(DDRF, PORTF, 1<<0 | 1<<1 );
-c_UCRowPort* rowsPorts[] = { &rowPort_F };
-c_UCRowPorts rows(rowsPorts, 1);
+c_PortRows rowPort_F(DDRF, PORTF, 1<<0 | 1<<1 );
+c_PortRows* rowsPorts[] = { &rowPort_F };
+c_PortsRows rows(rowsPorts, 1);
 
 /*************** COL PORTS *************
  * col: 0   1
  * pin: B0  B1
  */
-c_UCColPort colPort_B(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
-c_UCColPort* colPorts[] = { &colPort_B };
-c_UCColPorts cols(colPorts, 1);
+c_PortCols colPort_B(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
+c_PortCols* colPorts[] = { &colPort_B };
+c_PortsCols cols(colPorts, 1);
 
 // ************* MATRICES **************
 //matrix_L
@@ -68,10 +68,10 @@ c_Row_Ex* const ptrsRow_L[] = { &row_L0, &row_L1 };
 const uint8_t ROWS_L_COUNT = sizeof(ptrsRow_L)/sizeof(ptrsRow_L[0]);
 
 //the c_Matrix_Exp arguements are for the MCP23018 I/O Expander
-c_Matrix_Exp matrix_L(ptrsRow_L, ROWS_L_COUNT, 0x20, 0x12, 0x0C, 0x13, 0x01);
+c_Matrix matrix_L(ptrsRow_L, ROWS_L_COUNT, 0x20, 0x12, 0x0C, 0x13, 0x01);
 
 //matrix_R
-c_Matrix_AVR matrix_R(&rows, &cols);
+c_Matrix matrix_R(&rows, &cols);
 
 // ************** KEYBOARD *************
 //c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };

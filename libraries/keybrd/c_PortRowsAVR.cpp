@@ -8,7 +8,7 @@ void c_PortRowsAVR::readCols(const uint8_t activeLowPin, c_PortsCols *const cols
     //strobe on
     PORT &= ~activeLowPin;                      //set output to low
 
-    cols->readPortsCols();                      //read the row's columns
+    cols->readPortsCols();                      //read the IC's column ports
 
     //strobe off
     PORT |= activeLowPin;                       //set output to high
