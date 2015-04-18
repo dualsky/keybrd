@@ -9,11 +9,11 @@
 class c_PortsRows
 {
     private:
-        c_PortRows *const *const ptrsPorts;        //array of ports connected to matrix row
-        const uint8_t PORT_COUNT;
+        c_PortRows *const *const ptrsRowPorts;        //array of ports connected to matrix row
+        const uint8_t ROW_PORT_COUNT;
 
     public:
-        c_PortsRows(c_PortRows *const p[], const uint8_t pc): ptrsPorts(p), PORT_COUNT(pc) {}
+        c_PortsRows(c_PortRows *const p[], const uint8_t pc): ptrsRowPorts(p), ROW_PORT_COUNT(pc) {}
 
         void begin();
 

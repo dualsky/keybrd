@@ -9,10 +9,10 @@
 class c_PortsCols
 {
     private:
-        c_PortCols *const *const ptrsPorts;        //array of ports connected to matrix columns
-        const uint8_t PORT_COUNT;
+        c_PortCols *const *const ptrsColPorts;        //array of ports connected to matrix columns
+        const uint8_t COL_PORT_COUNT;
     public:
-        c_PortsCols(c_PortCols *const p[], const uint8_t pc): ptrsPorts(p), PORT_COUNT(pc) {}
+        c_PortsCols(c_PortCols *const p[], const uint8_t pc): ptrsColPorts(p), COL_PORT_COUNT(pc) {}
 
         void begin();
 
