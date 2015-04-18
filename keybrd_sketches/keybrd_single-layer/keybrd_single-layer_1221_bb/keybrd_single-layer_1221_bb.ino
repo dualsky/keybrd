@@ -12,7 +12,7 @@
 #include <c_Row_Ex.h>
 #include <c_RowWait.h>
 #include <c_PortRowsAVR.h>
-#include <c_PortsRows.h>
+//#include <c_PortsRows.h>
 #include <c_PortColsAVR.h>
 #include <c_PortsCols.h>
 #include <c_Matrix.h>
@@ -44,7 +44,7 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
 c_PortRowsAVR portBRows(DDRB, PORTB, 1<<2 );
 c_PortRowsAVR portFRows(DDRF, PORTF, 1<<1 );
 c_PortRows* ptrsPortsRows[] = { &portBRows, &portFRows };
-c_PortsRows rows(ptrsPortsRows, 2);
+//c_PortsRows rows(ptrsPortsRows, 2);
 
 /*************** COL PORTS *************
  * col: 0   1
@@ -56,7 +56,8 @@ c_PortsCols cols(ptrsPortsCols, 1);
 
 // ************** MATRIX ***************
 //matrix
-c_Matrix matrix(&rows, &cols);
+//c_Matrix matrix(&rows, &cols);
+c_Matrix matrix(ptrsPortsRows, 2, &cols);
 
 // ************** KEYBOARD *************
 c_Matrix* const ptrsMatrix[] = { &matrix };

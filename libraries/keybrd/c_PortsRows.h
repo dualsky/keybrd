@@ -14,6 +14,7 @@ class c_PortsRows
 
     public:
         c_PortsRows(c_PortRows *const p[], const uint8_t pc): ptrsRowPorts(p), ROW_PORT_COUNT(pc) {}
+        //todo rename so that var ptrsRowPorts is more like type c_PortRows
 
         void begin();
 
