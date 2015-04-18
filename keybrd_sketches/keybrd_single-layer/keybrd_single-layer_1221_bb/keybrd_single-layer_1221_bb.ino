@@ -32,7 +32,7 @@ c_Row_Ex row_1(ptrsKey_1, 2);
 
 //static variables
 c_Row_Ex* const ptrsRows[] = { &row_0, &row_1 };
-c_Row_Ex* const* const c_PortRows::ptrsRows = ptrsRows;
+c_Row_Ex* const* const c_PortRows::ptrsRows = ::ptrsRows;
 
 c_RowWait rowWait(2, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
