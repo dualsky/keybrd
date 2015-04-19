@@ -39,20 +39,20 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
  * row: 0   1
  * pin: B2  F1              (testing row with pins from two different ports)
  */
-c_RowPort_AVR portBRows(DDRB, PORTB, 1<<2 );
-c_RowPort_AVR portFRows(DDRF, PORTF, 1<<1 );
-c_RowPort* ptrsPortsRows[] = { &portBRows, &portFRows };//todo rename ptrsRowPorts[]
+c_RowPort_AVR rowPortB(DDRB, PORTB, 1<<2 );
+c_RowPort_AVR rowPortF(DDRF, PORTF, 1<<1 );
+c_RowPort* ptrsRowPorts[] = { &rowPortB, &rowPortF };
 
 /*************** PORT COLS *************
  * col: 0   1
  * pin: B0  B1
  */
-c_ColPort_AVR portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
-c_ColPort* ptrsPortsCols[] = { &portBCols };
+c_ColPort_AVR colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
+c_ColPort* ptrsColPorts[] = { &colPortB };
 
 // ************** MATRIX ***************
 //matrix
-c_Matrix matrix(ptrsPortsRows, 2, ptrsPortsCols, 1);
+c_Matrix matrix(ptrsRowPorts, 2, ptrsColPorts, 1);
 
 // ************** KEYBOARD *************
 c_Matrix* const ptrsMatrix[] = { &matrix };
