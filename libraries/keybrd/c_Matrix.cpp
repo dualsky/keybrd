@@ -1,5 +1,5 @@
 #include "c_Matrix.h"
-#include "c_RowPort.h"
+#include "c_RowPort.h"                          //included in implementation because circular
 
 void c_Matrix::begin()
 {
@@ -15,22 +15,22 @@ void c_Matrix::begin()
 }
 
 //scan every row port
-void c_Matrix::scanMatrix()
+void c_Matrix::scan()//rename scanRows
 {
     uint8_t rowN = 0;                           //row number
 
     for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for every row port
     {
-        ptrsRowPorts[i]->scanPortRows(this, rowN);
+        ptrsRowPorts[i]->scan(this, rowN);//rename scan or scanRowPort
     }
 }
 
 //read every column port
-void c_Matrix::readPortsCols()
+void c_Matrix::read()//rename readCols
 {
     for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for every col port
     {
-        ptrsColPorts[i]->readPortCols();
+        ptrsColPorts[i]->read();//rename readColPort
     }
 }
 

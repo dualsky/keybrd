@@ -14,8 +14,9 @@
 #include <c_RowPort_AVR.h>
 #include <c_ColPort_AVR.h>
 #include <c_Matrix.h>
-
 #include <c_Keybrd.h>
+
+//keybrd_Layers library files
 #include <l_LayerManager.h>
 
 // ************ TRANSFORMS *************
@@ -51,7 +52,6 @@ c_ColPort_AVR colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 c_ColPort* ptrsColPorts[] = { &colPortB };
 
 // ************** MATRIX ***************
-//matrix
 c_Matrix matrix(ptrsRowPorts, 2, ptrsColPorts, 1);
 
 // ************** KEYBOARD *************

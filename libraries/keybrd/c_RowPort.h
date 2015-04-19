@@ -4,7 +4,7 @@
 #include <inttypes.h>
 #include "c_Row_Ex.h"
 
-class c_Matrix; //forward declare not enough for calling c_Matrix::computeRowState()
+class c_Matrix;
 
 /* class c_RowPort is an abstract base class.
  * One IC port with some pins connected to matrix rows.
@@ -23,8 +23,8 @@ class c_RowPort
 
         void begin() {} //derived classes for I/O expanders will override the begin() function
 
-        void scanPortRows(c_Matrix *const matrix, uint8_t& rowN); //rowN is row number
+        void scan(c_Matrix *const matrix, uint8_t& rowN); //rowN is row number
 
-        virtual void readCols(const uint8_t activeLowPin, c_Matrix *const matrix)=0;
+        virtual void read(const uint8_t activeLowPin, c_Matrix *const matrix)=0;
 };
 #endif

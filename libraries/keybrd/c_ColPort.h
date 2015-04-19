@@ -17,7 +17,7 @@ class c_ColPort
         void begin() {}
 
         //read port and store it in portState
-        virtual void readPortCols()=0;
+        virtual void read()=0;
 
         //copy only read-pin values from portState to rowState.
         //col is row mask, where current column bit is 1.

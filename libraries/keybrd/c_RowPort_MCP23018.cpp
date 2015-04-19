@@ -1,5 +1,5 @@
 #include "c_RowPort_MCP23018.h"
-#include "c_Matrix.h"
+#include "c_Matrix.h"                           //included in implementation because circular
 
 void c_RowPort_MCP23018::begin()
 {
@@ -12,7 +12,7 @@ void c_RowPort_MCP23018::begin()
 //strobe uses active low
 //activeLowPin is one pin per bit, where active pin is 1
 //only read the ports, so that strobe on for the shortest possible time
-void c_RowPort_MCP23018::readCols(const uint8_t activeLowPin, c_Matrix *const matrix)
+void c_RowPort_MCP23018::read(const uint8_t activeLowPin, c_Matrix *const matrix)
 {
     //strobe on
     Wire.beginTransmission(ADDR);
@@ -20,7 +20,7 @@ void c_RowPort_MCP23018::readCols(const uint8_t activeLowPin, c_Matrix *const ma
     Wire.write(gpioVal &= ~activeLowPin);       //strobe on: set strobe pin output to low
     Wire.endTransmission();
 
-    matrix->readPortsCols();                      //read the IC's column ports
+    matrix->read();                      //read the IC's column ports
 
     //strobe off
     Wire.beginTransmission(ADDR);

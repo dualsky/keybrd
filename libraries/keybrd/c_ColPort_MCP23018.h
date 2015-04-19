@@ -28,6 +28,6 @@ class c_ColPort_MCP23018 : public c_ColPort
         void begin();
 
         //read port and store it in portState
-        virtual void readPortCols();
+        virtual void read();
 };
 #endif

@@ -22,6 +22,6 @@ class c_ColPort_AVR : public c_ColPort
             DDR(DDRx &= ~PINS), PORT(PORTx |= PINS), PIN(PINx), c_ColPort(PINS) {}
 
         //read port and store it in portState
-        virtual void readPortCols();
+        virtual void read();
 };
 #endif

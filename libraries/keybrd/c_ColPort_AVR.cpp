@@ -4,7 +4,7 @@
 Reading and storing portState at once is faster than reading and saving each pin individually.
 portState will be processed after all the IC's ports are read and strobe is turned off.
 */
-void c_ColPort_AVR::readPortCols()
+void c_ColPort_AVR::read()
 {
     portState = PIN;
 }

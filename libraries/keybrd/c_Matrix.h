@@ -42,10 +42,10 @@ class c_Matrix
         void begin();
 
         //scanMatrix() scans each row of matrix one time
-        void scanMatrix();
+        void scan();
 
         //read every column port
-        void readPortsCols();
+        void read();
 
         //return state of row's keys, one bit per column, where 1 means key is pressed
         uint8_t computeRowState();

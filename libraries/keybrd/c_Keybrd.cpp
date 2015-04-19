@@ -11,10 +11,10 @@ void c_Keybrd::begin()
         }
 }
 
-void c_Keybrd::scan()
+void c_Keybrd::scan()//rename scanMatrices
 {
     for (uint8_t i = 0; i < MATRICES_COUNT; i++)
         {
-        ptrsMatrices[i]->scanMatrix();
+        ptrsMatrices[i]->scan();
         }
 }

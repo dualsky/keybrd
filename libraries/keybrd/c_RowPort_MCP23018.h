@@ -26,6 +26,6 @@ class c_RowPort_MCP23018 : public c_RowPort
 
         void begin();
 
-        virtual void readCols(const uint8_t activeLowPin, c_Matrix *const matrix);
+        virtual void read(const uint8_t activeLowPin, c_Matrix *const matrix);
 };
 #endif
