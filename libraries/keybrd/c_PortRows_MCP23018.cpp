@@ -12,8 +12,7 @@ void c_PortRows_MCP23018::begin()
 //strobe uses active low
 //activeLowPin is one pin per bit, where active pin is 1
 //only read the ports, so that strobe on for the shortest possible time
-void c_PortRows_MCP23018::readCols(const uint8_t activeLowPin, c_Matrix *const cols)
-//void c_PortRows_MCP23018::readCols(const uint8_t activeLowPin, c_PortsCols *const cols) todo, rename cols
+void c_PortRows_MCP23018::readCols(const uint8_t activeLowPin, c_Matrix *const matrix)
 {
     //strobe on
     Wire.beginTransmission(ADDR);
@@ -21,7 +20,7 @@ void c_PortRows_MCP23018::readCols(const uint8_t activeLowPin, c_Matrix *const c
     Wire.write(gpioVal &= ~activeLowPin);       //strobe on: set strobe pin output to low
     Wire.endTransmission();
 
-    cols->readPortsCols();                      //read the IC's column ports
+    matrix->readPortsCols();                      //read the IC's column ports
 
     //strobe off
     Wire.beginTransmission(ADDR);

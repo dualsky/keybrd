@@ -4,7 +4,6 @@
 #include <inttypes.h>
 #include "Wire.h"
 #include "c_PortRows.h"
-//#include "c_PortsCols.h"
 #include "c_Row_Ex.h"
 
 class c_Matrix;
@@ -27,6 +26,6 @@ class c_PortRows_MCP23018 : public c_PortRows
 
         void begin();
 
-        virtual void readCols(const uint8_t activeLowPin, c_Matrix *const cols);
+        virtual void readCols(const uint8_t activeLowPin, c_Matrix *const matrix);
 };
 #endif

@@ -2,7 +2,6 @@
 #define C_PORTROWS_H
 #include <Arduino.h>
 #include <inttypes.h>
-//#include "c_PortsCols.h"
 #include "c_Row_Ex.h"
 
 class c_Matrix; //forward declare not enough for calling c_Matrix::computeRowState()
@@ -18,13 +17,14 @@ class c_PortRows
 
     public:
         static c_Row_Ex *const *const ptrsRows;//array of row pointers todo change to parent type c_Row
+        //ROWS_COUNT not needed because rowN counts up untill all row pins are scanned
 
         c_PortRows(const uint8_t p): PINS(p) {}
 
         void begin() {} //derived classes for I/O expanders will override the begin() function
 
-        void scanPortRows(c_Matrix *const cols, uint8_t& rowN); //rowN is row number
+        void scanPortRows(c_Matrix *const matrix, uint8_t& rowN); //rowN is row number
 
-        virtual void readCols(const uint8_t activeLowPin, c_Matrix *const cols)=0;
+        virtual void readCols(const uint8_t activeLowPin, c_Matrix *const matrix)=0;
 };
 #endif

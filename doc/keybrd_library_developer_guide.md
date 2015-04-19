@@ -79,18 +79,6 @@ Association diagram:
 	   |
 	matrix[1..M] ________
 	   |                 \
-	portsRows[1..M]   _portsCols[1..M]	old todo delete old
-	   |            _/    |
-	portRows[1..M*R]   portCols[1..M*C]
-	   |
-	row[1..M*R] ------ rowWait[1]
-	   |
-	key[1..M*R*K]
- 
-	keybrd[1]
-	   |
-	matrix[1..M] ________
-	   |                 \
 	portRows[1..M*R]   portCols[1..M*C]
 	   |
 	row[1..M*R] ------ rowWait[1]

@@ -3,24 +3,21 @@
 
 void c_Matrix::begin()
 {
-    //rows->begin();
     //for every row port
     for (uint8_t i=0; i < ROW_PORT_COUNT; i++)
     {
-        ptrsRowPorts[i]->begin();                  //configure port
+        ptrsRowPorts[i]->begin();               //configure port
     }
 
-    //cols->begin();
     //for every row port
     for (uint8_t i=0; i < COL_PORT_COUNT; i++)
     {
-        ptrsColPorts[i]->begin();                      //configure port
+        ptrsColPorts[i]->begin();               //configure port
     }
 }
 
 void c_Matrix::scanMatrix()
 {
-    //rows->scanPortsRows(cols);
     uint8_t rowN = 0;                           //row number
 
     //for every row port
@@ -47,7 +44,7 @@ uint8_t c_Matrix::computeRowState()
     uint8_t colBit = 1;                         //row mask, one bit per column
     uint8_t rowState = 0;                       //state of row's keys, one bit per column
 
-    for (uint8_t i=0; i < COL_PORT_COUNT; i++)      //for every col port
+    for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for every col port
     {
         ptrsColPorts[i]->portToRowState(colBit, rowState);
     }
