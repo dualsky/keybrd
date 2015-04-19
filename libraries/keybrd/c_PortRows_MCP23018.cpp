@@ -1,4 +1,5 @@
 #include "c_PortRows_MCP23018.h"
+#include "c_Matrix.h"
 
 void c_PortRows_MCP23018::begin()
 {
@@ -11,7 +12,8 @@ void c_PortRows_MCP23018::begin()
 //strobe uses active low
 //activeLowPin is one pin per bit, where active pin is 1
 //only read the ports, so that strobe on for the shortest possible time
-void c_PortRows_MCP23018::readCols(const uint8_t activeLowPin, c_PortsCols *const cols)
+void c_PortRows_MCP23018::readCols(const uint8_t activeLowPin, c_Matrix *const cols)
+//void c_PortRows_MCP23018::readCols(const uint8_t activeLowPin, c_PortsCols *const cols) todo, rename cols
 {
     //strobe on
     Wire.beginTransmission(ADDR);

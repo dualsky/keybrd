@@ -3,8 +3,10 @@
 #include <Arduino.h>
 #include <inttypes.h>
 #include "c_PortRows.h"
-#include "c_PortsCols.h"
+//#include "c_PortsCols.h"
 #include "c_Row_Ex.h"
+
+class c_Matrix;
 
 class c_PortRowsAVR : public c_PortRows
 { 
@@ -19,6 +21,6 @@ class c_PortRowsAVR : public c_PortRows
                 const uint8_t PINS):
             DDR(DDRx |= PINS), PORT(PORTx), c_PortRows(PINS) {}
 
-        virtual void readCols(const uint8_t activeLowPin, c_PortsCols *const cols);
+        virtual void readCols(const uint8_t activeLowPin, c_Matrix *const cols);
 };
 #endif

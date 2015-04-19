@@ -14,7 +14,7 @@
 #include <c_PortRowsAVR.h>
 //#include <c_PortsRows.h>
 #include <c_PortColsAVR.h>
-#include <c_PortsCols.h>
+//#include <c_PortsCols.h>
 #include <c_Matrix.h>
 
 #include <c_Keybrd.h>
@@ -52,12 +52,12 @@ c_PortRows* ptrsPortsRows[] = { &portBRows, &portFRows };
  */
 c_PortColsAVR portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 c_PortCols* ptrsPortsCols[] = { &portBCols };
-c_PortsCols cols(ptrsPortsCols, 1);
+//c_PortsCols cols(ptrsPortsCols, 1);
 
 // ************** MATRIX ***************
 //matrix
 //c_Matrix matrix(&rows, &cols);
-c_Matrix matrix(ptrsPortsRows, 2, &cols);
+c_Matrix matrix(ptrsPortsRows, 2, ptrsPortsCols, 1);
 
 // ************** KEYBOARD *************
 c_Matrix* const ptrsMatrix[] = { &matrix };
