@@ -1,6 +1,6 @@
-#include "c_PortCols_MCP23018.h"
+#include "c_ColPort_MCP23018.h"
 
-void c_PortCols_MCP23018::begin()
+void c_ColPort_MCP23018::begin()
 {
     Wire.beginTransmission(ADDR);
     Wire.write(IODIR);
@@ -17,7 +17,7 @@ void c_PortCols_MCP23018::begin()
 Reading and storing portState at once is faster than reading and saving each pin individually.
 portState will be processed after all the IC's ports are read and strobe is turned off.
 */
-void c_PortCols_MCP23018::readPortCols()
+void c_ColPort_MCP23018::readPortCols()
 {
     Wire.beginTransmission(ADDR);
     Wire.write(GPIO);                           //GPIO immediately before requestFrom

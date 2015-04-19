@@ -1,4 +1,4 @@
-#include "c_PortCols.h"
+#include "c_ColPort.h"
 
 /* concatenate read-pin values from portState to rowState.
 read-pins are identifed by "1" bit in the PINS varialbe, skip the "0" bits.
@@ -11,7 +11,7 @@ rowState is state of row's keys, where pressed key bit is 1.
 
 converting portState to rowState is faster than requesting individual col bits from I/O expander.
 */
-void c_PortCols::portToRowState(uint8_t& colBit, uint8_t& rowState)
+void c_ColPort::portToRowState(uint8_t& colBit, uint8_t& rowState)
 {
     uint8_t pin;                                //pin mask, one bit per pin
 

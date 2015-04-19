@@ -2,7 +2,7 @@
 #define C_MATRIX_H
 #include <Arduino.h>
 #include <inttypes.h>
-#include "c_PortCols.h"
+#include "c_ColPort.h"
 #include "c_Row_Ex.h"
 
 /* class c_Matrix
@@ -19,7 +19,7 @@ port objects are chained in this sequence:
     1. c_PortsRows
     2. c_RowPort
     3. c_PortsCols
-    4. c_PortCols
+    4. c_ColPort
 */
 class c_RowPort;
 
@@ -29,12 +29,12 @@ class c_Matrix
         c_RowPort *const *const ptrsRowPorts;  //array of row ports
         const uint8_t ROW_PORT_COUNT;
 
-        c_PortCols *const *const ptrsColPorts;  //array of col ports
+        c_ColPort *const *const ptrsColPorts;  //array of col ports
         const uint8_t COL_PORT_COUNT;
 
     public:
         c_Matrix(c_RowPort *const pr[], const uint8_t rpc,
-                 c_PortCols *const pc[], const uint8_t cpc):
+                 c_ColPort *const pc[], const uint8_t cpc):
                  ptrsRowPorts(pr), ROW_PORT_COUNT(rpc),
                  ptrsColPorts(pc), COL_PORT_COUNT(cpc) {}
 

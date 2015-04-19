@@ -1,5 +1,5 @@
-#ifndef C_PORTROWS_MCP23018_H
-#define C_PORTROWS_MCP23018_H
+#ifndef C_ROWPORT_MCP23018_H
+#define C_ROWPORT_MCP23018_H
 #include <Arduino.h>
 #include <inttypes.h>
 #include "Wire.h"

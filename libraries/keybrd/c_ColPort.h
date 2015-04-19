@@ -1,18 +1,18 @@
-#ifndef C_PORTCOLS_H
-#define C_PORTCOLS_H
+#ifndef C_COLPORT_H
+#define C_COLPORT_H
 #include <Arduino.h>
 #include <inttypes.h>
 
 /* One IC port with some pins connected to matrix columns.
  * Port is read from pin 0 up.
  */
-class c_PortCols
+class c_ColPort
 {
     protected:
         const uint8_t PINS;                     //col pins to read i.e. pins connected to columns
         uint8_t portState;                      //state of port pins on most recent reading
     public:
-        c_PortCols(const uint8_t p): PINS(p), portState(0) {}
+        c_ColPort(const uint8_t p): PINS(p), portState(0) {}
 
         void begin() {}
 

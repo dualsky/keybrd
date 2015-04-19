@@ -1,5 +1,5 @@
-#ifndef C_PORTROWSAVR_H
-#define C_PORTROWSAVR_H
+#ifndef C_ROWPORT_AVR_H
+#define C_ROWPORT_AVR_H
 #include <Arduino.h>
 #include <inttypes.h>
 #include "c_RowPort.h"
