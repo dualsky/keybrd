@@ -25,6 +25,6 @@ class c_RowPort
 
         void scan(c_Matrix *const matrix, uint8_t& rowN); //rowN is row number
 
-        virtual void read(const uint8_t activeLowPin, c_Matrix *const matrix)=0;
+        virtual void scanRow(const uint8_t activeLowPin, c_Matrix *const matrix)=0;
 };
 #endif

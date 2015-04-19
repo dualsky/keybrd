@@ -3,34 +3,34 @@
 
 void c_Matrix::begin()
 {
-    for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for every row port
+    for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for each row port
     {
         ptrsRowPorts[i]->begin();               //configure port
     }
 
-    for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for every col port
+    for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for each col port
     {
         ptrsColPorts[i]->begin();               //configure port
     }
 }
 
 //scan every row port
-void c_Matrix::scan()//rename scanRows
+void c_Matrix::scan()
 {
     uint8_t rowN = 0;                           //row number
 
-    for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for every row port
+    for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for each row port
     {
-        ptrsRowPorts[i]->scan(this, rowN);//rename scan or scanRowPort
+        ptrsRowPorts[i]->scan(this, rowN);
     }
 }
 
 //read every column port
-void c_Matrix::read()//rename readCols
+void c_Matrix::read()
 {
-    for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for every col port
+    for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for each col port
     {
-        ptrsColPorts[i]->read();//rename readColPort
+        ptrsColPorts[i]->read();
     }
 }
 
@@ -42,7 +42,7 @@ uint8_t c_Matrix::computeRowState()
     uint8_t colBit = 1;                         //row mask, one bit per column
     uint8_t rowState = 0;                       //bitwise, 1 means key is pressed
 
-    for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for every col port
+    for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for each col port
     {
         ptrsColPorts[i]->portToRowState(colBit, rowState);
     }

@@ -15,7 +15,7 @@ void c_ColPort::portToRowState(uint8_t& colBit, uint8_t& rowState)
 {
     uint8_t pin;                                //pin mask, one bit per pin
 
-    //for every pin of port
+    //for each pin of port
     for ( pin = 1; pin > 0; pin <<= 1)          //shift pin until overflow
     {
         if (pin & PINS)                         //if pin is connected to column

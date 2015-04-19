@@ -20,6 +20,6 @@ class c_RowPort_AVR : public c_RowPort
                 const uint8_t PINS):
             DDR(DDRx |= PINS), PORT(PORTx), c_RowPort(PINS) {}
 
-        virtual void read(const uint8_t activeLowPin, c_Matrix *const matrix);
+        virtual void scanRow(const uint8_t activeLowPin, c_Matrix *const matrix);
 };
 #endif

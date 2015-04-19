@@ -17,15 +17,18 @@ class c_RowPort_MCP23018 : public c_RowPort
         uint8_t gpioVal;                        //value in GPIO register (PINS and LEDs)
 
     public:
-        //The constructor initialization list configures column port's IODIR, GPIO, and PINS to output strobe.
+        //The constructor initialization list configures column port's IODIR, GPIO, and PINS.
         //parameter PINS is bitwise, where 1 means read the pin, 0 means don't read.
-        //example instantiation for port A columns: c_RowPort_MCP23018 portACols(0x20, 0x00, 0x12, 1<<0 | 1<<1 );
-        //example instantiation for port B columns: c_RowPort_MCP23018 portBCols(0x20, 0x01, 0x13, 1<<0 | 1<<1 );
-        c_RowPort_MCP23018(const uint8_t ADDR, volatile unsigned char& IODIRx, volatile unsigned char& GPIOx, const uint8_t PINS):
-            ADDR(ADDR), IODIR(IODIRx), GPIO(GPIOx), c_RowPort(PINS) {}
+        //example instantiation for port A columns:
+        //      c_RowPort_MCP23018 portACols(0x20, 0x00, 0x12, 1<<0 | 1<<1 );
+        //example instantiation for port B columns:
+        //      c_RowPort_MCP23018 portBCols(0x20, 0x01, 0x13, 1<<0 | 1<<1 );
+        c_RowPort_MCP23018(const uint8_t ADDR, volatile unsigned char& IODIRx,
+                volatile unsigned char& GPIOx, const uint8_t PINS):
+                ADDR(ADDR), IODIR(IODIRx), GPIO(GPIOx), c_RowPort(PINS) {}
 
         void begin();
 
-        virtual void read(const uint8_t activeLowPin, c_Matrix *const matrix);
+        virtual void scanRow(const uint8_t activeLowPin, c_Matrix *const matrix);
 };
 #endif

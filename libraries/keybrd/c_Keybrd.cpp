@@ -11,7 +11,7 @@ void c_Keybrd::begin()
         }
 }
 
-void c_Keybrd::scan()//rename scanMatrices
+void c_Keybrd::scan()
 {
     for (uint8_t i = 0; i < MATRICES_COUNT; i++)
         {
