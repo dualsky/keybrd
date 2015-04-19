@@ -17,23 +17,23 @@ and matrix columns as connected to diode cathodes.
 c_Matrix is composed of row ports and col ports. todo update
 port objects are chained in this sequence:
     1. c_PortsRows
-    2. c_PortRows
+    2. c_RowPort
     3. c_PortsCols
     4. c_PortCols
 */
-class c_PortRows;
+class c_RowPort;
 
 class c_Matrix
 {
     private:
-        c_PortRows *const *const ptrsRowPorts;  //array of row ports
+        c_RowPort *const *const ptrsRowPorts;  //array of row ports
         const uint8_t ROW_PORT_COUNT;
 
         c_PortCols *const *const ptrsColPorts;  //array of col ports
         const uint8_t COL_PORT_COUNT;
 
     public:
-        c_Matrix(c_PortRows *const pr[], const uint8_t rpc,
+        c_Matrix(c_RowPort *const pr[], const uint8_t rpc,
                  c_PortCols *const pc[], const uint8_t cpc):
                  ptrsRowPorts(pr), ROW_PORT_COUNT(rpc),
                  ptrsColPorts(pc), COL_PORT_COUNT(cpc) {}

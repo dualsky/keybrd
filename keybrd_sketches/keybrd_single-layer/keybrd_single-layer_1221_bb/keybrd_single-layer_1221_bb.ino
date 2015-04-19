@@ -11,7 +11,7 @@
 #include <objects_key.h>
 #include <c_Row_Ex.h>
 #include <c_RowWait.h>
-#include <c_PortRowsAVR.h>
+#include <c_RowPort_AVR.h>
 #include <c_PortColsAVR.h>
 #include <c_Matrix.h>
 
@@ -30,7 +30,7 @@ c_Row_Ex row_1(ptrsKey_1, 2);
 
 //static variables
 c_Row_Ex* const ptrsRows[] = { &row_0, &row_1 };
-c_Row_Ex* const* const c_PortRows::ptrsRows = ::ptrsRows;
+c_Row_Ex* const* const c_RowPort::ptrsRows = ::ptrsRows;
 
 c_RowWait rowWait(2, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
@@ -39,9 +39,9 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
  * row: 0   1
  * pin: B2  F1              (testing row with pins from two different ports)
  */
-c_PortRowsAVR portBRows(DDRB, PORTB, 1<<2 );
-c_PortRowsAVR portFRows(DDRF, PORTF, 1<<1 );
-c_PortRows* ptrsPortsRows[] = { &portBRows, &portFRows };//todo rename ptrsRowPorts[]
+c_RowPort_AVR portBRows(DDRB, PORTB, 1<<2 );
+c_RowPort_AVR portFRows(DDRF, PORTF, 1<<1 );
+c_RowPort* ptrsPortsRows[] = { &portBRows, &portFRows };//todo rename ptrsRowPorts[]
 
 /*************** PORT COLS *************
  * col: 0   1

@@ -6,11 +6,11 @@
 
 class c_Matrix; //forward declare not enough for calling c_Matrix::computeRowState()
 
-/* class c_PortRows is an abstract base class.
+/* class c_RowPort is an abstract base class.
  * One IC port with some pins connected to matrix rows.
  * Port is read from pin 0 up.
  */
-class c_PortRows
+class c_RowPort
 { 
     private:
         const uint8_t PINS;                     //row pins to scan i.e. pins connected to rows
@@ -19,7 +19,7 @@ class c_PortRows
         static c_Row_Ex *const *const ptrsRows;//array of row pointers todo change to parent type c_Row
         //ROWS_COUNT not needed because rowN counts up untill all row pins are scanned
 
-        c_PortRows(const uint8_t p): PINS(p) {}
+        c_RowPort(const uint8_t p): PINS(p) {}
 
         void begin() {} //derived classes for I/O expanders will override the begin() function
 
