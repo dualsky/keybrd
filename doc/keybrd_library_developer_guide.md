@@ -85,7 +85,7 @@ Association diagram:
 	   |
 	key[1..M*R*K]
  
-where multiplicities are
+where multiplicities are:
 	M = matrix count
 	R = row count
 	K = key count

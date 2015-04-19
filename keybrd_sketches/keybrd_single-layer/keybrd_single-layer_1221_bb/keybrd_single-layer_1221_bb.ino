@@ -35,15 +35,15 @@ c_Row_Ex* const* const c_PortRows::ptrsRows = ::ptrsRows;
 c_RowWait rowWait(2, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
 
-/*************** ROW PORTS *************
+/*************** PORT ROWS *************
  * row: 0   1
- * pin: B2  F1              - testing row with pins from two different ports
+ * pin: B2  F1              (testing row with pins from two different ports)
  */
 c_PortRowsAVR portBRows(DDRB, PORTB, 1<<2 );
 c_PortRowsAVR portFRows(DDRF, PORTF, 1<<1 );
-c_PortRows* ptrsPortsRows[] = { &portBRows, &portFRows };
+c_PortRows* ptrsPortsRows[] = { &portBRows, &portFRows };//todo rename ptrsRowPorts[]
 
-/*************** COL PORTS *************
+/*************** PORT COLS *************
  * col: 0   1
  * pin: B0  B1
  */

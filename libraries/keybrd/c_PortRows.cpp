@@ -1,7 +1,7 @@
 #include "c_PortRows.h"
 #include "c_Matrix.h"
 
-//for each scan row, read columns and send the resulting rowState to c_Row for further processing
+//for each row, read columns and send the resulting rowState to c_Row for further processing
 void c_PortRows::scanPortRows(c_Matrix *const matrix, uint8_t& rowN) //rowN is row number
 {
     uint8_t pin;                                //active low for row being scanned, one bit per pin
