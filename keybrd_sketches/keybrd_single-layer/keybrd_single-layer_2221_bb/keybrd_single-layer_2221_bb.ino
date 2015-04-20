@@ -22,7 +22,6 @@
 #include <l_LayerManager.h>
 
 // =============== LEFT =====================
-
 /*
 // ----------- LEFT ROWS OF KEYS ------------
 //row0
@@ -32,6 +31,23 @@ c_Row_Ex row_L0(ptrsKey_L0, 2);
 //row1
 c_Key* const ptrsKey_L1[] = {     &k_a,           &k_b         };
 c_Row_Ex row_L1(ptrsKey_L1, 2);
+
+// --------------- LEFT ROW PORTS -------------todo
+// row: 0   1
+// pin: F0  F1
+
+c_RowPort_AVR rowPortF(DDRF, PORTF, 1<<0 | 1<<1 );
+c_RowPort* ptrsRowPorts_R[] = { &rowPortF };
+
+// --------------- LEFT COL PORTS -------------todo
+// col: 0   1
+// pin: B0  B1
+
+c_ColPort_AVR colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
+c_ColPort* ptrsColPorts_R[] = { &colPortB };
+
+// ------------- LEFT MATRIX --------------todo
+c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
 
 // ------------- LEFT MATRIX --------------
 c_Row_Ex* const ptrsRow_L[] = { &row_L0, &row_L1 };
@@ -53,7 +69,8 @@ c_Row_Ex row_R1(ptrsKey_R1, 2);
 
 //static variables
 c_Row_Ex* const ptrsRows[] = { &row_R0, &row_R1 };
-c_Row_Ex* const* const c_RowPort::ptrsRows = ::ptrsRows;
+//c_Row_Ex* const* const c_RowPort::ptrsRows = ::ptrsRows;
+    //?? one static c_RowPort::ptrsRows for LEFT and RIGHT?
 
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
@@ -73,7 +90,7 @@ c_ColPort_AVR colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 c_ColPort* ptrsColPorts_R[] = { &colPortB };
 
 // ------------- RIGHT MATRIX --------------
-c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
+c_Matrix matrix_R(ptrsRows, ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
 
 // ============== KEYBOARD =============
 //c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };

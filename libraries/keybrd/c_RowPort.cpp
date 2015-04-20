@@ -15,7 +15,7 @@ void c_RowPort::scan(c_Matrix *const matrix, uint8_t& rowN) //rowN is row number
         {
             scanRow(pin, matrix);//rename scanPin or scanRow or scanRowPin or rowScan
             rowState = matrix->computeRowState();
-            ptrsRows[rowN]->pressRelease(rowState);
+            matrix->ptrsRows[rowN]->pressRelease(rowState);
             rowN++;                             //next row
         }
     }
