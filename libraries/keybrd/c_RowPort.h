@@ -20,7 +20,7 @@ class c_RowPort
 
         void begin() {} //derived classes for I/O expanders will override the begin() function
 
-        void scan(c_Matrix *const matrix, uint8_t& rowN); //rowN is row number
+        void scan(c_Matrix *const matrix);
 
         virtual void scanRow(const uint8_t activeLowPin, c_Matrix *const matrix)=0;
 };

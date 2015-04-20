@@ -17,11 +17,11 @@ void c_Matrix::begin()
 //scan every row port
 void c_Matrix::scan()
 {
-    uint8_t rowN = 0;                           //row number
+    rowN = 0;
 
     for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for each row port
     {
-        ptrsRowPorts[i]->scan(this, rowN);
+        ptrsRowPorts[i]->scan(this);
     }
 }
 
@@ -37,14 +37,18 @@ void c_Matrix::read()
 //return rowState
 //rowState is state of row's keys, one bit per column, where 1 means key is pressed
 //rowState is for an entire row, which may be contain multiple column ports
-uint8_t c_Matrix::computeRowState()
+void c_Matrix::pressRelease()
 {
     uint8_t colBit = 1;                         //row mask, one bit per column
     uint8_t rowState = 0;                       //bitwise, 1 means key is pressed
 
+    //computeRowState
     for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for each col port
     {
         ptrsColPorts[i]->portToRowState(colBit, rowState);
     }
-    return rowState;
+
+    ptrsRows[rowN]->pressRelease(rowState);
+
+    rowN++;                                     //next row
 }

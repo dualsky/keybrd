@@ -69,8 +69,6 @@ c_Row_Ex row_R1(ptrsKey_R1, 2);
 
 //static variables
 c_Row_Ex* const ptrsRows[] = { &row_R0, &row_R1 };
-//c_Row_Ex* const* const c_RowPort::ptrsRows = ::ptrsRows;
-    //?? one static c_RowPort::ptrsRows for LEFT and RIGHT?
 
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;

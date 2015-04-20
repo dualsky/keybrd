@@ -32,6 +32,8 @@ class c_Matrix
         c_ColPort *const *const ptrsColPorts;  //array of col ports
         const uint8_t COL_PORT_COUNT;
 
+        uint8_t rowN;                           //row number
+
     public:
         c_Row_Ex *const *const ptrsRows;//array of row pointers
        // todo change to parent type c_Row
@@ -54,6 +56,6 @@ class c_Matrix
         void read();
 
         //return state of row's keys, one bit per column, where 1 means key is pressed
-        uint8_t computeRowState();
+        void pressRelease();
 };
 #endif
