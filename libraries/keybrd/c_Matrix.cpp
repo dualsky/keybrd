@@ -37,7 +37,7 @@ void c_Matrix::read()
 //return rowState
 //rowState is state of row's keys, one bit per column, where 1 means key is pressed
 //rowState is for an entire row, which may be contain multiple column ports
-void c_Matrix::pressRelease()
+void c_Matrix::processRow()
 {
     uint8_t colBit = 1;                         //row mask, one bit per column
     uint8_t rowState = 0;                       //bitwise, 1 means key is pressed
@@ -50,5 +50,5 @@ void c_Matrix::pressRelease()
 
     ptrsRows[rowN]->pressRelease(rowState);
 
-    rowN++;                                     //next row
+    rowN++;                                     //next row number
 }

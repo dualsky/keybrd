@@ -56,6 +56,6 @@ class c_Matrix
         void read();
 
         //return state of row's keys, one bit per column, where 1 means key is pressed
-        void pressRelease();
+        void processRow();
 };
 #endif
