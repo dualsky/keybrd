@@ -12,7 +12,7 @@ rowState is state of row's keys, where pressed key bit is 1.
 
 converting portState to rowState is faster than requesting individual col bits from I/O expander.
 */
-void c_ColPort::portStateToRowState(uint8_t& colBit, uint8_t& rowState)
+void c_ColPort::rowStateCat(uint8_t& rowState, uint8_t& colBit)
 {
     uint8_t pin;                                //pin mask, one bit per pin
 

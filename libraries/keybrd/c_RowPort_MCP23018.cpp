@@ -9,11 +9,6 @@ void c_RowPort_MCP23018::begin()
     Wire.write(IODIR);
     Wire.write(0);                              //0=configure as output (for strobe PINS and LED)
     Wire.endTransmission();
-
-    Wire.beginTransmission(ADDR);//todo delete this transimission
-    Wire.write(0x0D); //port B
-    Wire.write(0); //0=configure pull-up disabled
-    Wire.endTransmission();
 }
 
 //strobe uses active low
@@ -24,8 +19,7 @@ void c_RowPort_MCP23018::scanRow(const uint8_t activeLowPin, c_Matrix *const mat
     //strobe on
     Wire.beginTransmission(ADDR);
     Wire.write(GPIO);
-    //Wire.write(gpioVal &= ~activeLowPin);       //strobe on: set strobe pin output to low
-Wire.write(~activeLowPin);       //todo strobe on: set strobe pin output to low
+    Wire.write(gpioVal &= ~activeLowPin);       //strobe on: set strobe pin output to low
     Wire.endTransmission();
 
     matrix->read();                             //read the IC's column ports
@@ -33,7 +27,6 @@ Wire.write(~activeLowPin);       //todo strobe on: set strobe pin output to low
     //strobe off
     Wire.beginTransmission(ADDR);
     Wire.write(GPIO);
-    //Wire.write(gpioVal |= activeLowPin);        //strobe off: set strobe pin output to high
-Wire.write(activeLowPin);        //todo strobe off: set strobe pin output to high
+    Wire.write(gpioVal |= activeLowPin);        //strobe off: set strobe pin output to high
     Wire.endTransmission();
 }

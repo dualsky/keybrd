@@ -14,12 +14,7 @@ The rows and columns are distinguishable by diode orientation.
 The keybrd library defines matrix rows as connected to diode anodes,
 and matrix columns as connected to diode cathodes.
 
-c_Matrix is composed of row ports and col ports. todo update
-port objects are chained in this sequence:
-    1. c_PortsRows
-    2. c_RowPort
-    3. c_PortsCols
-    4. c_ColPort
+c_Matrix is composed of row ports, col ports, and rows.
 */
 class c_RowPort;
 

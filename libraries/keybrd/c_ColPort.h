@@ -22,6 +22,6 @@ class c_ColPort
         //copy only read-pin values from portState to rowState.
         //col is row mask, where current column bit is 1.
         //rowState is state of row's keys, where pressed key bit is 1.
-        void portStateToRowState(uint8_t& col, uint8_t& rowState);
+        void rowStateCat(uint8_t& rowState, uint8_t& colBit);
 };
 #endif
