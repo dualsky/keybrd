@@ -1,6 +1,7 @@
 #include "c_ColPort.h"
 
-/* concatenate read-pin values from portState to rowState.
+/* convert portState to RowState
+read-pin values from portState and set them in rowState.
 read-pins are identifed by "1" bit in the PINS varialbe, skip the "0" bits.
 portState stores all pins values of port.
 Some pins may not be connected to a column.
@@ -11,7 +12,7 @@ rowState is state of row's keys, where pressed key bit is 1.
 
 converting portState to rowState is faster than requesting individual col bits from I/O expander.
 */
-void c_ColPort::portToRowState(uint8_t& colBit, uint8_t& rowState)
+void c_ColPort::portStateToRowState(uint8_t& colBit, uint8_t& rowState)
 {
     uint8_t pin;                                //pin mask, one bit per pin
 

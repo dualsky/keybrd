@@ -26,19 +26,18 @@ class c_RowPort;
 class c_Matrix
 {
     private:
-        c_RowPort *const *const ptrsRowPorts;  //array of row ports
+        c_RowPort *const *const ptrsRowPorts;   //array of row ports
         const uint8_t ROW_PORT_COUNT;
 
-        c_ColPort *const *const ptrsColPorts;  //array of col ports
+        c_ColPort *const *const ptrsColPorts;   //array of col ports
         const uint8_t COL_PORT_COUNT;
 
-        uint8_t rowN;                           //row number
+        c_Row_Ex *const *const ptrsRows;        //array of row pointers
+       // todo change to parent type c_Row
+        //ROWS_COUNT not needed because rowNum increments untill all row pins are scanned
+        uint8_t rowNum;                           //index for ptrsRows[] array
 
     public:
-        c_Row_Ex *const *const ptrsRows;//array of row pointers
-       // todo change to parent type c_Row
-        //ROWS_COUNT not needed because rowN counts up untill all row pins are scanned
-
         c_Matrix(c_Row_Ex *const r[],
                  c_RowPort *const rp[], const uint8_t rpc,
                  c_ColPort *const cp[], const uint8_t cpc):

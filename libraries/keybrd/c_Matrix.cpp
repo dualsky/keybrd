@@ -6,18 +6,20 @@ void c_Matrix::begin()
     for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for each row port
     {
         ptrsRowPorts[i]->begin();               //configure port
+Serial.print("\nin c_Matrix::begin()-rowPorts i="); Serial.print(i);
     }
 
     for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for each col port
     {
         ptrsColPorts[i]->begin();               //configure port
+Serial.print("\nin c_Matrix::begin()-colPorts i="); Serial.print(i);
     }
 }
 
 //scan every row port
 void c_Matrix::scan()
 {
-    rowN = 0;
+    rowNum = 0;
 
     for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for each row port
     {
@@ -45,10 +47,10 @@ void c_Matrix::processRow()
     //computeRowState
     for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for each col port
     {
-        ptrsColPorts[i]->portToRowState(colBit, rowState);
+        ptrsColPorts[i]->portStateToRowState(colBit, rowState);
     }
 
-    ptrsRows[rowN]->pressRelease(rowState);
+    ptrsRows[rowNum]->pressRelease(rowState);
 
-    rowN++;                                     //next row number
+    rowNum++;                                     //next row number
 }

@@ -42,16 +42,16 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;
  */
 c_RowPort_AVR rowPortB(DDRB, PORTB, 1<<2 );
 c_RowPort_AVR rowPortF(DDRF, PORTF, 1<<1 );
-c_RowPort* ptrsRowPorts[] = { &rowPortB, &rowPortF };
 
 /*************** PORT COLS *************
  * col: 0   1
  * pin: B0  B1
  */
 c_ColPort_AVR colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
-c_ColPort* ptrsColPorts[] = { &colPortB };
 
 // ************** MATRIX ***************
+c_RowPort* ptrsRowPorts[] = { &rowPortB, &rowPortF };
+c_ColPort* ptrsColPorts[] = { &colPortB };
 c_Matrix matrix(ptrsRowPorts, 2, ptrsColPorts, 1);
 
 // ************** KEYBOARD *************

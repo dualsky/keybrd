@@ -13,7 +13,7 @@ void c_RowPort::scan(c_Matrix *const matrix)
     {
         if (pin & PINS)                         //if pin is connected to row
         {
-            scanRow(pin, matrix);//rename scanPin or scanRow or scanRowPin or rowScan
+            scanRow(pin, matrix);
             matrix->processRow();
         }
     }

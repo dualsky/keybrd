@@ -14,7 +14,7 @@ class c_ColPort
     public:
         c_ColPort(const uint8_t p): PINS(p), portState(0) {}
 
-        void begin() {}
+        virtual void begin() {} //derived classes for I/O expanders override the begin() function
 
         //read port and store it in portState
         virtual void read()=0;
@@ -22,6 +22,6 @@ class c_ColPort
         //copy only read-pin values from portState to rowState.
         //col is row mask, where current column bit is 1.
         //rowState is state of row's keys, where pressed key bit is 1.
-        void portToRowState(uint8_t& col, uint8_t& rowState);
+        void portStateToRowState(uint8_t& col, uint8_t& rowState);
 };
 #endif
