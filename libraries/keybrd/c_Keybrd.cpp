@@ -8,7 +8,6 @@ void c_Keybrd::begin()
     for (uint8_t i = 0; i < MATRICES_COUNT; i++)
         {
         ptrsMatrices[i]->begin();
-Serial.print("\nin c_Keybrd::begin()-matrix i="); Serial.print(i);
         }
 }
 

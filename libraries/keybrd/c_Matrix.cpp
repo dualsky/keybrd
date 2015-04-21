@@ -5,14 +5,12 @@ void c_Matrix::begin()
 {
     for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for each row port
     {
-        ptrsRowPorts[i]->begin();               //configure port
-Serial.print("\nin c_Matrix::begin()-rowPorts i="); Serial.print(i);
+        ptrsRowPorts[i]->begin();               //configure row port
     }
 
     for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for each col port
     {
-        ptrsColPorts[i]->begin();               //configure port
-Serial.print("\nin c_Matrix::begin()-colPorts i="); Serial.print(i);
+        ptrsColPorts[i]->begin();               //configure col port
     }
 }
 

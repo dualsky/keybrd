@@ -7,7 +7,6 @@
 
 /* One microcontroller port with pins connected to matrix columns.
  * Port is read from pin 0 up.
- * todo: copy from MCP23018_strobe.ino > Port B input
  */
 class c_ColPort_MCP23018 : public c_ColPort
 {
