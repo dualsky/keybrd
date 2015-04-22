@@ -27,7 +27,7 @@ c_RowWait rowWait(2, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
 
 // ************ LED KEYS *************
-k_Key_LED k_LED_B3(1<<3);
+k_Key_LED k_LED_B3(PORTB, 1<<3);
 
 // *********** ROWS OF KEYS ************
 //row0
