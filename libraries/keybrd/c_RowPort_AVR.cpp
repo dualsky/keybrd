@@ -10,7 +10,7 @@ void c_RowPort_AVR::scanRow(const uint8_t activeLowPin, c_Matrix *const matrix)
     //strobe row on
     PORT &= ~activeLowPin;                      //set output to low
 
-    matrix->read();                    //read the IC's column ports
+    matrix->read();                             //read the IC's column ports
 
     //strobe row off
     PORT |= activeLowPin;                       //set output to high

@@ -10,11 +10,10 @@
 class k_Key_LED: public c_Key
 {
     private:
-        const uint16_t scancode;
+        const uint8_t pin;
 
     public:
-        //k_Key_1(const uint16_t sc): scancode(sc) { }
-        k_Key_LED(const uint16_t sc): scancode(sc) { }
+        k_Key_LED(const uint8_t p): pin(p) { }
 
         //send scancode to USB for press
         void press();

@@ -3,12 +3,10 @@
 
 void k_Key_LED::press()
 {
-    //Keyboard.press(scancode);
-    PORTB |= 1<<3;                              //set pin high
+    PORTB |= pin;                              //set pin high
 }
 
 void k_Key_LED::release()
 {
-    //Keyboard.release(scancode);
-    PORTB &= ~(1<<3);                           //set pin low
+    PORTB &= ~(pin);                           //set pin low
 }

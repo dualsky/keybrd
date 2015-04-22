@@ -27,14 +27,11 @@ c_RowWait rowWait(2, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;
 
 // ************ LED KEYS *************
-k_Key_LED k_LED_B3(KEY_G);
-//k_Key_1x k_hx(KEY_H);
+k_Key_LED k_LED_B3(1<<3);
 
 // *********** ROWS OF KEYS ************
 //row0
-//c_Key* const ptrsKey_0[] = {     &k_1,     &k_2   };//todo replace k_1 with k_LED_B3
 c_Key* const ptrsKey_0[] = {     &k_LED_B3,     &k_2   };
-//c_Key* const ptrsKey_0[] = {     &k_hx,     &k_2   };//this compiled
 c_Row_Ex row_0(ptrsKey_0, 2);
 
 //row1
