@@ -1,6 +1,6 @@
 #include "c_ColPort.h"
 
-/* convert portState to RowState
+/* concatenate RowState to portState
 read-pin values from portState and set them in rowState.
 read-pins are identifed by "1" bit in the PINS varialbe, skip the "0" bits.
 portState stores all pins values of port.

@@ -19,7 +19,12 @@
 //keybrd_Layers library files
 #include <l_LayerManager.h>
 
-// ************ TRANSFORMS *************
+// ************ CONFIG *************
+c_RowWait rowWait(2, 10);
+c_RowWait& c_Row_Ex::refRowWait = rowWait; //static variables todo: move to keybrd?
+
+// ************ TRANSFORM *************
+
 // *********** ROWS OF KEYS ************
 //row0
 c_Key* const ptrsKey_0[] = {     &k_1,     &k_2   };
@@ -28,13 +33,6 @@ c_Row_Ex row_0(ptrsKey_0, 2);
 //row1
 c_Key* const ptrsKey_1[] = {    &k_a,      &k_b    };
 c_Row_Ex row_1(ptrsKey_1, 2);
-
-//static variables
-c_Row_Ex* const ptrsRows[] = { &row_0, &row_1 };
-c_Row_Ex* const* const c_RowPort::ptrsRows = ::ptrsRows;
-
-c_RowWait rowWait(2, 10);
-c_RowWait& c_Row_Ex::refRowWait = rowWait;
 
 /*************** PORT ROWS *************
  * row: 0   1
@@ -50,9 +48,10 @@ c_RowPort_AVR rowPortF(DDRF, PORTF, 1<<1 );
 c_ColPort_AVR colPortB(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 
 // ************** MATRIX ***************
+c_Row_Ex* const ptrsRows[] = { &row_0, &row_1 };
 c_RowPort* ptrsRowPorts[] = { &rowPortB, &rowPortF };
 c_ColPort* ptrsColPorts[] = { &colPortB };
-c_Matrix matrix(ptrsRowPorts, 2, ptrsColPorts, 1);
+c_Matrix matrix(ptrsRows, ptrsRowPorts, 2, ptrsColPorts, 1);
 
 // ************** KEYBOARD *************
 c_Matrix* const ptrsMatrix[] = { &matrix };

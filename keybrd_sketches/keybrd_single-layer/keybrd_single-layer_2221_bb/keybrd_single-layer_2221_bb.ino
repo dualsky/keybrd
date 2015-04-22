@@ -16,10 +16,14 @@
 #include <c_RowPort_MCP23018.h>
 #include <c_ColPort_MCP23018.h>
 #include <c_Matrix.h>
+#include <c_Keybrd.h>
 
 //keybrd_Layers library files
-#include <c_Keybrd.h>
 #include <l_LayerManager.h>
+
+// =============== CONFIG =====================
+c_RowWait rowWait(4, 10);
+c_RowWait& c_Row_Ex::refRowWait = rowWait;      //static variables todo: why not in keybrd?
 
 // =============== LEFT =====================
 // ----------- LEFT ROWS OF KEYS ------------
@@ -59,10 +63,6 @@ c_Row_Ex row_R0(ptrsKey_R0, 2);
 c_Key* const ptrsKey_R1[] = {     &k_c,           &k_d         };
 c_Row_Ex row_R1(ptrsKey_R1, 2);
 
-//static variables
-c_RowWait rowWait(4, 10);
-c_RowWait& c_Row_Ex::refRowWait = rowWait;
-
 // --------------- RIGHT ROW PORTS -------------
 // row: 0   1
 // pin: F0  F1
@@ -82,9 +82,7 @@ c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
 c_Matrix matrix_R(ptrsRows_R, ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
 
 // ============== KEYBOARD =============
-c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };//unresponsive on matrix_L
-//c_Matrix* const ptrsMatrix[] = { &matrix_R };//works
-//c_Matrix* const ptrsMatrix[] = { &matrix_L };//unresponsive
+c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
 c_Keybrd keybrd(ptrsMatrix, 2);
 
 // ================ RUN ================
