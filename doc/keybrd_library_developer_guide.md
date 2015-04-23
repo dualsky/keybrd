@@ -75,19 +75,22 @@ Classes inheritance diagrams:
 ``` 
 Association diagram:
 ``` 
-	keybrd[1]
-	   |
-	matrix[1..M] ________
-	   |                 \
-	portRows[1..M*R]   portCols[1..M*C]
-	   |
-	row[1..M*R] ------ rowWait[1]
-	   |
-	key[1..M*R*K]
+		keybrd[1]
+		   |
+		matrix[1..M] ________
+		   |                 \
+		rowPort[1..M*R]  colPort[1..M*C]  LEDPort[0..M*L]
+		   |           \      |          /
+ rowWait[1] --- row[1..M*R]      IOExpanderPort[P]
+		   |
+		key[1..M*R*K]
  
 where multiplicities are:
 	M = matrix count
 	R = row count
+	C = col count
+	L = LED count
+	P = I/O expander port count
 	K = key count
 ``` 
 ### Keybrd Library Multi-layer Classes

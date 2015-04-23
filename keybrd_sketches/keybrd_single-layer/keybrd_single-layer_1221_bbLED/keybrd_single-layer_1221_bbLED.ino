@@ -20,7 +20,6 @@
 #include <l_LayerManager.h>
 
 #include "k_Key_LED.h"
-#include "k_Key_1x.h"
 
 // ************ CONFIG *************
 c_RowWait rowWait(2, 10);

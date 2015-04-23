@@ -26,7 +26,7 @@ class c_RowPort_MCP23018 : public c_RowPort
         //      c_RowPort_MCP23018 rowPortB(0x20, 0x01, 0x13, 1<<0 | 1<<1 );
         c_RowPort_MCP23018(const uint8_t ADDR, const uint8_t IODIRx,
                 const uint8_t GPIOx, const uint8_t PINS):
-                ADDR(ADDR), IODIR(IODIRx), GPIO(GPIOx), c_RowPort(PINS) {}
+                ADDR(ADDR), IODIR(IODIRx), GPIO(GPIOx), c_RowPort(PINS), gpioVal(~0) {}
 
         void begin();
 

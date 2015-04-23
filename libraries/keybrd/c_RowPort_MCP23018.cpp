@@ -21,6 +21,7 @@ void c_RowPort_MCP23018::scanRow(const uint8_t activeLowPin, c_Matrix *const mat
     Wire.write(GPIO);
     Wire.write(gpioVal &= ~activeLowPin);       //strobe on: set strobe pin output to low
     Wire.endTransmission();
+//Serial.print("\nstrobe gpioVal=");  Serial.print(gpioVal, BIN);    
 
     matrix->read();                             //read the IC's column ports
 
@@ -29,4 +30,6 @@ void c_RowPort_MCP23018::scanRow(const uint8_t activeLowPin, c_Matrix *const mat
     Wire.write(GPIO);
     Wire.write(gpioVal |= activeLowPin);        //strobe off: set strobe pin output to high
     Wire.endTransmission();
+
+//Serial.print("  gpioVal=");  Serial.print(gpioVal, BIN);    
 }
