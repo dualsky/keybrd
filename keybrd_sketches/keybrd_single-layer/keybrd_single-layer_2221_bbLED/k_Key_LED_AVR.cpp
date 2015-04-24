@@ -7,5 +7,5 @@ void k_Key_LED_AVR::press()
 
 void k_Key_LED_AVR::release()
 {
-    PORT &= ~(pin);                             //set pin low
+    PORT &= ~pin;                               //set pin low
 }

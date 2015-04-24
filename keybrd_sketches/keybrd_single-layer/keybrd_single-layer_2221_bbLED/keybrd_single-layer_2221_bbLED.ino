@@ -21,6 +21,7 @@
 //keybrd_Layers library files
 #include <l_LayerManager.h>
 
+#include "c_IOExpanderPort.h"
 #include "k_Key_LED_AVR.h"
 #include "k_Key_LED_MCP23018.h"
 
@@ -30,10 +31,11 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;      //static variables todo: why not
 
 // =============== LEFT =====================
 // ------------ LEFT LED KEYS -------------
-k_Key_LED_MCP23018 k_LED_B2_L(0x20, 0x13, 1<<2); //why is always on??
-k_Key_LED_MCP23018 k_LED_A7_L(0x20, 0x12, 1<<6); //this works
-//k_Key_LED_MCP23018 k_LED_A7_L(0x20, 0x12, B11111100);
-//k_Key_LED_MCP23018 k_LED_B2_L(0x20, 0x13, B11111100);
+c_IOExpanderPort portA_L(0x20);
+c_IOExpanderPort portB_L(0x20);
+
+k_Key_LED_MCP23018 k_LED_A7_L(portA_L, 0x12, 1<<7);
+k_Key_LED_MCP23018 k_LED_B2_L(portB_L, 0x13, 1<<2);
 
 //portB output is manipulated in c_RowPort_MCP23018::scanRow(), portA is not
 //gpioVal is not global, strobe is turning pins off (or on if initial value is 0)
@@ -56,13 +58,13 @@ c_Row_Ex row_L1(ptrsKey_L1, 2);
 // row: 0   1
 // pin: B0  B1
 
-c_RowPort_MCP23018 rowPortB_L(0x20, 0x01, 0x13, 1<<0 | 1<<1 );
+c_RowPort_MCP23018 rowPortB_L(portB_L, 0x01, 0x13, 1<<0 | 1<<1 );
 
 // --------------- LEFT COL PORTS -------------
 // col: 0   1
 // pin: A0  A1
 
-c_ColPort_MCP23018 colPortA_L(0x20, 0x00, 0x12, 0x0C, 1<<0 | 1<<1 );
+c_ColPort_MCP23018 colPortA_L(portA_L, 0x00, 0x12, 0x0C, 1<<0 | 1<<1 );
 
 // ------------- LEFT MATRIX --------------
 c_Row_Ex* const ptrsRows_L[] = { &row_L0, &row_L1 };
@@ -72,7 +74,7 @@ c_Matrix matrix_L(ptrsRows_L, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
 
 // =============== RIGHT ====================
 // ------------ RIGHT LED KEYS -------------
-k_Key_LED_AVR k_LED_B3_R(PORTB, 1<<3);          //blue
+k_Key_LED_AVR k_LED_B3_R(PORTB, 1<<3);
 
 // ----------- RIGHT ROWS OF KEYS ------------
 //row0

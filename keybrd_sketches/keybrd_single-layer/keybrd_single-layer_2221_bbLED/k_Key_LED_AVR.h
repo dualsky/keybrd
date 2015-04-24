@@ -12,7 +12,7 @@ class k_Key_LED_AVR: public c_Key
 {
     private:
         volatile unsigned char& PORT;
-        const uint8_t pin;
+        const uint8_t pin;                      //bitwise pin to LED
 
     public:
         k_Key_LED_AVR(volatile unsigned char& PORTx, const uint8_t p): PORT(PORTx), pin(p) { }

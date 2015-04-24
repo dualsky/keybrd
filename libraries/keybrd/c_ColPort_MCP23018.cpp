@@ -2,12 +2,12 @@
 
 void c_ColPort_MCP23018::begin()
 {
-    Wire.beginTransmission(ADDR);
+    Wire.beginTransmission(port.ADDR);
     Wire.write(IODIR);
     Wire.write(PINS);       //0=configure as output (for LED), 1=configure as input (for read)
     Wire.endTransmission();
 
-    Wire.beginTransmission(ADDR);
+    Wire.beginTransmission(port.ADDR);
     Wire.write(GPPU);
     Wire.write(PINS);       //0=pull-up disabled (for LED), 1=pull-up enabled (for read)
     Wire.endTransmission();
@@ -19,11 +19,12 @@ portState will be processed after all the IC's ports are read and strobe is turn
 */
 void c_ColPort_MCP23018::read()
 {
-    Wire.beginTransmission(ADDR);
+    Wire.beginTransmission(port.ADDR);
     Wire.write(GPIO);                           //GPIO immediately before requestFrom
     Wire.endTransmission();
 
-    Wire.requestFrom(ADDR, static_cast<uint8_t>(1)); //request one byte from input port
+    Wire.requestFrom(port.ADDR, static_cast<uint8_t>(1)); //request one byte from input port
 
     portState = Wire.read();
+Serial.print("  ADDR3=");  Serial.print(port.ADDR, BIN);
 }

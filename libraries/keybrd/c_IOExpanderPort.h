@@ -4,7 +4,9 @@
 
 struct c_IOExpanderPort
 {
-    const uint8_t ADDR;
-    uint8_t portVal;
+    const uint8_t ADDR;                         //I2C address
+    uint8_t outputVal;                          //value of output register (for PINS and LEDs)
+
+    c_IOExpanderPort(const uint8_t a): ADDR(a), outputVal(~0) {}
 };
 #endif

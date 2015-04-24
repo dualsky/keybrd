@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <inttypes.h>
 #include "Wire.h"
+#include "c_IOExpanderPort.h"
 #include "c_Key.h"
 
 /* Class k_Key turns LED on PORT pin on and off
@@ -16,15 +17,13 @@ LED tutorial https://www.pjrc.com/teensy/tutorial2.html
 class k_Key_LED_MCP23018: public c_Key
 {
     private:
-        const uint8_t ADDR;                     //I2C address
+        c_IOExpanderPort& port;
         const uint8_t GPIO;                     //General Purpose Input/Ouput register address
-        const uint8_t pin;
-        uint8_t gpioVal;                        //value in GPIO register (for PINS and LEDs)
+        const uint8_t pin;                      //bitwise pin to LED
 
     public:
-        k_Key_LED_MCP23018(const uint8_t ADDR, const uint8_t GPIO, const uint8_t p):
-                ADDR(ADDR), GPIO(GPIO), pin(p), gpioVal(~0) {}
-        //todo why initial value of gpioVal make no diff? LED always on with other pins
+        k_Key_LED_MCP23018(c_IOExpanderPort& ep, const uint8_t GPIO, const uint8_t p):
+                port(ep), GPIO(GPIO), pin(p) {}
 
         //LED on when key is pressed
         void press();

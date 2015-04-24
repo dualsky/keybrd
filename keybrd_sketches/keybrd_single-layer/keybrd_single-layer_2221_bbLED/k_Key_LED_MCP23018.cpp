@@ -2,25 +2,20 @@
 
 void k_Key_LED_MCP23018::press()
 {
-Serial.print("\npress gpioVal=");  Serial.print(gpioVal, BIN);    
-    Wire.beginTransmission(ADDR);
+    Wire.beginTransmission(port.ADDR);
     Wire.write(GPIO);
-    Wire.write(gpioVal &= ~pin);                //set pin low (sink)
+    Wire.write(port.outputVal &= ~pin);           //set pin low (sink)
     Wire.endTransmission();
 
-    Keyboard.press(KEY_L);
-Serial.print("  gpioVal=");  Serial.print(gpioVal, BIN);    
-delay(200);//LED turns off after delay
+//    Keyboard.press(KEY_L);
 }
 
 void k_Key_LED_MCP23018::release()
 {
-Serial.print("  gpioVal=");  Serial.print(gpioVal, BIN);    
-    Wire.beginTransmission(ADDR);
+    Wire.beginTransmission(port.ADDR);
     Wire.write(GPIO);
-    Wire.write(gpioVal |= pin);                 //set pin high (sink off)
+    Wire.write(port.outputVal |= pin);            //set pin high (sink off)
     Wire.endTransmission();
 
-    Keyboard.release(KEY_L);
-Serial.print("  gpioVal=");  Serial.print(gpioVal, BIN);    
+//    Keyboard.release(KEY_L);
 }
