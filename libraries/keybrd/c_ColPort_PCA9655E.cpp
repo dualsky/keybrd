@@ -26,5 +26,4 @@ void c_ColPort_PCA9655E::read()
     Wire.requestFrom(port.ADDR, static_cast<uint8_t>(1)); //request one byte from input port
 
     portState = Wire.read();
-Serial.print("  ADDR3=");  Serial.print(port.ADDR, BIN);
 }

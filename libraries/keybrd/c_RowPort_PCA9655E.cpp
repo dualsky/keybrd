@@ -29,5 +29,6 @@ void c_RowPort_PCA9655E::scanRow(const uint8_t activeLowPin, c_Matrix *const mat
     Wire.beginTransmission(port.ADDR);
     Wire.write(output);
     Wire.write(port.outputVal |= activeLowPin); //strobe off: set strobe pin output to high
+    //Wire.write(port.outputVal |= ~0); //strobe off: set strobe pin output to high
     Wire.endTransmission();
 }

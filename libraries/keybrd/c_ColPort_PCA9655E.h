@@ -18,13 +18,13 @@ class c_ColPort_PCA9655E : public c_ColPort
     public:
         //The constructor initialization list configures column port's configuration, input, and PINS.
         //parameter PINS is bitwise, where 1 means read the pin, 0 means don't read.
-        //example instantiation for port A columns:
-        //      c_ColPort_PCA9655E colPortA(portA, 0x00, 0x12, 0x0C, 1<<0 | 1<<1 );
-        //example instantiation for port B columns:
-        //      c_ColPort_PCA9655E colPortB(portB, 0x01, 0x13, 0x0D, 1<<0 | 1<<1 );
-        c_ColPort_PCA9655E(c_IOExpanderPort& ep, const uint8_t configurationx,
-                const uint8_t inputx, const uint8_t PINS):
-            port(ep), configuration(configurationx), input(inputx), c_ColPort(PINS) {}
+        //example instantiation for port 0 columns:
+        //      c_ColPort_PCA9655E colPort0_L(port0_L, 6, 0, 1<<0 | 1<<1 );
+        //example instantiation for port 1 columns:
+        //      c_ColPort_PCA9655E colPort1_L(port1_L, 7, 1, 1<<0 | 1<<1 );
+        c_ColPort_PCA9655E(c_IOExpanderPort& ep, const uint8_t config,
+                const uint8_t input, const uint8_t PINS):
+            port(ep), configuration(config), input(input), c_ColPort(PINS) {}
 
         void begin();
 
