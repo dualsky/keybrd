@@ -22,20 +22,27 @@
 #include <l_LayerManager.h>
 
 #include "c_IOExpanderPort.h"
-#include "k_Key_LED_AVR.h"
-#include "k_Key_LED_MCP23018.h"
+#include "c_LED_AVR.h"
+#include "c_LED_MCP23018.h"
+#include "k_Key_Lck_LED.h"
 
 // =============== CONFIG =====================
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row_Ex::refRowWait = rowWait;      //static variables todo: why not in keybrd?
 
 // =============== LEFT =====================
-// ------------ LEFT LED KEYS -------------
 c_IOExpanderPort portA_L(0x20);
 c_IOExpanderPort portB_L(0x20);
 
-k_Key_LED_MCP23018 k_LED_A7_L(portA_L, 0x12, 1<<7);
-k_Key_LED_MCP23018 k_LED_B2_L(portB_L, 0x13, 1<<2);
+// ------------ LEFT LED KEYS -------------
+c_LED_MCP23018 capsLck_LED(portA_L, 0x12, 1<<7);
+k_Key_Lck_LED k_capsLck(capsLck_LED);
+
+c_LED_MCP23018  numLck_LED(portB_L, 0x13, 1<<2);
+k_Key_Lck_LED  k_numLck(numLck_LED);
+
+//k_Key_LED_MCP23018 k_LED_A7_L(portA_L, 0x12, 1<<7);
+//k_Key_LED_MCP23018 k_LED_B2_L(portB_L, 0x13, 1<<2);
 
 //portB output is manipulated in c_RowPort_MCP23018::scanRow(), portA is not
 //gpioVal is not global, strobe is turning pins off (or on if initial value is 0)
@@ -47,11 +54,11 @@ k_Key_LED_MCP23018 k_LED_B2_L(portB_L, 0x13, 1<<2);
 
 // ----------- LEFT ROWS OF KEYS ------------
 //row0
-c_Key* const ptrsKey_L0[] = {     &k_LED_B2_L,    &k_2         };
+c_Key* const ptrsKey_L0[] = {     &k_capsLck,    &k_2         };
 c_Row_Ex row_L0(ptrsKey_L0, 2);
 
 //row1
-c_Key* const ptrsKey_L1[] = {     &k_LED_A7_L,    &k_b         };
+c_Key* const ptrsKey_L1[] = {     &k_numLck,    &k_b         };
 c_Row_Ex row_L1(ptrsKey_L1, 2);
 
 // --------------- LEFT ROW PORTS -------------
@@ -74,11 +81,14 @@ c_Matrix matrix_L(ptrsRows_L, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
 
 // =============== RIGHT ====================
 // ------------ RIGHT LED KEYS -------------
-k_Key_LED_AVR k_LED_B3_R(PORTB, 1<<3);
+c_LED_AVR scrollLck_LED(PORTB, 1<<3);
+k_Key_Lck_LED k_scrollLck(scrollLck_LED);
+
+//k_Key_LED_AVR k_LED_B3_R(PORTB, 1<<3);
 
 // ----------- RIGHT ROWS OF KEYS ------------
 //row0
-c_Key* const ptrsKey_R0[] = {     &k_LED_B3_R,    &k_4         };
+c_Key* const ptrsKey_R0[] = {     &k_scrollLck,    &k_4         };
 c_Row_Ex row_R0(ptrsKey_R0, 2);
 
 //row1

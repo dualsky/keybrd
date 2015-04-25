@@ -1,6 +1,6 @@
-#include "k_Key_LED_MCP23018.h"
+#include "c_LED_MCP23018.h"
 
-void k_Key_LED_MCP23018::press()
+void c_LED_MCP23018::on()
 {
     Wire.beginTransmission(port.ADDR);
     Wire.write(GPIO);
@@ -10,7 +10,7 @@ void k_Key_LED_MCP23018::press()
 //    Keyboard.press(KEY_L);
 }
 
-void k_Key_LED_MCP23018::release()
+void c_LED_MCP23018::off()
 {
     Wire.beginTransmission(port.ADDR);
     Wire.write(GPIO);
