@@ -1,12 +1,12 @@
-#include "c_RowPort_MCP23018.h"
+#include "c_RowPort_PCA9655E.h"
 #include "c_Matrix.h"                           //included in implementation because circular
 
-void c_RowPort_MCP23018::begin()
+void c_RowPort_PCA9655E::begin()
 {
     Wire.begin();
     
     Wire.beginTransmission(port.ADDR);
-    Wire.write(IODIR);
+    Wire.write(configuration);
     Wire.write(0);                              //0=configure as output (for strobe PINS and LED)
     Wire.endTransmission();
 }
@@ -15,11 +15,11 @@ void c_RowPort_MCP23018::begin()
 activeLowPin is one pin per bit, where active pin is 1.
 Strobe is turned off after matrix reads the columns.
 */
-void c_RowPort_MCP23018::scanRow(const uint8_t activeLowPin, c_Matrix *const matrix)
+void c_RowPort_PCA9655E::scanRow(const uint8_t activeLowPin, c_Matrix *const matrix)
 {
     //strobe on
     Wire.beginTransmission(port.ADDR);
-    Wire.write(GPIO);
+    Wire.write(output);
     Wire.write(port.outputVal &= ~activeLowPin); //strobe on: set strobe pin output to low
     Wire.endTransmission();
 
@@ -27,7 +27,7 @@ void c_RowPort_MCP23018::scanRow(const uint8_t activeLowPin, c_Matrix *const mat
 
     //strobe off
     Wire.beginTransmission(port.ADDR);
-    Wire.write(GPIO);
+    Wire.write(output);
     Wire.write(port.outputVal |= activeLowPin); //strobe off: set strobe pin output to high
     Wire.endTransmission();
 }

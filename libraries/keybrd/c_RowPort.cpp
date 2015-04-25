@@ -1,8 +1,9 @@
 #include "c_RowPort.h"
 #include "c_Matrix.h"                           //included in implementation because circular
 
-//for each pin connected to row,
-// read columns and send the resulting rowState to c_Row_Ex for further processing
+/* for each pin connected to row,
+read columns and send the resulting rowState to c_Row_Ex for further processing
+*/
 void c_RowPort::scan(c_Matrix *const matrix)
 {
     uint8_t pin;                                //active low for row being scanned, one bit per pin

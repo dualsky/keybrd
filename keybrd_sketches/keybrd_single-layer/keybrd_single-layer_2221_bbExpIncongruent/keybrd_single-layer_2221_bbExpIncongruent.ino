@@ -77,7 +77,7 @@ c_UCColPorts cols(colPorts, 1);
 c_Row_Ex* const ptrsRow_L[] = { &row_L0, &row_L1 };
 const uint8_t ROWS_L_COUNT = sizeof(ptrsRow_L)/sizeof(ptrsRow_L[0]);
 
-//the c_Matrix_Exp arguments are for the PCA9655E I/O Expander
+//the c_Matrix_Exp arguments are for the MCP23018 I/O Expander
 c_Matrix_Exp matrix_L(ptrsRow_L, ROWS_L_COUNT, 0x20, 0x13, 0x0D, 0x12, 0x00);
 
 //matrix_R

@@ -4,7 +4,7 @@
 #include <inttypes.h>
 #include "c_LED.h"
 
-/* Class c_LED_AVR turns LED on PORT pin on and off
+/* Class c_LED_AVR turns LED attached to AVR PORT pin on and off
    DDRx Data Direction Register is configured as output in c_RowPort_AVR::begin()
    LED tutorial https://www.pjrc.com/teensy/tutorial2.html
 */

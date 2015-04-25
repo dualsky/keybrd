@@ -6,12 +6,13 @@
 #include "c_IOExpanderPort.h"
 #include "c_LED.h"
 
-/* Class c_LED_MCP23018 turns LED on PORT pin on and off
-MCP23018 ouput is open drain
- The output acts like a switch to ground.  It cannot produce a high (+5V) signal by itself.
- connect LED (-) ground to the output pin, and connect LED (+) to power pin,
- with resistor in series.
-IODIRx Input/Ouput Direction register is configured as ouput in c_RowPort_MCP23018::begin()
+/* Class c_LED_MCP23018 turns LED attached to MCP23018 I/O expander PORT pin on and off
+   IODIRx Input/Ouput Direction register is configured as ouput in c_RowPort_MCP23018::begin()
+
+   MCP23018 ouput is open drain
+   The output acts like a switch to ground.  It cannot produce a high (+5V) signal by itself.
+   connect LED (-) ground to the output pin, and connect LED (+) to power pin,
+   with resistor in series.
 */
 class c_LED_MCP23018: public c_LED
 {
