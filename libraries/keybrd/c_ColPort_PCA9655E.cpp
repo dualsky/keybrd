@@ -6,11 +6,12 @@ void c_ColPort_PCA9655E::begin()
     Wire.write(configuration);
     Wire.write(PINS);       //0=configure as output (for LED), 1=configure as input (for read)
     Wire.endTransmission();
-
+/* this broke bot row
     Wire.beginTransmission(port.ADDR);
     Wire.write(input+2);                        //output
     Wire.write(port.outputVal &= PINS);         //set LED pins low
-    Wire.endTransmission();    
+    Wire.endTransmission();
+*/ 
 }
 
 /* Read port and store it in portState quickly so that strobe is on for shortest possible time.
