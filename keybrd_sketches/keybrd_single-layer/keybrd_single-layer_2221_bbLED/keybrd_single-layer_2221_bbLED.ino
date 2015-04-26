@@ -36,10 +36,10 @@ c_IOExpanderPort port0_L(0x20);
 c_IOExpanderPort port1_L(0x20);
 
 // ------------ LEFT LED KEYS -------------
-c_LED_PCA9655E capsLck_LED(port0_L, 2, 1<<7);
+c_LED_PCA9655E capsLck_LED(port0_L, 2, 1<<7);   //blue top row port
 k_Key_Lck_LED k_capsLck(capsLck_LED);
 
-c_LED_PCA9655E  numLck_LED(port1_L, 3, 1<<2);
+c_LED_PCA9655E  numLck_LED(port1_L, 3, 1<<2);   //green bot col port
 k_Key_Lck_LED  k_numLck(numLck_LED);
 
 // ----------- LEFT ROWS OF KEYS ------------
@@ -61,7 +61,6 @@ c_RowPort_PCA9655E rowPort0_L(port0_L, 0, 1<<0 | 1<<1 );
 // col: 0   1
 // pin: A0  A1
 
-//c_ColPort_PCA9655E colPort1_L(port1_L, 7, 1, 1<<0 | 1<<1 );
 c_ColPort_PCA9655E colPort1_L(port1_L, 1, 1<<0 | 1<<1 );
 
 // ------------- LEFT MATRIX --------------
