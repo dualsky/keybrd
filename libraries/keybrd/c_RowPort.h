@@ -12,7 +12,7 @@ Port is read from pin 0 up.
 */
 class c_RowPort
 { 
-    private:
+    protected:
         const uint8_t PINS;                     //row pins to scan i.e. pins connected to rows
 
     public:

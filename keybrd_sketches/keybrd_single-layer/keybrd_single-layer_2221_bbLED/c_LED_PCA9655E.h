@@ -7,7 +7,7 @@
 #include "c_LED.h"
 
 /* Class c_LED_PCA9655E turns LED attached to PCA9655E I/O expander PORT pin on and off
-   IODIRx Input/Ouput Direction register is configured as ouput in c_RowPort_PCA9655E::begin()
+   Input/Ouput Direction configuration is to to ouput in c_RowPort_PCA9655E::begin()
 */
 class c_LED_PCA9655E: public c_LED
 {

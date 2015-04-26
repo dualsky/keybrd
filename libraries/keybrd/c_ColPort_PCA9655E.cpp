@@ -7,10 +7,10 @@ void c_ColPort_PCA9655E::begin()
     Wire.write(PINS);       //0=configure as output (for LED), 1=configure as input (for read)
     Wire.endTransmission();
 
-    /*Wire.beginTransmission(port.ADDR);
-    Wire.write(GPPU);
-    Wire.write(PINS);       //0=pull-up disabled (for LED), 1=pull-up enabled (for read)
-    Wire.endTransmission();*/
+    Wire.beginTransmission(port.ADDR);
+    Wire.write(input+2);                        //output
+    Wire.write(port.outputVal &= PINS);         //set LED pins low
+    Wire.endTransmission();    
 }
 
 /* Read port and store it in portState quickly so that strobe is on for shortest possible time.

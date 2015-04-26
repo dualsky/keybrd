@@ -9,6 +9,11 @@ void c_RowPort_PCA9655E::begin()
     Wire.write(configuration);
     Wire.write(0);                              //0=configure as output (for strobe PINS and LED)
     Wire.endTransmission();
+
+    Wire.beginTransmission(port.ADDR);
+    Wire.write(output);
+    Wire.write(port.outputVal &= PINS);           //set LED pins low
+    Wire.endTransmission();    
 }
 
 /* scanRow strobes row using active low.
@@ -29,6 +34,6 @@ void c_RowPort_PCA9655E::scanRow(const uint8_t activeLowPin, c_Matrix *const mat
     Wire.beginTransmission(port.ADDR);
     Wire.write(output);
     Wire.write(port.outputVal |= activeLowPin); //strobe off: set strobe pin output to high
-    //Wire.write(port.outputVal |= ~0); //strobe off: set strobe pin output to high
+    //Wire.write(port.outputVal |= PINS); //this did not work, exp bot row keys unresposive
     Wire.endTransmission();
 }
