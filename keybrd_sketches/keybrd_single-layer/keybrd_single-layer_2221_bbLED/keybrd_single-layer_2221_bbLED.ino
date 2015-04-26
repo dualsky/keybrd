@@ -67,7 +67,7 @@ c_ColPort_PCA9655E colPort1_L(port1_L, 1, 1<<0 | 1<<1 );
 c_Row_Ex* const ptrsRows_L[] = { &row_L0, &row_L1 };
 c_RowPort* ptrsRowPorts_L[] = { &rowPort0_L };
 c_ColPort* ptrsColPorts_L[] = { &colPort1_L };
-c_Matrix matrix_L(ptrsRows_L, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
+c_Matrix matrix_L(ptrsRows_L, 2, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
 
 // =============== RIGHT ====================
 // ------------ RIGHT LED KEYS -------------
@@ -99,7 +99,7 @@ c_ColPort_AVR colPortB_R(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 c_Row_Ex* const ptrsRows_R[] = { &row_R0, &row_R1 };
 c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
 c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
-c_Matrix matrix_R(ptrsRows_R, ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
+c_Matrix matrix_R(ptrsRows_R, 2, ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
 
 // ============== KEYBOARD =============
 c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };

@@ -14,7 +14,6 @@ class c_ColPort_PCA9655E : public c_ColPort
     private:
         c_IOExpanderPort& port;
         const uint8_t configuration;            //Input/Ouput Direction register
-        const uint8_t output;                   //output byte command
         const uint8_t input;                    //input byte command
     public:
         //The constructor initialization list configures column port's configuration, input, and PINS.
@@ -24,7 +23,7 @@ class c_ColPort_PCA9655E : public c_ColPort
         //example instantiation for port 1 columns:
         //      c_ColPort_PCA9655E colPort1_L(port1_L, 1, 1<<0 | 1<<1 );
         c_ColPort_PCA9655E(c_IOExpanderPort& ep, const uint8_t portNum, const uint8_t PINS):
-            port(ep), configuration(portNum + 6), output(portNum + 2), input(portNum),
+            port(ep), configuration(portNum + 6), input(portNum),
             c_ColPort(PINS) {}
 
         void begin();

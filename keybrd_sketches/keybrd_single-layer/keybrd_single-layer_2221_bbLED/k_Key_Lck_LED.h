@@ -17,8 +17,8 @@ class k_Key_Lck_LED: public c_Key
     public:
         k_Key_Lck_LED(c_LED& l): led(l) {}
 
+        void begin();
         void press();
-
         void release();
 };
 #endif

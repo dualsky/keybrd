@@ -3,15 +3,22 @@
 
 void c_Matrix::begin()
 {
-    for (uint8_t i=0; i < ROW_PORT_COUNT; i++)  //for each row port
+    uint8_t i;
+
+    for (i = 0; i < ROW_PORT_COUNT; i++)        //for each row port
     {
         ptrsRowPorts[i]->begin();               //configure row port
     }
 
-    for (uint8_t i=0; i < COL_PORT_COUNT; i++)  //for each col port
+    for (i = 0; i < COL_PORT_COUNT; i++)        //for each col port
     {
         ptrsColPorts[i]->begin();               //configure col port
     }
+
+    for (i = 0; i < ROWS_COUNT; i++)            //for each row
+        {
+            ptrsRows[i]->begin();               //initialize LEDs
+        }
 }
 
 //scan every row port

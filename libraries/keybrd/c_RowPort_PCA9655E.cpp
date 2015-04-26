@@ -9,11 +9,6 @@ void c_RowPort_PCA9655E::begin()
     Wire.write(configuration);
     Wire.write(0);                              //0=configure as output (for strobe PINS and LED)
     Wire.endTransmission();
-
-    Wire.beginTransmission(port.ADDR);
-    Wire.write(output);
-    Wire.write(port.outputVal = PINS);          //set LED pins low, remaining pins strobe off
-    Wire.endTransmission();
 }
 
 /* scanRow strobes row using active low.
