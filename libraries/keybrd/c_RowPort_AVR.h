@@ -17,8 +17,8 @@ class c_RowPort_AVR : public c_RowPort
         //The constructor initialization list configures column's DDRx and PORTx to output strobe.
         //example instantiation: c_RowPort_AVR portFRows(DDRF, PORTF, 1<<1 );
         c_RowPort_AVR(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
-                const uint8_t PINS):
-            DDR(DDRx |= PINS), PORT(PORTx), c_RowPort(PINS) {}
+                const uint8_t pins):
+            DDR(DDRx |= pins), PORT(PORTx), c_RowPort(pins) {}
 
         virtual void scanRow(const uint8_t activeLowPin, c_Matrix *const matrix);
 };

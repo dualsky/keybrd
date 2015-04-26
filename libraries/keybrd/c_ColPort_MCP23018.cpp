@@ -4,12 +4,12 @@ void c_ColPort_MCP23018::begin()
 {
     Wire.beginTransmission(port.ADDR);
     Wire.write(IODIR);
-    Wire.write(PINS);       //0=configure as output (for LED), 1=configure as input (for read)
+    Wire.write(pins);       //0=configure as output (for LED), 1=configure as input (for read)
     Wire.endTransmission();
 
     Wire.beginTransmission(port.ADDR);
     Wire.write(GPPU);
-    Wire.write(PINS);       //0=pull-up disabled (for LED), 1=pull-up enabled (for read)
+    Wire.write(pins);       //0=pull-up disabled (for LED), 1=pull-up enabled (for read)
     Wire.endTransmission();
 }
 

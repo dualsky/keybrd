@@ -2,7 +2,7 @@
 
 /* concatenate RowState to portState
 read-pin values from portState and set them in rowState.
-read-pins are identifed by "1" bit in the PINS varialbe, skip the "0" bits.
+read-pins are identifed by "1" bit in the pins varialbe, skip the "0" bits.
 portState stores all pins values of port.
 Some pins may not be connected to a column.
 rowState stores only column values so that
@@ -19,7 +19,7 @@ void c_ColPort::rowStateCat(uint8_t& rowState, uint8_t& colBit)
     //for each pin of port
     for ( pin = 1; pin > 0; pin <<= 1)          //shift pin until overflow
     {
-        if (pin & PINS)                         //if pin is connected to column
+        if (pin & pins)                         //if pin is connected to column
         {
             if (pin & ~portState)               //if pin's key is pressed
             {

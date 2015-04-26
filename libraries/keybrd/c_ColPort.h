@@ -9,10 +9,10 @@
 class c_ColPort
 {
     protected:
-        const uint8_t PINS;                     //col pins to read i.e. pins connected to columns
+        const uint8_t pins;                     //col pins to read i.e. pins connected to columns
         uint8_t portState;                      //state of port pins on most recent reading
     public:
-        c_ColPort(const uint8_t p): PINS(p), portState(0) {}
+        c_ColPort(const uint8_t p): pins(p), portState(0) {}
 
         virtual void begin() {} //derived classes for I/O expanders override the begin() function
 

@@ -158,13 +158,14 @@ The keybrd libraries compile on the Arduino IDE and make extensive use of the fo
 
 * **itemCount** is a variable number of items.
 * **ITEM_COUNT** is a constant number of items.
+* **itemNum** is index number for items.
 
 ## Style Guide
 Following the style guide makes it easier for the next programmer to understand your code.
 * For class names, see above section "Class naming conventions"
 * For function names, use camelCase starting with lowercase letter.
-* For constant names, use ALL_CAPS_AND_UNDERSCORE.
 * Use constants rather than macros, except for header guards.
+* For constant names that could be macros, use ALL_CAPS_AND_UNDERSCORE.
 * Use header guards CLASS_NAME_H.
 * Prefix pointer name with "ptr" e.g. ptrRow =  &row
 * Name arrays using the plural of elements e.g. c_Row* const = ptrsRows { &row0,  &row1 };

@@ -13,10 +13,10 @@ Port is read from pin 0 up.
 class c_RowPort
 { 
     protected:
-        const uint8_t PINS;                     //row pins to scan i.e. pins connected to rows
+        const uint8_t pins;                     //row pins to scan i.e. pins connected to rows
 
     public:
-        c_RowPort(const uint8_t p): PINS(p) {}
+        c_RowPort(const uint8_t p): pins(p) {}
 
         virtual void begin() {} //derived classes for I/O expanders override the begin() function
 

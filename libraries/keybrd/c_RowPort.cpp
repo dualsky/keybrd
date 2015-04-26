@@ -12,7 +12,7 @@ void c_RowPort::scan(c_Matrix *const matrix)
     //for each pin of row port
     for (pin = 1; pin > 0; pin <<= 1)           //shift pin until overflow
     {
-        if (pin & PINS)                         //if pin is connected to row
+        if (pin & pins)                         //if pin is connected to row
         {
             scanRow(pin, matrix);
             matrix->processRow();

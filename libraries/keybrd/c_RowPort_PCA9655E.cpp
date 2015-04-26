@@ -7,7 +7,7 @@ void c_RowPort_PCA9655E::begin()
     
     Wire.beginTransmission(port.ADDR);
     Wire.write(configuration);
-    Wire.write(0);                              //0=configure as output (for strobe PINS and LED)
+    Wire.write(0);                              //0=configure as output (for strobe pins and LED)
     Wire.endTransmission();
 }
 
@@ -29,6 +29,6 @@ void c_RowPort_PCA9655E::scanRow(const uint8_t activeLowPin, c_Matrix *const mat
     Wire.beginTransmission(port.ADDR);
     Wire.write(output);
     //Wire.write(port.outputVal |= activeLowPin); //strobe off: set strobe pin output to high
-    Wire.write(port.outputVal |= PINS);         //strobe off: todo which strobe off is better?
+    Wire.write(port.outputVal |= pins);         //strobe off: todo which strobe off is better?
     Wire.endTransmission();
 }
