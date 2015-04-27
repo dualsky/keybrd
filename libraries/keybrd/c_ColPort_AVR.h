@@ -16,10 +16,11 @@ class c_ColPort_AVR : public c_ColPort
     public:
         //The constructor initialization list configures column's DDRx and PORTx to read Input.
         //parameter pins is bitwise, where 1 means read the pin, 0 means don't read.
+        //DDRx 1=configure as output (for LED), 0=configure as input (for read)
         //example instantiation: c_ColPort_AVR portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
         c_ColPort_AVR(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
                 volatile unsigned char& PINx, const uint8_t pins):
-            DDR(DDRx &= ~pins), PORT(PORTx |= pins), PIN(PINx), c_ColPort(pins) {}
+            DDR(DDRx = ~pins), PORT(PORTx = pins), PIN(PINx), c_ColPort(pins) {}
 
         //read port and store it in portState
         virtual void read();

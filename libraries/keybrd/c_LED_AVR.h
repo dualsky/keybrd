@@ -5,8 +5,8 @@
 #include "c_LED.h"
 
 /* Class c_LED_AVR turns LED attached to AVR PORT pin on and off
-   DDRx Data Direction Register is configured as output in c_RowPort_AVR::begin()
-   LED tutorial https://www.pjrc.com/teensy/tutorial2.html
+DDRx Data Direction Register is configured as output in c_RowPort_AVR::begin()
+LED tutorial https://www.pjrc.com/teensy/tutorial2.html
 */
 class c_LED_AVR: public c_LED
 {
