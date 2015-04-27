@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include <inttypes.h>
 
-#define SAMPLE_COUNT 4                          //should match #define SAMPLE_COUNT in c_Row_Ex.h
+#define SAMPLE_COUNT 4                          //should match #define SAMPLE_COUNT in c_Row.h
 
 /* c_RowWait waits for a row of switches to debounce.
  * Default values result in reliable scans.  True values result in reliable and faster scans.

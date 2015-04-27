@@ -4,7 +4,6 @@
 #include <inttypes.h>
 #include "Wire.h"
 #include "c_RowPort.h"
-#include "c_Row_Ex.h"
 #include "c_IOExpanderPort.h"
 
 class c_Matrix;

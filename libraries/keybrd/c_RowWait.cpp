@@ -28,7 +28,7 @@ void c_RowWait::delay()
  *
  * SAMPLE_COUNT value:
  * SAMPLE_COUNT is the number of consecutive equal samples needed to debounce.
- * It is a macro because it is used to define array size of samples[SAMPLE_COUNT] in c_Row_Ex.
+ * It is a macro because it is used to define array size of samples[SAMPLE_COUNT] in c_Row.
  * SAMPLE_COUNT should be at lease 2.
  * Multiple samples are for error correction on I2C I/O expander and shorten response time.
  * On keyboards without I/O expander, multiple samples only shorten response time.

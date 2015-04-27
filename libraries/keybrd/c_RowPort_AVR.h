@@ -3,7 +3,6 @@
 #include <Arduino.h>
 #include <inttypes.h>
 #include "c_RowPort.h"
-#include "c_Row_Ex.h"
 
 class c_Matrix;
 

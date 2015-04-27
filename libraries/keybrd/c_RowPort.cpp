@@ -2,7 +2,7 @@
 #include "c_Matrix.h"                           //included in implementation because circular
 
 /* For each pin connected to row,
-read columns and send the resulting rowState to c_Row_Ex for further processing
+read columns and send the resulting rowState to c_Row for further processing
 
 Port is scanned from pin 0 up becuase by convention,
  arrays in the keybrd sketch are intended to be scanned from index 0 up.

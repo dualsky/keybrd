@@ -1,5 +1,5 @@
-#include "c_Row_Ex.h"
-void c_Row_Ex::begin()
+#include "c_Row.h"
+void c_Row::begin()
 {
     for (uint8_t col = 0; col < COLS_COUNT; col++) //for each key in row
         {
@@ -27,7 +27,7 @@ void c_Row_Ex::begin()
  * this function could be written as 3 seperate functions,
  *  using pass by reference for the 2 variables between each function
  */
-void c_Row_Ex::pressRelease(const uint8_t rowState)
+void c_Row::pressRelease(const uint8_t rowState)
 {
     /* DEBOUNCE
      * takes rowState and computes newDebounced

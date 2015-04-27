@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include <inttypes.h>
 #include "c_ColPort.h"
-#include "c_Row_Ex.h"
+#include "c_Row.h"
 
 /* class c_Matrix
 Each Matrix is connected to a Micro controller or I/O expander, which scans the matrix.
@@ -28,12 +28,12 @@ class c_Matrix
         const uint8_t COL_PORT_COUNT;
 
        // todo change to parent type c_Row
-        c_Row_Ex *const *const ptrsRows;        //array of row pointers
+        c_Row *const *const ptrsRows;        //array of row pointers
         const uint8_t ROWS_COUNT;
         uint8_t rowNum;                         //index for ptrsRows[] array
 
     public:
-        c_Matrix(c_Row_Ex *const r[],const uint8_t rc,//todo: move c_Row_Ex to end of param list
+        c_Matrix(c_Row *const r[],const uint8_t rc,//todo: move c_Row to end of param list
                  c_RowPort *const rp[], const uint8_t rpc,
                  c_ColPort *const cp[], const uint8_t cpc):
                  ptrsRows(r), ROWS_COUNT(rc),

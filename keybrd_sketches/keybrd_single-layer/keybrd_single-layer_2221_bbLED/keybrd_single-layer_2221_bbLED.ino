@@ -9,7 +9,7 @@
 
 //keybrd library files
 #include <objects_key.h>
-#include <c_Row_Ex.h>
+#include <c_Row.h>
 #include <c_RowWait.h>
 #include <c_RowPort_AVR.h>
 #include <c_ColPort_AVR.h>
@@ -28,7 +28,7 @@
 
 // =============== CONFIG =====================
 c_RowWait rowWait(4, 10);
-c_RowWait& c_Row_Ex::refRowWait = rowWait;      //static variables todo: why not in keybrd?
+c_RowWait& c_Row::refRowWait = rowWait;      //static variables todo: why not in keybrd?
 
 // =============== LEFT =====================
 // -------- LEFT IO/EXPANDER PORTS ---------
@@ -45,11 +45,11 @@ k_Key_Lck_LED  k_numLck(numLck_LED);
 // ----------- LEFT ROWS OF KEYS ------------
 //row0
 c_Key* const ptrsKey_L0[] = {     &k_capsLck,   &k_2      };
-c_Row_Ex row_L0(ptrsKey_L0, 2);
+c_Row row_L0(ptrsKey_L0, 2);
 
 //row1
 c_Key* const ptrsKey_L1[] = {     &k_numLck,    &k_b      };
-c_Row_Ex row_L1(ptrsKey_L1, 2);
+c_Row row_L1(ptrsKey_L1, 2);
 
 // --------------- LEFT ROW PORTS -------------
 // row: 0   1
@@ -64,7 +64,7 @@ c_RowPort_PCA9655E rowPort0_L(port0_L, 1<<0 | 1<<1 );
 c_ColPort_PCA9655E colPort1_L(port1_L, 1<<0 | 1<<1 );
 
 // ------------- LEFT MATRIX --------------
-c_Row_Ex* const ptrsRows_L[] = { &row_L0, &row_L1 };
+c_Row* const ptrsRows_L[] = { &row_L0, &row_L1 };
 c_RowPort* ptrsRowPorts_L[] = { &rowPort0_L };
 c_ColPort* ptrsColPorts_L[] = { &colPort1_L };
 c_Matrix matrix_L(ptrsRows_L, 2, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
@@ -77,11 +77,11 @@ k_Key_Lck_LED k_scrollLck(scrollLck_LED);
 // ----------- RIGHT ROWS OF KEYS ------------
 //row0
 c_Key* const ptrsKey_R0[] = {     &k_scrollLck,   &k_4       };
-c_Row_Ex row_R0(ptrsKey_R0, 2);
+c_Row row_R0(ptrsKey_R0, 2);
 
 //row1
 c_Key* const ptrsKey_R1[] = {     &k_c,           &k_d       };
-c_Row_Ex row_R1(ptrsKey_R1, 2);
+c_Row row_R1(ptrsKey_R1, 2);
 
 // --------------- RIGHT ROW PORTS -------------
 // row: 0   1
@@ -96,7 +96,7 @@ c_RowPort_AVR rowPortF_R(DDRF, PORTF, 1<<0 | 1<<1 );
 c_ColPort_AVR colPortB_R(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 
 // ------------- RIGHT MATRIX --------------
-c_Row_Ex* const ptrsRows_R[] = { &row_R0, &row_R1 };
+c_Row* const ptrsRows_R[] = { &row_R0, &row_R1 };
 c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
 c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
 c_Matrix matrix_R(ptrsRows_R, 2, ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
