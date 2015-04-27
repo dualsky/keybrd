@@ -32,14 +32,14 @@ c_RowWait& c_Row_Ex::refRowWait = rowWait;      //static variables todo: why not
 
 // =============== LEFT =====================
 // -------- LEFT IO/EXPANDER PORTS ---------
-c_IOExpanderPort port0_L(0x20);
-c_IOExpanderPort port1_L(0x20);
+c_IOExpanderPort port0_L(0x20, 0);
+c_IOExpanderPort port1_L(0x20, 1);
 
 // ------------ LEFT LED KEYS -------------
-c_LED_PCA9655E capsLck_LED(port0_L, 2, 1<<7);   //blue top row port
+c_LED_PCA9655E capsLck_LED(port0_L, 1<<7);   //blue top row port
 k_Key_Lck_LED k_capsLck(capsLck_LED);
 
-c_LED_PCA9655E  numLck_LED(port1_L, 3, 1<<2);   //green bot col port
+c_LED_PCA9655E  numLck_LED(port1_L, 1<<2);   //green bot col port
 k_Key_Lck_LED  k_numLck(numLck_LED);
 
 // ----------- LEFT ROWS OF KEYS ------------
@@ -55,13 +55,13 @@ c_Row_Ex row_L1(ptrsKey_L1, 2);
 // row: 0   1
 // pin: B0  B1
 
-c_RowPort_PCA9655E rowPort0_L(port0_L, 0, 1<<0 | 1<<1 );
+c_RowPort_PCA9655E rowPort0_L(port0_L, 1<<0 | 1<<1 );
 
 // --------------- LEFT COL PORTS -------------
 // col: 0   1
 // pin: A0  A1
 
-c_ColPort_PCA9655E colPort1_L(port1_L, 1, 1<<0 | 1<<1 );
+c_ColPort_PCA9655E colPort1_L(port1_L, 1<<0 | 1<<1 );
 
 // ------------- LEFT MATRIX --------------
 c_Row_Ex* const ptrsRows_L[] = { &row_L0, &row_L1 };

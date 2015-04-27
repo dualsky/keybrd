@@ -13,12 +13,12 @@ class c_LED_PCA9655E: public c_LED
 {
     private:
         c_IOExpanderPort& port;
-        const uint8_t output;                     //General Purpose Input/Ouput register address
+        const uint8_t output;                   //General Purpose Input/Ouput register address
         const uint8_t pin;                      //bitwise pin to LED
 
     public:
-        c_LED_PCA9655E(c_IOExpanderPort& ep, const uint8_t output, const uint8_t p):
-                port(ep), output(output), pin(p) {}
+        c_LED_PCA9655E(c_IOExpanderPort& port, const uint8_t p):
+                port(port), output(port.num + 2), pin(p) {}
 
         virtual void on();
 

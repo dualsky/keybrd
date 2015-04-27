@@ -8,9 +8,10 @@ For any one I/O expander port, one outputVal is shared by c_RowPort, c_ColPort, 
 */
 struct c_IOExpanderPort
 {
-    const uint8_t ADDR;                         //I2C address
-    uint8_t outputVal;                          //value of output register
+    const uint8_t ADDR;                     //I2C address
+    const uint8_t num;                      //port number (use 0 instead of A, use 1 instead of B)
+    uint8_t outputVal;                      //value of output register
 
-    c_IOExpanderPort(const uint8_t a): ADDR(a), outputVal(~0) {}
+    c_IOExpanderPort(const uint8_t a, const uint8_t n): ADDR(a), num(n), outputVal(~0) {}
 };
 #endif
