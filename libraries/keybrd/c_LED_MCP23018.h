@@ -22,8 +22,8 @@ class c_LED_MCP23018: public c_LED
         const uint8_t pin;                      //bitwise pin to LED
 
     public:
-        c_LED_MCP23018(c_IOExpanderPort& ep, const uint8_t GPIO, const uint8_t p):
-                port(ep), GPIO(GPIO), pin(p) {}
+        c_LED_MCP23018(c_IOExpanderPort& port, const uint8_t p):
+                port(port), GPIO(port.num + 0x12), pin(p) {}
 
         virtual void on();
 

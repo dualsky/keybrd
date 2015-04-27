@@ -1,6 +1,7 @@
 /* keybrd_single-layer_2221_bb.ino, 4-key layout:
         LED     2       LED     4
         LED     b       c       d
+with Teensy 2.0 and MCP23018 I/O expander
 */
 // ========== INCLUDES ==========
 //Arduino library files
@@ -13,8 +14,8 @@
 #include <c_RowWait.h>
 #include <c_RowPort_AVR.h>
 #include <c_ColPort_AVR.h>
-#include <c_RowPort_PCA9655E.h>
-#include <c_ColPort_PCA9655E.h>
+#include <c_RowPort_MCP23018.h>
+#include <c_ColPort_MCP23018.h>
 #include <c_Matrix.h>
 #include <c_Keybrd.h>
 
@@ -23,7 +24,7 @@
 
 #include "c_IOExpanderPort.h"
 #include "c_LED_AVR.h"
-#include "c_LED_PCA9655E.h"
+#include "c_LED_MCP23018.h"
 #include "k_Key_Lck_LED.h"
 
 // =============== CONFIG =====================
@@ -32,14 +33,14 @@ c_RowWait& c_Row::refRowWait = rowWait;      //static variables todo: why not in
 
 // =============== LEFT =====================
 // -------- LEFT IO/EXPANDER PORTS ---------
-c_IOExpanderPort port0_L(0x20, 0);
-c_IOExpanderPort port1_L(0x20, 1);
+c_IOExpanderPort portA_L(0x20, 0);
+c_IOExpanderPort portB_L(0x20, 1);
 
 // ------------ LEFT LED KEYS -------------
-c_LED_PCA9655E capsLck_LED(port0_L, 1<<7);   //blue top row port
+c_LED_MCP23018 capsLck_LED(portA_L, 1<<7);
 k_Key_Lck_LED k_capsLck(capsLck_LED);
 
-c_LED_PCA9655E  numLck_LED(port1_L, 1<<2);   //green bot col port
+c_LED_MCP23018  numLck_LED(portB_L, 1<<2);
 k_Key_Lck_LED  k_numLck(numLck_LED);
 
 // ----------- LEFT ROWS OF KEYS ------------
@@ -55,24 +56,26 @@ c_Row row_L1(ptrsKey_L1, 2);
 // row: 0   1
 // pin: B0  B1
 
-c_RowPort_PCA9655E rowPort0_L(port0_L, 1<<0 | 1<<1 );
+c_RowPort_MCP23018 rowPortB_L(portB_L, 1<<0 | 1<<1 );
 
 // --------------- LEFT COL PORTS -------------
 // col: 0   1
 // pin: A0  A1
 
-c_ColPort_PCA9655E colPort1_L(port1_L, 1<<0 | 1<<1 );
+c_ColPort_MCP23018 colPortA_L(portA_L, 1<<0 | 1<<1 );
 
 // ------------- LEFT MATRIX --------------
 c_Row* const ptrsRows_L[] = { &row_L0, &row_L1 };
-c_RowPort* ptrsRowPorts_L[] = { &rowPort0_L };
-c_ColPort* ptrsColPorts_L[] = { &colPort1_L };
+c_RowPort* ptrsRowPorts_L[] = { &rowPortB_L };
+c_ColPort* ptrsColPorts_L[] = { &colPortA_L };
 c_Matrix matrix_L(ptrsRows_L, 2, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
 
 // =============== RIGHT ====================
 // ------------ RIGHT LED KEYS -------------
 c_LED_AVR scrollLck_LED(PORTB, 1<<3);
 k_Key_Lck_LED k_scrollLck(scrollLck_LED);
+
+//k_Key_LED_AVR k_LED_B3_R(PORTB, 1<<3);
 
 // ----------- RIGHT ROWS OF KEYS ------------
 //row0
