@@ -1,8 +1,11 @@
 #include "c_RowPort.h"
 #include "c_Matrix.h"                           //included in implementation because circular
 
-/* for each pin connected to row,
+/* For each pin connected to row,
 read columns and send the resulting rowState to c_Row_Ex for further processing
+
+Port is scanned from pin 0 up becuase by convention,
+ arrays in the keybrd sketch are intended to be scanned from index 0 up.
 */
 void c_RowPort::scan(c_Matrix *const matrix)
 {

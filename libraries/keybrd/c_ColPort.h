@@ -3,9 +3,11 @@
 #include <Arduino.h>
 #include <inttypes.h>
 
-/* One IC port with some pins connected to matrix columns.
- * Port is read from pin 0 up.
- */
+/* class c_ColPort is an abstract base class.
+c_ColPort is part of one IC port.
+c_ColPort is all the pins of one port that are connected to matrix cols.
+c_ColPort is the parent, it has the pins; the port itself is with the children.
+*/
 class c_ColPort
 {
     protected:

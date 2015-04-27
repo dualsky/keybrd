@@ -7,8 +7,9 @@
 class c_Matrix;
 
 /* class c_RowPort is an abstract base class.
-One IC port with some pins connected to matrix rows.
-Port is read from pin 0 up.
+c_RowPort is part of one IC port.
+c_RowPort is all the pins of one port that are connected to matrix rows.
+c_RowPort is the parent, it has the pins; the port itself is with the children.
 */
 class c_RowPort
 { 
