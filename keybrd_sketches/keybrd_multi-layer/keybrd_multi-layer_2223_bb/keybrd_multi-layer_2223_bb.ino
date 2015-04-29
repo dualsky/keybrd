@@ -1,8 +1,8 @@
 /* keybrd_multi-layer_2223_bb.ino layout:
       Left Matrix             Rigth Matrix
       -----------------       -----------------
-      a ! 6       b @ 7       c # 8       d $ 9
-      alpha       sym         fn          capsLck
+      capsLck_L   b @ 7       c # 8       d $ 9
+      alpha       sym         fn          capsLck_R
 */
 // ========== INCLUDES =========
 //Arduino library files
@@ -44,13 +44,14 @@ c_IOExpanderPort portA_L(0x20, 0);
 c_IOExpanderPort portB_L(0x20, 1);
 
 // ------------ LEFT LED CODES -------------
-c_LED_MCP23018 numLck_LED(portB_L, 1<<2);
-l_Code_LckLED l_numLck(KEY_NUM_LOCK, numLck_LED); //todo put this in matrix
+c_LED_MCP23018 capsLck_LED_L(portB_L, 1<<2);
+l_Code_LckLED l_capsLck_L(KEY_CAPS_LOCK, capsLck_LED_L); //todo put this in matrix
 
 // ---------- LEFT KEYS -----------
 //row_L0                   {alpha        sym             fn    };
-l_Code * prtsCodes_L00[] = {&s_a,        &s_exclamation, &s_6  };
-l_Key_Layered k_L00(prtsCodes_L00);
+//l_Code * prtsCodes_L00[] = {&s_a,        &s_exclamation, &s_6  };
+//l_Key_Layered k_L00(prtsCodes_L00);
+l_Key_1 k_L00(&l_capsLck_L);
 
 l_Code * prtsCodes_L01[] = {&s_b,        &s_at,          &s_7  };
 l_Key_Layered k_L01(prtsCodes_L01);
@@ -91,8 +92,8 @@ c_Matrix matrix_L(ptrsRow_L, 2, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
 
 // =============== RIGHT ====================
 // ------------ RIGHT LED CODES -------------
-c_LED_AVR capsLck_LED(PORTB, 1<<3);
-l_Code_LckLED l_capsLck(KEY_CAPS_LOCK, capsLck_LED);
+c_LED_AVR capsLck_LED_R(PORTB, 1<<3);
+l_Code_LckLED l_capsLck_R(KEY_CAPS_LOCK, capsLck_LED_R);
 
 // ---------- RIGHT KEYS -----------
 //row_R0                   {alpha        sym             fn    };
@@ -103,7 +104,7 @@ l_Code * prtsCodes_R01[] = {&s_d,        &s_dollar,      &s_9  };
 l_Key_Layered k_R01(prtsCodes_R01);
 
 //row_R1
-l_Key_1 k_R10(&l_capsLck);
+l_Key_1 k_R10(&l_capsLck_R);
 l_Key_1 k_R11(&l_fn);
 
 // ---------- RIGHT ROWS ----------
