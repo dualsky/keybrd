@@ -1,6 +1,8 @@
 /* keybrd_single-layer_2221_bb.ino, 4-key layout:
-        LED     2       LED     4
-        LED     b       c       d
+      Left Matrix           Rigth Matrix
+      -----------           ------------
+      LED     2             LED     4
+      LED     b             c       d
 with Teensy 2.0 and PCA9655E I/O expander
 */
 // ========== INCLUDES ==========

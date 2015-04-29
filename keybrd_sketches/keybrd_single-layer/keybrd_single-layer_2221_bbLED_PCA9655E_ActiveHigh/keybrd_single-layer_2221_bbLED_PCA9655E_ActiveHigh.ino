@@ -1,6 +1,8 @@
-/* keybrd_single-layer_2221_bb.ino, 4-key layout:
-        LED     2       LED     4
-        LED     b       c       d
+/* keybrd_single-layer_2221_bbLED_PCA9655E_ActiveHigh.ino, 4-key layout:
+      Left Matrix       Rigth Matrix
+      -----------       ------------
+      LED     2         LED     4
+      LED     b         c       d
 with Teensy 2.0 and PCA9655E I/O expander
 */
 // ========== INCLUDES ==========
@@ -29,7 +31,7 @@ with Teensy 2.0 and PCA9655E I/O expander
 
 // =============== CONFIG =====================
 c_RowWait rowWait(4, 10);
-c_RowWait& c_Row::refRowWait = rowWait;      //static variables todo: why not in keybrd?
+c_RowWait& c_Row::refRowWait = rowWait;
 
 // =============== LEFT =====================
 // -------- LEFT IO/EXPANDER PORTS ---------
@@ -73,7 +75,7 @@ c_Matrix matrix_L(ptrsRows_L, 2, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
 // =============== RIGHT ====================
 // ------------ RIGHT LED KEYS -------------
 c_LED_AVR scrollLck_LED(PORTB, 1<<3);
-k_Key_Lck_LED k_scrollLck(scrollLck_LED);
+k_Key_Lck_LED k_scrollLck(scrollLck_LED);   //red
 
 // ----------- RIGHT ROWS OF KEYS ------------
 //row0

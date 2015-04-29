@@ -44,7 +44,7 @@ Classes inheritance diagrams:
  
 	c_Key                                           c_Key is an abstract base class
 
-	               c_LED
+	          ____ c_LED ______
 	         /       |         \
 	c_LED_AVR  c_LED_MCP23018  c_LED_PCA9655E
 
@@ -66,8 +66,8 @@ Classes inheritance diagrams:
 ``` 
 Association diagram:
 ``` 
-	                matrix[1]
-	       /            |           \
+	        _______ matrix[1] ______
+	       /           |            \
 	rowPorts[1..*]  colPorts[1..*]  rows[1..*]
 ``` 
 ### Keybrd Library Single-layer Classes
@@ -131,7 +131,7 @@ Association diagram:
 	rowPort[M..*] -- colPort[M..*] -- row[M..*] -- rowWait[1]
 	    \             /                |
 	    IOExpanderPort[0..*]          key[M..*] -- layerManager[1]
-	                 \                 |        __/
+	                 \                 |         _/
 	                  \               code[M..*] -- shiftManager[1]
 	                   \_____________  |
 	                                  LEDPort[0..*]
