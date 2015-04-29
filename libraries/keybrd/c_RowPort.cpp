@@ -4,7 +4,7 @@
 /* For each pin connected to row,
 read columns and send the resulting rowState to c_Row for further processing
 
-Port is scanned from pin 0 up becuase by convention,
+Port is scanned from pin 0 up becuase, by convention,
  arrays in the keybrd sketch are intended to be scanned from index 0 up.
 */
 void c_RowPort::scan(c_Matrix *const matrix)

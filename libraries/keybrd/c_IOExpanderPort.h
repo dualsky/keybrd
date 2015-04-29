@@ -2,9 +2,10 @@
 #define C_IOEXPANDERPORT_H
 #include <inttypes.h>
 
-/* c_IOExpanderPort contains outputVal, the value of a port's output register.
+/* An IC port can be split between RowPort, ColPort, and LED
+c_IOExpanderPort contains outputVal, the value of a port's output register.
 outputVal is used for port manipulation by classes c_RowPort, c_ColPort, and c_LED.
-For any one I/O expander port, one outputVal is shared by c_RowPort, c_ColPort, and c_LED.
+For any one I/O expander port, one outputVal can be shared by c_RowPort, c_ColPort, and c_LED.
 
 c_IOExpanderPort is only used by expander port classes.
 AVR port classes do not use c_IOExpanderPort because PORTx is global in the Arduino library.

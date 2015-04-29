@@ -35,10 +35,19 @@ For classes with multiple inheritance, name class as if it where a base class.
 ## Diagrams
 ### Keybrd Library Common Classes
 Classes inheritance diagrams:
-``` 
+```
 	c_keybrd
 
 	c_Matrix
+
+	c_Row
+ 
+	c_Key                                           c_Key is an abstract base class
+
+	               c_LED
+	         /       |         \
+	c_LED_AVR  c_LED_MCP23018  c_LED_PCA9655E
+
 	             c_PortRows
 	             /      \
 	c_PortRows_AVR  c_PortRows_MCP23018             one PortRows class for each type of IC
@@ -47,10 +56,9 @@ Classes inheritance diagrams:
 	             /      \
 	c_PortCols_AVR  c_PortCols_MCP23018             one PortCols class for each type of IC
  
-	c_RowEx
- 
-	c_Key                                           c_Key is an abstract base class
-``` 
+	c_IOExpanderPort
+
+```
 ### Keybrd Library Matrix Classes
 Classes inheritance diagrams:
 ``` 
@@ -58,11 +66,9 @@ Classes inheritance diagrams:
 ``` 
 Association diagram:
 ``` 
-	        c_Matrix 
-	      /         \
-	c_PortsRows _c_PortsCols
-	     |    _/     |
-	c_PortRows   c_PortCols
+	                matrix[1]
+	       /            |           \
+	rowPorts[1..*]  colPorts[1..*]  rows[1..*]
 ``` 
 ### Keybrd Library Single-layer Classes
 Classes inheritance diagrams:
@@ -75,23 +81,16 @@ Classes inheritance diagrams:
 ``` 
 Association diagram:
 ``` 
-		keybrd[1]
-		   |
-		matrix[1..M] ________
-		   |                 \
-		rowPort[1..M*R]  colPort[1..M*C]  LEDPort[0..M*L]
-		   |           \      |          /
- rowWait[1] --- row[1..M*R]      IOExpanderPort[P]
-		   |
-		key[1..M*R*K]
- 
-where multiplicities are:
-	M = matrix count
-	R = row count
-	C = col count
-	L = LED count
-	P = I/O expander port count
-	K = key count
+	keybrd[1]
+	   |
+	matrix[M] ________________________
+	   |              \               \
+	rowPort[M..*] -- colPort[M..*] -- row[M..*] -- rowWait[1]
+	    \             /                |
+	    IOExpanderPort[0..*]          key[M..*]
+	                  \______________  |
+	                                  LEDPort[0..*]
+	M = at least one matrix
 ``` 
 ### Keybrd Library Multi-layer Classes
 Class inheritance diagram:
@@ -125,23 +124,18 @@ Scancodes for multi-layer keybrds are instantiated in:
 ```
 Association diagram:
 ``` 
-	              keybrd[1]
-	                |
-	              matrix[1..M]
-	                |
-	              row[1..M*R]
-	                |
-	            key[1..M*R*K] _
-	                |          \
-	         code[1..M*R*K*L]   \
-	        /                \   \
-	shiftManager[1]     layerManager[1]
- 
-where multiplicities are
-	M = matrix count
-	R = row count
-	K = key count
-	L = layer count
+	keybrd[1]
+	   |
+	matrix[M] ________________________
+	   |              \               \
+	rowPort[M..*] -- colPort[M..*] -- row[M..*] -- rowWait[1]
+	    \             /                |
+	    IOExpanderPort[0..*]          key[M..*] -- layerManager[1]
+	                 \                 |        __/
+	                  \               code[M..*] -- shiftManager[1]
+	                   \_____________  |
+	                                  LEDPort[0..*]
+	M = at least one matrix
 ``` 
 
 ## The Arduion Development Environment
