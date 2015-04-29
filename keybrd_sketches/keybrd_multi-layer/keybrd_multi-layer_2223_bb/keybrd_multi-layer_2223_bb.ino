@@ -2,7 +2,7 @@
       Left Matrix             Rigth Matrix
       -----------------       -----------------
       a ! 6       b @ 7       c # 8       d $ 9
-      alpha       sym         fn          shift
+      alpha       sym         fn          capsLck
 */
 // ========== INCLUDES =========
 //Arduino library files
@@ -27,15 +27,25 @@
 #include <l_Code_Layer.h>
 #include <l_LayerManager.h>
 
-// ========= LAYER CODES ==========
+#include "c_IOExpanderPort.h"
+#include "c_LED_AVR.h"
+#include "c_LED_MCP23018.h"
+#include "l_Code_LckLED.h"
+
+// ========= CODES ==========
+// ------------ LAYER CODES -------------
 l_Code_Layer l_alpha(0);
 l_Code_Layer l_sym(1);
 l_Code_Layer l_fn(2);
 
 // =============== LEFT =====================
-// -------- LEFT IO/EXPANDER PORTS ---------
+// -------- LEFT I/O EXPANDER PORTS ---------
 c_IOExpanderPort portA_L(0x20, 0);
 c_IOExpanderPort portB_L(0x20, 1);
+
+// ------------ LEFT LED CODES -------------
+c_LED_MCP23018 numLck_LED(portB_L, 1<<2);
+l_Code_LckLED l_numLck(KEY_NUM_LOCK, numLck_LED); //todo put this in matrix
 
 // ---------- LEFT KEYS -----------
 //row_L0                   {alpha        sym             fn    };
@@ -80,6 +90,10 @@ c_ColPort* ptrsColPorts_L[] = { &colPortA_L };
 c_Matrix matrix_L(ptrsRow_L, 2, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
 
 // =============== RIGHT ====================
+// ------------ RIGHT LED CODES -------------
+c_LED_AVR capsLck_LED(PORTB, 1<<3);
+l_Code_LckLED l_capsLck(KEY_CAPS_LOCK, capsLck_LED);
+
 // ---------- RIGHT KEYS -----------
 //row_R0                   {alpha        sym             fn    };
 l_Code * prtsCodes_R00[] = {&s_c,        &s_number,      &s_8  };
@@ -89,7 +103,7 @@ l_Code * prtsCodes_R01[] = {&s_d,        &s_dollar,      &s_9  };
 l_Key_Layered k_R01(prtsCodes_R01);
 
 //row_R1
-l_Key_1 k_R10(&s_shift);
+l_Key_1 k_R10(&l_capsLck);
 l_Key_1 k_R11(&l_fn);
 
 // ---------- RIGHT ROWS ----------
@@ -125,10 +139,6 @@ c_Matrix matrix_R(ptrsRow_R, 2, ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
 c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
 c_Keybrd keybrd(ptrsMatrix, 2);
 
-// =============== CONFIG =====================
-c_RowWait rowWait(4, 10);
-c_RowWait& c_Row::refRowWait = rowWait;
-
 // ========== MANAGERS ===========
 l_Code_Shift* const ptrsShift[] = { &s_shift };
 l_ShiftManager shiftManager(ptrsShift, 1);
@@ -137,6 +147,10 @@ l_ShiftManager& l_Code::refShiftManager = shiftManager;
 l_LayerManager layerManager;
 l_LayerManager&  l_Code_Layer::refLayerManager = layerManager;
 l_LayerManager& l_Key_Layered::refLayerManager = layerManager;
+
+// =============== CONFIG =====================
+c_RowWait rowWait(4, 10);
+c_RowWait& c_Row::refRowWait = rowWait;
 
 // ========== RUN ===========
 void setup() { keybrd.begin(); }

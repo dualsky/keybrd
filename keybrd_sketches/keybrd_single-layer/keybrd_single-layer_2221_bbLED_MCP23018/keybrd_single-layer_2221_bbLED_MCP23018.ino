@@ -34,7 +34,7 @@ c_RowWait rowWait(4, 10);
 c_RowWait& c_Row::refRowWait = rowWait;      //static variables todo: why not in keybrd?
 
 // =============== LEFT =====================
-// -------- LEFT IO/EXPANDER PORTS ---------
+// -------- LEFT I/O EXPANDER PORTS ---------
 c_IOExpanderPort portA_L(0x20, 0);
 c_IOExpanderPort portB_L(0x20, 1);
 
@@ -42,8 +42,8 @@ c_IOExpanderPort portB_L(0x20, 1);
 c_LED_MCP23018 capsLck_LED(portA_L, 1<<7);
 k_Key_Lck_LED k_capsLck(capsLck_LED);
 
-c_LED_MCP23018  numLck_LED(portB_L, 1<<2);
-k_Key_Lck_LED  k_numLck(numLck_LED);
+c_LED_MCP23018 numLck_LED(portB_L, 1<<2);
+k_Key_Lck_LED k_numLck(numLck_LED);
 
 // ----------- LEFT ROWS OF KEYS ------------
 //row0
