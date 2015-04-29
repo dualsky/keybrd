@@ -7,7 +7,7 @@ void c_RowPort_MCP23018::begin()
     
     Wire.beginTransmission(port.ADDR);
     Wire.write(IODIR);
-    Wire.write(0);                              //0=configure as output (for strobe PINS and LED)
+    Wire.write(0);                            //0=configure as output (for strobe pins and LED pins)
     Wire.endTransmission();
 }
 
