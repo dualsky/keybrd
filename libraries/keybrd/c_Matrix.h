@@ -40,9 +40,6 @@ class c_Matrix
                  ptrsRowPorts(rp), ROW_PORT_COUNT(rpc),
                  ptrsColPorts(cp), COL_PORT_COUNT(cpc) {}
 
-        //begin() initializes all row ports and col ports of matrix
-        void begin();
-
         //scanMatrix() scans each row of matrix one time
         void scan();
 

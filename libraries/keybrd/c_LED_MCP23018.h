@@ -8,7 +8,7 @@
 
 /* Class c_LED_MCP23018 turns LED on and off
 The LED is attached to MCP23018 I/O expander PORT pin.
-IODIRx Input/Ouput Direction register is configured as ouput in c_RowPort_MCP23018::begin()
+IODIRx Input/Ouput Direction register is configured as ouput in c_RowPort_MCP23018 constructor
 
 MCP23018 ouput is open drain
 The output acts like a switch to ground.  It cannot produce a high (+5V) signal by itself.

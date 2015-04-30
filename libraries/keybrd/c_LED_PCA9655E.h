@@ -8,7 +8,7 @@
 
 /* Class c_LED_PCA9655E turns LED on and off
 The LED is attached to PCA9655E I/O expander PORT pin 
-Input/Ouput Direction configuration is to to ouput in c_RowPort_PCA9655E::begin()
+Input/Ouput Direction configuration is to to ouput in c_RowPort_PCA9655E constructor
 */
 class c_LED_PCA9655E: public c_LED
 {
