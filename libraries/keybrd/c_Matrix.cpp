@@ -1,27 +1,6 @@
 #include "c_Matrix.h"
 #include "c_RowPort.h"                          //included in implementation because circular
 
-//initialize ports and LEDs
-void c_Matrix::begin()
-{
-    uint8_t i;
-
-    for (i = 0; i < ROW_PORT_COUNT; i++)        //for each row port
-    {
-        ptrsRowPorts[i]->begin();               //configure row port
-    }
-
-    for (i = 0; i < COL_PORT_COUNT; i++)        //for each col port
-    {
-        ptrsColPorts[i]->begin();               //configure col port
-    }
-
-    for (i = 0; i < ROWS_COUNT; i++)            //for each row
-        {
-            //ptrsRows[i]->begin();               //initialize LEDs
-        }
-}
-
 //scan every row port
 void c_Matrix::scan()
 {

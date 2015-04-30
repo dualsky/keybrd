@@ -23,10 +23,7 @@ class c_RowPort_MCP23018 : public c_RowPort
         //      c_RowPort_MCP23018 rowPortA(portA, 1<<0 | 1<<1 );
         //example instantiation for port B columns:
         //      c_RowPort_MCP23018 rowPortB(portB, 1<<0 | 1<<1 );
-        c_RowPort_MCP23018(c_IOExpanderPort& port, const uint8_t pins):
-                port(port), IODIR(port.num), GPIO(port.num + 0x12), c_RowPort(pins) {}
-
-        void begin();
+        c_RowPort_MCP23018(c_IOExpanderPort& port, const uint8_t pins);
 
         virtual void scanRow(const uint8_t activeLowPin, c_Matrix *const matrix);
 };

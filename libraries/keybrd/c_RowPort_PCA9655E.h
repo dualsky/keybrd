@@ -23,10 +23,7 @@ class c_RowPort_PCA9655E : public c_RowPort
         //      c_RowPort_PCA9655E rowPort0_L(port0, 1<<0 | 1<<1 );
         //example instantiation for port 1 columns:
         //      c_RowPort_PCA9655E rowPort1_L(port1, 1<<0 | 1<<1 );
-        c_RowPort_PCA9655E(c_IOExpanderPort& port, const uint8_t pins):
-                port(port), configuration(port.num + 6), output(port.num + 2), c_RowPort(pins) {}
-
-        void begin();
+        c_RowPort_PCA9655E(c_IOExpanderPort& port, const uint8_t pins);
 
         virtual void scanRow(const uint8_t activeLowPin, c_Matrix *const matrix);
 };

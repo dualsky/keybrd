@@ -22,10 +22,7 @@ class c_ColPort_PCA9655E : public c_ColPort
         //      c_ColPort_PCA9655E colPort0_L(port0, 0, 1<<0 | 1<<1 );
         //example instantiation for port 1 columns:
         //      c_ColPort_PCA9655E colPort1_L(port1, 1, 1<<0 | 1<<1 );
-        c_ColPort_PCA9655E(c_IOExpanderPort& port, const uint8_t pins):
-            port(port), configuration(port.num + 6), input(port.num), c_ColPort(pins) {}
-
-        void begin();
+        c_ColPort_PCA9655E(c_IOExpanderPort& port, const uint8_t pins);
 
         //read port and store it in portState
         virtual void read();

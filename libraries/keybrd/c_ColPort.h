@@ -16,8 +16,6 @@ class c_ColPort
     public:
         c_ColPort(const uint8_t p): pins(p), portState(0) {}
 
-        virtual void begin() {} //derived classes for I/O expanders override the begin() function
-
         //read port and store it in portState
         virtual void read()=0;
 

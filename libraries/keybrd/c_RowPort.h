@@ -19,8 +19,6 @@ class c_RowPort
     public:
         c_RowPort(const uint8_t p): pins(p) {}
 
-        virtual void begin() {} //derived classes for I/O expanders override the begin() function
-
         void scan(c_Matrix *const matrix);
 
         virtual void scanRow(const uint8_t activeLowPin, c_Matrix *const matrix)=0;
