@@ -16,9 +16,8 @@ class c_RowPort_AVR_ActiveHigh : public c_RowPort
         //The constructor initialization list configures column's DDRx and PORTx to output strobe.
         //configure all pins as output (for strobe pins and LED)
         //example instantiation: c_RowPort_AVR_ActiveHigh portFRows(DDRF, PORTF, 1<<1 );
-        c_RowPort_AVR_ActiveHigh(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
-                const uint8_t pins):
-            DDR(DDRx = ~0), PORT(PORTx), c_RowPort(pins) {}
+        c_RowPort_AVR_ActiveHigh
+            (volatile unsigned char& DDRx, volatile unsigned char& PORTx, const uint8_t pins);
 
         virtual void scanRow(const uint8_t activeHighPin, c_Matrix *const matrix);
 };

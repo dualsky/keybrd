@@ -16,7 +16,7 @@ class c_LED_AVR: public c_LED
         const uint8_t pin;                      //bitwise pin to LED
 
     public:
-        c_LED_AVR(volatile unsigned char& PORTx, const uint8_t p): PORT(PORTx), pin(p) {}
+        c_LED_AVR(volatile unsigned char& PORTx, const uint8_t pin): PORT(PORTx), pin(pin) {}
 
         virtual void on();
 

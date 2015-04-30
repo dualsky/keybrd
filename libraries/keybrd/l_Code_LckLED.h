@@ -15,7 +15,7 @@ class l_Code_LckLED: public l_Code
         c_LED& LED;
 
     public:
-        l_Code_LckLED(const uint16_t sc, c_LED& l): scancode(sc), LED(l) { }
+        l_Code_LckLED(const uint16_t sc, c_LED& led): scancode(sc), LED(led) { }
         void press();
         void release();
 };

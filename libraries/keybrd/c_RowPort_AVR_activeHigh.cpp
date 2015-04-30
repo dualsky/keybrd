@@ -12,6 +12,12 @@ During this time the state of the columns are settling into their actual values.
 Seems to be necessary in order to allow the phototransistors to turn completely off.
 (delay is not need for I/O expander because time between I2C Transmissions)
 */
+
+c_RowPort_AVR_ActiveHigh::c_RowPort_AVR_ActiveHigh
+    (volatile unsigned char& DDRx, volatile unsigned char& PORTx, const uint8_t pins):
+    DDR(DDRx = ~0), PORT(PORTx), c_RowPort(pins)
+{}
+
 void c_RowPort_AVR_ActiveHigh::scanRow(const uint8_t activeHighPin, c_Matrix *const matrix)
 {
     //strobe row on

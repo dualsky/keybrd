@@ -18,8 +18,8 @@ class c_LED_PCA9655E: public c_LED
         const uint8_t pin;                      //bitwise pin to LED
 
     public:
-        c_LED_PCA9655E(c_IOExpanderPort& port, const uint8_t p):
-                port(port), output(port.num + 2), pin(p) {}
+        c_LED_PCA9655E(c_IOExpanderPort& port, const uint8_t pin):
+                port(port), output(port.num + 2), pin(pin) {}
 
         virtual void on();
 

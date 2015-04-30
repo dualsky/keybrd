@@ -19,8 +19,7 @@ class c_ColPort_AVR_ActiveHigh : public c_ColPort
         //DDRx 1=configure as output (for LED), 0=configure as input (for read)
         //example instantiation: c_ColPort_AVR_ActiveHigh portBCols(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
         c_ColPort_AVR_ActiveHigh(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
-                volatile unsigned char& PINx, const uint8_t pins):
-            DDR(DDRx = ~pins), PORT(PORTx = pins), PIN(PINx), c_ColPort(pins) {}
+                volatile unsigned char& PINx, const uint8_t pins);
 
         //read port and store it in portState
         virtual void read();

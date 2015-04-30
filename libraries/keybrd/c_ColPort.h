@@ -14,7 +14,7 @@ class c_ColPort
         const uint8_t pins;                     //col pins to read i.e. pins connected to columns
         uint8_t portState;                      //state of port pins on most recent reading
     public:
-        c_ColPort(const uint8_t p): pins(p), portState(0) {}
+        c_ColPort(const uint8_t pins): pins(pins), portState(0) {}
 
         //read port and store it in portState
         virtual void read()=0;

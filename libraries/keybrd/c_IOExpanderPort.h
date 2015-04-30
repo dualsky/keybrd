@@ -16,6 +16,6 @@ struct c_IOExpanderPort
     const uint8_t num;                      //port number (use 0 instead of A, use 1 instead of B)
     uint8_t outputVal;                      //value of output register
 
-    c_IOExpanderPort(const uint8_t a, const uint8_t n): ADDR(a), num(n), outputVal(~0) {}
+    c_IOExpanderPort(const uint8_t ADDR, const uint8_t num): ADDR(ADDR), num(num), outputVal(~0) {}
 };
 #endif

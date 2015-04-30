@@ -17,7 +17,7 @@ class c_RowPort
         const uint8_t pins;                     //row pins to scan i.e. pins connected to rows
 
     public:
-        c_RowPort(const uint8_t p): pins(p) {}
+        c_RowPort(const uint8_t pins): pins(pins) {}
 
         void scan(c_Matrix *const matrix);
 
