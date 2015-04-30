@@ -17,8 +17,7 @@ class c_RowPort_AVR : public c_RowPort
         //configure all pins as output (for strobe pins and LED)
         //example instantiation: c_RowPort_AVR portFRows(DDRF, PORTF, 1<<1 );
         c_RowPort_AVR(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
-                const uint8_t pins):
-            DDR(DDRx = ~0), PORT(PORTx), c_RowPort(pins) {}//todo old DDR(DDRx |= pins)
+                const uint8_t pins);
 
         virtual void scanRow(const uint8_t activeLowPin, c_Matrix *const matrix);
 };

@@ -27,15 +27,14 @@ class c_Matrix
         c_ColPort *const *const ptrsColPorts;   //array of col ports
         const uint8_t COL_PORT_COUNT;
 
-       // todo change to parent type c_Row
-        c_Row *const *const ptrsRows;        //array of row pointers
+        c_Row *const *const ptrsRows;           //array of row pointers
         const uint8_t ROWS_COUNT;
         uint8_t rowNum;                         //index for ptrsRows[] array
 
     public:
-        c_Matrix(c_Row *const r[],const uint8_t rc,//todo: move c_Row to end of param list
-                 c_RowPort *const rp[], const uint8_t rpc,
-                 c_ColPort *const cp[], const uint8_t cpc):
+        c_Matrix(c_RowPort *const rp[], const uint8_t rpc,
+                 c_ColPort *const cp[], const uint8_t cpc,
+                 c_Row *const r[],const uint8_t rc):
                  ptrsRows(r), ROWS_COUNT(rc),
                  ptrsRowPorts(rp), ROW_PORT_COUNT(rpc),
                  ptrsColPorts(cp), COL_PORT_COUNT(cpc) {}

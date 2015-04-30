@@ -59,7 +59,7 @@ c_Row row_R1(ptrsKey_R1, 2);
 c_Row* const ptrsRows_R[] = { &row_R0, &row_R1 };
 c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
 c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
-c_Matrix matrix_R(ptrsRows_R, 2, ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
+c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 1, ptrsRows_R, 2);
 
 // =============== LEFT =====================
 // -------- LEFT I/O EXPANDER PORTS ---------
@@ -91,7 +91,7 @@ c_Row row_L1(ptrsKey_L1, 2);
 c_Row* const ptrsRows_L[] = { &row_L0, &row_L1 };
 c_RowPort* ptrsRowPorts_L[] = { &rowPortB_L };
 c_ColPort* ptrsColPorts_L[] = { &colPortA_L };
-c_Matrix matrix_L(ptrsRows_L, 2, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
+c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRows_L, 2);
 
 // ============== KEYBOARD =============
 c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
