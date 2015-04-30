@@ -18,7 +18,7 @@ void c_Matrix::begin()
 
     for (i = 0; i < ROWS_COUNT; i++)            //for each row
         {
-            ptrsRows[i]->begin();               //initialize LEDs
+            //ptrsRows[i]->begin();               //initialize LEDs
         }
 }
 

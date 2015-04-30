@@ -9,7 +9,6 @@ class c_Key
 {
     public:
         //empty begin overriden by k_Key_Lck_LED class
-        virtual void begin() {}
 
         //sendPress() sends scancode to USB for press
         virtual void press()=0;

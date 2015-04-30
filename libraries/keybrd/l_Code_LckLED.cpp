@@ -1,11 +1,5 @@
 #include "l_Code_LckLED.h"
 
-void l_Code_LckLED::begin()//todo: call begin from key::begin()
-{
-    LED.off();
-    LED.on();   //todo test
-}
-
 void l_Code_LckLED::press()
 {
     Keyboard.press(scancode);

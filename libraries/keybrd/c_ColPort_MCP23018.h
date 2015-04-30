@@ -23,10 +23,7 @@ class c_ColPort_MCP23018 : public c_ColPort
         //      c_ColPort_MCP23018 colPortA(portA, 1<<0 | 1<<1 );
         //example instantiation for port B columns:
         //      c_ColPort_MCP23018 colPortB(portB, 1<<0 | 1<<1 );
-        c_ColPort_MCP23018(c_IOExpanderPort& port, const uint8_t pins): port(port),
-            IODIR(port.num), GPIO(port.num + 0x12), GPPU(port.num + 0x0C), c_ColPort(pins) {}
-
-        void begin();
+        c_ColPort_MCP23018(c_IOExpanderPort& port, const uint8_t pins);
 
         //read port and store it in portState
         virtual void read();

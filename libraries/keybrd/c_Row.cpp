@@ -1,11 +1,4 @@
 #include "c_Row.h"
-void c_Row::begin()
-{
-    for (uint8_t col = 0; col < COLS_COUNT; col++) //for each key in row
-        {
-            ptrsKeys[col]->begin();             //initilize LEDs
-        }
-}
 
 /* rowState is state of a matrix row's keys, one bit per key.
  * 1 means pressed, 0 means released.

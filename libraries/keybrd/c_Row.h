@@ -29,7 +29,6 @@ class c_Row
         c_Row(c_Key *const pk[], const uint8_t cc):
             ptrsKeys(pk), COLS_COUNT(cc), i(0), debounced(0) { }
 
-        void begin();
         void pressRelease(const uint8_t sample); //send one row of key actions to USB
 };
 #endif
