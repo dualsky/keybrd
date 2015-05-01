@@ -1,8 +1,8 @@
-/* keybrd_multi-layer_2223_bb_MCP23018.ino layout:
+/* keybrd_multi-layer_2223_bb_Teensy2_MCP23018.ino layout:
       Left Matrix             Rigth Matrix
       -----------------       -----------------
-      capsLck_L   b @ 7       c # 8       d $ 9
-      alpha       sym         fn          capsLck_R
+      capsLck_L   b @ 7       c # 8       null
+      alpha       sym         fn          00
 */
 // ========== INCLUDES =========
 //Arduino library files
@@ -11,6 +11,7 @@
 
 //keybrd library files
 #include <objects_scancode.h>
+#include <l_Code_00.h>
 #include <l_ShiftManager.h>
 #include <l_Key_Layered.h>
 #include <l_Key_1.h>
@@ -49,6 +50,8 @@ void setup() {}
 void loop()
 {
 // ========= CODES ==========
+l_Code_00 code_00;                              //double zero
+
 // ------------ LAYER CODES -------------
 l_Code_Layer l_alpha(0);
 l_Code_Layer l_sym(1);
@@ -128,11 +131,12 @@ l_Code_LckLED l_capsLck_R(KEY_CAPS_LOCK, capsLck_LED_R);
 l_Code * prtsCodes_R00[] = {&s_c,        &s_number,      &s_8  };
 l_Key_Layered k_R00(prtsCodes_R00);
 
-l_Code * prtsCodes_R01[] = {&s_d,        &s_dollar,      &s_9  };
-l_Key_Layered k_R01(prtsCodes_R01);
+//l_Code * prtsCodes_R01[] = {&s_d,        &s_dollar,      &s_9  };
+//l_Key_Layered k_R01(prtsCodes_R01);
+l_Key_1 k_R01(&code_null);
 
 //row_R1
-l_Key_1 k_R10(&l_capsLck_R);
+l_Key_1 k_R10(&code_00);
 l_Key_1 k_R11(&l_fn);
 
 // ---------- RIGHT ROWS ----------

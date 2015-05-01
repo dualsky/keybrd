@@ -8,6 +8,7 @@
 
 /* Class l_Code_SNS is composed of one scancode, which it sends when press() or release() is called.
  * ShiftManager insures that MODIFIERKEY_SHIFT is released.
+ * Letters will still print as capital if CapsLck is on.
  * "SNS" stands for Scancode Not Shifted.
  */
 class l_Code_SNS: public l_Code

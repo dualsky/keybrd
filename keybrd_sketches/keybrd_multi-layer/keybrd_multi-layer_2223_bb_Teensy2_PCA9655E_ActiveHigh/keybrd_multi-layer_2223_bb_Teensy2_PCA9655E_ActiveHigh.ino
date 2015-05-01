@@ -4,7 +4,7 @@
       capsLck_L   b @ 7       c # 8       capsLck_R
       alpha       sym         fn          shift
 
-letter "b" is not shifted even when shift is pressed
+letter b should print lowercase "b" even when shift is pressed
 */
 // ========== INCLUDES =========
 //Arduino library files
