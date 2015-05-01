@@ -102,3 +102,6 @@ where
 * **version** is version number
 
 **keybrd** and **layerScheme** are mandatory, remaining parts are optional.
+
+## test suite
+keybrd_test_suite.odt

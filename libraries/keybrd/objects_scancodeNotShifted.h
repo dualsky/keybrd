@@ -1,5 +1,6 @@
 /* This file instandiates l_Code_SNS objects for multiple-layer keybrd sketches.
  * The scancode is always sent in the unshifted state regardless of shift key position.
+ * Letters will still printed as capital if CapsLck is on.
  *
  * If your uC is low on memory, copy needed lines rather than including the entire file.
  * With the Arduino IDE, objects consume memory if they are used or not.
