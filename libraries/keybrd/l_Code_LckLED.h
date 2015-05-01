@@ -7,6 +7,7 @@
 #include "c_LED.h"
 
 /* Class l_Code_LckLED is composed of a scancode and a c_LED.
+This class is not finished, still need to find out how keyboard senses NumLck and CapsLck position
 */
 class l_Code_LckLED: public l_Code
 {
@@ -15,7 +16,8 @@ class l_Code_LckLED: public l_Code
         c_LED& LED;
 
     public:
-        l_Code_LckLED(const uint16_t sc, c_LED& led): scancode(sc), LED(led) { }
+        //in keybrd sketch, ports should be instantiated before l_Code_LckLED is instantiated
+        l_Code_LckLED(const uint16_t sc, c_LED& led);
         void press();
         void release();
 };

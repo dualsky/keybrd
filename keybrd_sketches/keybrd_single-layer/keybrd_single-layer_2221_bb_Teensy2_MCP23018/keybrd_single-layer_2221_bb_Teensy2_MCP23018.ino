@@ -28,7 +28,7 @@ with Teensy 2.0 and MCP23018 I/O expander
 
 // =============== STATIC MEMBERS =====================
 c_RowWait rowWait(4, 10);
-c_RowWait& c_Row::refRowWait = rowWait;      //static variables todo: why not in keybrd?
+c_RowWait& c_Row::refRowWait = rowWait;
 
 // ############### MAIN #####################
 void setup() {}

@@ -17,6 +17,8 @@ The keybrd Wishlist
 
 Add keybrd matrix for PCA9655E-D I/O expander, and test on breadboard.
 
+At this point the DodoHand firmware is usable enough for testing the hardware.
+Further development will be easier once I access to the DodoHand hardware.
 Add features to DodoHand sketch as described in the DataHand Pro II User Guide:
 * Protected Mode
 * NUM LOCK
