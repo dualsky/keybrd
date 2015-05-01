@@ -32,6 +32,22 @@
 #include "c_LED_MCP23018.h"
 #include "l_Code_LckLED.h"
 
+// =============== STATIC MEMBERS =====================
+c_RowWait rowWait(4, 10);
+c_RowWait& c_Row::refRowWait = rowWait;
+
+l_Code_Shift* const ptrsShift[] = { &s_shift };
+l_ShiftManager shiftManager(ptrsShift, 1);
+l_ShiftManager& l_Code::refShiftManager = shiftManager;
+
+l_LayerManager layerManager;
+l_LayerManager&  l_Code_Layer::refLayerManager = layerManager;
+l_LayerManager& l_Key_Layered::refLayerManager = layerManager;
+
+// ############### MAIN #####################
+void setup() {}
+void loop()
+{
 // ========= CODES ==========
 // ------------ LAYER CODES -------------
 l_Code_Layer l_alpha(0);
@@ -88,7 +104,7 @@ c_Row rowL1(ptrKey_L1, KEYS_L1_COUNT);
 c_Row* const ptrsRow_L[] = { &rowL0, &rowL1 };
 c_RowPort* ptrsRowPorts_L[] = { &rowPortB_L };
 c_ColPort* ptrsColPorts_L[] = { &colPortA_L };
-c_Matrix matrix_L(ptrsRow_L, 2, ptrsRowPorts_L, 1, ptrsColPorts_L, 1);
+c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRow_L, 2);
 
 // =============== RIGHT ====================
 // --------------- RIGHT ROW PORTS -------------
@@ -134,27 +150,17 @@ c_Row rowR1(ptrKey_R1, KEYS_R1_COUNT);
 c_Row* const ptrsRow_R[] = { &rowR0, &rowR1 };
 c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
 c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
-c_Matrix matrix_R(ptrsRow_R, 2, ptrsRowPorts_R, 1, ptrsColPorts_R, 1);
+c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 1, ptrsRow_R, 2);
 
 // ========== KEYBOARD ===========
 c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
 c_Keybrd keybrd(ptrsMatrix, 2);
 
-// ========== MANAGERS ===========
-l_Code_Shift* const ptrsShift[] = { &s_shift };
-l_ShiftManager shiftManager(ptrsShift, 1);
-l_ShiftManager& l_Code::refShiftManager = shiftManager;
-
-l_LayerManager layerManager;
-l_LayerManager&  l_Code_Layer::refLayerManager = layerManager;
-l_LayerManager& l_Key_Layered::refLayerManager = layerManager;
-
-// =============== CONFIG =====================
-c_RowWait rowWait(4, 10);
-c_RowWait& c_Row::refRowWait = rowWait;
-
 // ========== RUN ===========
-void setup() { keybrd.begin(); }
-void loop() {
-Serial.print("in sketch ");
-    keybrd.scan(); }
+    keybrd.begin();
+
+    while (true)
+    {
+        keybrd.scan();
+    }
+}

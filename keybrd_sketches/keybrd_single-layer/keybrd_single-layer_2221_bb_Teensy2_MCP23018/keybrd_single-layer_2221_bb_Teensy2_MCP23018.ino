@@ -26,14 +26,15 @@ with Teensy 2.0 and MCP23018 I/O expander
 
 #include "c_IOExpanderPort.h"
 
-// =============== CONFIG =====================
+// =============== STATIC MEMBERS =====================
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row::refRowWait = rowWait;      //static variables todo: why not in keybrd?
 
+// ############### MAIN #####################
 void setup() {}
 void loop()
 {
-// =============== RIGHT ====================
+// =============== RIGHT ==================== todo swap LEFT and RIGHT places
 // --------------- RIGHT ROW PORTS -------------
 // row: 0   1
 // pin: F0  F1
