@@ -1,9 +1,10 @@
 /* keybrd_single-layer_2221_bb_Teensy2_MCP23018, 8-key layout:
       Left Matrix       Rigth Matrix
       -----------       ------------
-      1     2           3       4
-      a     b           c       d
+      capsLck  2        3       4
+      null     b        c       d
 with Teensy 2.0 and MCP23018 I/O expander
+test 1
 */
 // ========== INCLUDES ==========
 //Arduino library files
@@ -25,6 +26,9 @@ with Teensy 2.0 and MCP23018 I/O expander
 #include <l_LayerManager.h>
 
 #include "c_IOExpanderPort.h"
+#include "c_LED_AVR.h"
+#include "c_LED_MCP23018.h"
+#include "k_Key_LckLED.h"
 
 // =============== STATIC MEMBERS =====================
 c_RowWait rowWait(4, 10);
@@ -34,12 +38,52 @@ c_RowWait& c_Row::refRowWait = rowWait;
 void setup() {}
 void loop()
 {
-// =============== RIGHT ==================== todo swap LEFT and RIGHT places
+// =============== LEFT =====================
+// -------- LEFT I/O EXPANDER PORTS ---------
+c_IOExpanderPort portA_L(0x20, 0);
+c_IOExpanderPort portB_L(0x20, 1);
+
+// --------------- LEFT ROW PORTS -------------
+// row: 0   1
+// pin: B0  B1
+
+c_RowPort_MCP23018 rowPortB_L(portB_L, 1<<0 | 1<<1 );
+
+// --------------- LEFT COL PORTS -------------
+// col: 0   1
+// pin: A0  A1
+
+c_ColPort_MCP23018 colPortA_L(portA_L, 1<<0 | 1<<1 );
+
+// ------------ LEFT LED KEYS -------------
+c_LED_MCP23018 capsLck_LED_L(portB_L, 1<<2);   //green top row port
+k_Key_LckLED k_capsLck(KEY_CAPS_LOCK, capsLck_LED_L);
+
+// ----------- LEFT ROWS OF KEYS ------------
+//row0
+c_Key* const ptrsKey_L0[] = {     &k_capsLck,   &k_2      };
+c_Row row_L0(ptrsKey_L0, 2);
+
+//row1
+c_Key* const ptrsKey_L1[] = {     &k_null,    &k_b      };
+c_Row row_L1(ptrsKey_L1, 2);
+
+// ------------- LEFT MATRIX --------------
+c_Row* const ptrsRows_L[] = { &row_L0, &row_L1 };
+c_RowPort* ptrsRowPorts_L[] = { &rowPortB_L };
+c_ColPort* ptrsColPorts_L[] = { &colPortA_L };
+c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRows_L, 2);
+
+// =============== RIGHT ====================
+// this test shows how pins from any port can be used
+// AVR PORTB is shared by c_RowPort_AVR (pin B2) and c_ColPort_AVR (pins B0 and B1)
+// rowPort uses pins B2 and F1
 // --------------- RIGHT ROW PORTS -------------
 // row: 0   1
-// pin: F0  F1
+// pin: B2  F1              (testing row with pins from two different ports)
 
-c_RowPort_AVR rowPortF_R(DDRF, PORTF, 1<<0 | 1<<1 );
+c_RowPort_AVR rowPortB_R(DDRB, PORTB, 1<<2 );
+c_RowPort_AVR rowPortF_R(DDRF, PORTF, 1<<1 );
 
 // --------------- RIGHT COL PORTS -------------
 // col: 0   1
@@ -58,41 +102,9 @@ c_Row row_R1(ptrsKey_R1, 2);
 
 // ------------- RIGHT MATRIX --------------
 c_Row* const ptrsRows_R[] = { &row_R0, &row_R1 };
-c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
+c_RowPort* ptrsRowPorts_R[] = { &rowPortB_R, &rowPortF_R };
 c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
-c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 1, ptrsRows_R, 2);
-
-// =============== LEFT =====================
-// -------- LEFT I/O EXPANDER PORTS ---------
-c_IOExpanderPort portA_L(0x20, 0);
-c_IOExpanderPort portB_L(0x20, 1);
-
-// --------------- LEFT ROW PORTS -------------
-// row: 0   1
-// pin: B0  B1
-
-c_RowPort_MCP23018 rowPortB_L(portB_L, 1<<0 | 1<<1 );
-
-// --------------- LEFT COL PORTS -------------
-// col: 0   1
-// pin: A0  A1
-
-c_ColPort_MCP23018 colPortA_L(portA_L, 1<<0 | 1<<1 );
-
-// ----------- LEFT ROWS OF KEYS ------------
-//row0
-c_Key* const ptrsKey_L0[] = {     &k_1,   &k_2      };
-c_Row row_L0(ptrsKey_L0, 2);
-
-//row1
-c_Key* const ptrsKey_L1[] = {     &k_a,    &k_b      };
-c_Row row_L1(ptrsKey_L1, 2);
-
-// ------------- LEFT MATRIX --------------
-c_Row* const ptrsRows_L[] = { &row_L0, &row_L1 };
-c_RowPort* ptrsRowPorts_L[] = { &rowPortB_L };
-c_ColPort* ptrsColPorts_L[] = { &colPortA_L };
-c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRows_L, 2);
+c_Matrix matrix_R(ptrsRowPorts_R, 2, ptrsColPorts_R, 1, ptrsRows_R, 2);
 
 // ============== KEYBOARD =============
 c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
