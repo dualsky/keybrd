@@ -5,17 +5,18 @@
 #include "c_Key.h"
 #include "c_LED.h"
 
-/* Class k_Key_LckLED 
-this is first version, later versions will also Lock Caps, Num, Scroll, and toggle the LED on/off
-Class k_Key_LckLED turns LED on and off
+/* Class k_Key_LckLED turns LED on and off
+todo
+This class is not finished, still need to find out how keyboard senses NumLck and CapsLck position
 */
 class k_Key_LckLED: public c_Key
 {
     private:
-        c_LED& led;
+        const uint16_t scancode;
+        c_LED& LED;
 
     public:
-        k_Key_LckLED(c_LED& led): led(led) {}
+        k_Key_LckLED(const uint16_t sc, c_LED& led);
 
         void press();
         void release();

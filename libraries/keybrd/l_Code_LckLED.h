@@ -6,7 +6,8 @@
 #include "l_Code.h"
 #include "c_LED.h"
 
-/* Class l_Code_LckLED is composed of a scancode and a c_LED.
+/* Class l_Code_LckLED turns LED on and off
+todo
 This class is not finished, still need to find out how keyboard senses NumLck and CapsLck position
 */
 class l_Code_LckLED: public l_Code

@@ -131,8 +131,6 @@ l_Code_LckLED l_capsLck_R(KEY_CAPS_LOCK, capsLck_LED_R);
 l_Code * prtsCodes_R00[] = {&s_c,        &s_number,      &s_8  };
 l_Key_Layered k_R00(prtsCodes_R00);
 
-//l_Code * prtsCodes_R01[] = {&s_d,        &s_dollar,      &s_9  };
-//l_Key_Layered k_R01(prtsCodes_R01);
 l_Key_1 k_R01(&code_null);
 
 //row_R1
