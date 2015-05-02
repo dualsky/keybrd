@@ -1,10 +1,11 @@
 /* keybrd_multi-layer_2223_bb_Teensy2_PCA9655E_ActiveHigh.ino layout:
       Left Matrix             Rigth Matrix
       -----------------       -----------------
-      capsLck_L   b @         null      capsLck_R
-      alpha       sym         00        shift
+      capsLck_L   b @         c #    d $    capsLck_R
+      alpha       sym         00     null   shift
 
 letter b should print lowercase "b" even when shift is pressed
+letter d should print uppercase "D" even when shift is not pressed
 test 2
 */
 // ========== INCLUDES =========
@@ -14,6 +15,7 @@ test 2
 
 //keybrd library files
 #include <l_Code_SNS.h>
+#include <l_Code_SS.h>
 #include <l_Code_00.h>
 #include <objects_scancode.h>
 #include <l_ShiftManager.h>
@@ -55,6 +57,7 @@ void loop()
 {
 // ========= CODES ==========
 l_Code_SNS sns_b(KEY_B);                        //scancode not shifted
+l_Code_SNS ss_d(KEY_D);                         //scancode shifted
 l_Code_00 code_00;                              //double zero
 
 // ------------ LAYER CODES -------------
@@ -79,7 +82,7 @@ c_RowPort_PCA9655E_ActiveHigh rowPort0_L(port0_L, 1<<0 | 1<<1 );
 c_ColPort_PCA9655E_ActiveHigh colPort1_L(port1_L, 1<<0 | 1<<1 );
 
 // ------------ LEFT LED CODES -------------
-c_LED_PCA9655E capsLck_LED_L(port0_L, 1<<7);    //blue top left
+c_LED_PCA9655E capsLck_LED_L(port0_L, 1<<7);    //blue
 l_Code_LckLED l_capsLck_L(KEY_CAPS_LOCK, capsLck_LED_L);
 
 // ---------- LEFT KEYS -----------
@@ -106,9 +109,9 @@ const uint8_t KEYS_L1_COUNT = sizeof(ptrKey_L1)/sizeof(ptrKey_L1[0]);
 c_Row rowL1(ptrKey_L1, KEYS_L1_COUNT);
 
 // ---------- LEFT MATRIX -----------
-c_Row* const ptrsRow_L[] = { &rowL0, &rowL1 };
 c_RowPort* ptrsRowPorts_L[] = { &rowPort0_L };
 c_ColPort* ptrsColPorts_L[] = { &colPort1_L };
+c_Row* const ptrsRow_L[] = { &rowL0, &rowL1 };
 c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRow_L, 2);
 
 // =============== RIGHT ====================
@@ -122,37 +125,44 @@ c_RowPort_AVR_ActiveHigh rowPortF_R(DDRF, PORTF, 1<<0 | 1<<1 );
 // col: 0   1
 // pin: B0  B1
 
+c_ColPort_AVR_ActiveHigh colPortC_R(DDRC, PORTC, PINC, 1<<7 );
 c_ColPort_AVR_ActiveHigh colPortB_R(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 
 // ------------ RIGHT LED CODES -------------
-c_LED_AVR capsLck_LED_R(PORTB, 1<<3);           //red top right
+c_LED_AVR capsLck_LED_R(PORTB, 1<<3);           //red
 l_Code_LckLED l_capsLck_R(KEY_CAPS_LOCK, capsLck_LED_R);
 
 // ---------- RIGHT KEYS -----------
-//row_R0
-l_Key_1 k_R00(&code_null);
-l_Key_1 k_R01(&l_capsLck_R);
+//row_R0                   {alpha        sym      };
+l_Code * prtsCodes_R00[] = {&s_c,        &s_number  };
+l_Key_Layered k_R00(prtsCodes_R00);
+
+l_Code * prtsCodes_R01[] = {&ss_d,       &s_dollar  };
+l_Key_Layered k_R01(prtsCodes_R01);
+
+l_Key_1 k_R02(&l_capsLck_R);
 
 //row_R1
-l_Key_1 k_R10(&s_shift);
-l_Key_1 k_R11(&code_00);
+l_Key_1 k_R10(&code_00);
+l_Key_1 k_R11(&code_null);
+l_Key_1 k_R12(&s_shift);
 
 // ---------- RIGHT ROWS ----------
 //row_R0
-c_Key* const ptrKey_R0[] = { &k_R00, &k_R01 };
+c_Key* const ptrKey_R0[] = { &k_R00, &k_R01, &k_R02 };
 const uint8_t KEYS_R0_COUNT = sizeof(ptrKey_R0)/sizeof(ptrKey_R0[0]);
 c_Row rowR0(ptrKey_R0, KEYS_R0_COUNT);
 
 //row_R1
-c_Key* const ptrKey_R1[] = { &k_R11, &k_R10 };
+c_Key* const ptrKey_R1[] = { &k_R10, &k_R11, &k_R12 };
 const uint8_t KEYS_R1_COUNT = sizeof(ptrKey_R1)/sizeof(ptrKey_R1[0]);
 c_Row rowR1(ptrKey_R1, KEYS_R1_COUNT);
 
 // ---------- RIGHT MATRIX -----------
-c_Row* const ptrsRow_R[] = { &rowR0, &rowR1 };
 c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
-c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
-c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 1, ptrsRow_R, 2);
+c_ColPort* ptrsColPorts_R[] = { &colPortC_R, &colPortB_R };
+c_Row* const ptrsRow_R[] = { &rowR0, &rowR1 };
+c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 2, ptrsRow_R, 2);
 
 // ========== KEYBOARD ===========
 c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
