@@ -8,11 +8,8 @@
 /* class c_Matrix
 Each Matrix is connected to a Micro controller or I/O expander, which scans the matrix.
 
-The keyboard's physical matrix is composed of rows and columns.
-The rows and columns are connected to the keys.
-The rows and columns are distinguishable by diode orientation.
-The keybrd library defines matrix rows as connected to diode anodes,
-and matrix columns as connected to diode cathodes.
+The keyboard's matrix is composed of rows and columns.
+The rows and columns are physically connected to the keys.
 
 c_Matrix is composed of row ports, col ports, and rows.
 */

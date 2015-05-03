@@ -4,10 +4,15 @@
 #include <inttypes.h>
 #include "c_LED.h"
 
-/* Class c_LED_AVR turns LED on and off
-The LED is attached to AVR PORT pin
-DDRx Data Direction Register is configured as output in c_RowPort_AVR constructor
-LED tutorial https://www.pjrc.com/teensy/tutorial2.html
+/* Class c_LED_AVR uses an AVR pin to power a LED on and off.
+
+Connect the LED in series with the resistor:
+    determin resistor value needed (Internet search: LED resistor value)
+    Connect the LED's (-) ground to ground
+    connect LED's (+) to the AVR output pin
+Never connect a LED directly from ground to power.  Doing so would destroy the LED.
+
+DDRx Data Direction Register is configured as output in c_RowPort_AVR constructor.
 */
 class c_LED_AVR: public c_LED
 {
