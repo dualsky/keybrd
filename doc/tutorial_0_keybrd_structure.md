@@ -32,6 +32,10 @@ A **keybrd sketch** is a source code file that defines a keybrd object.
 When the keybrd sketch is compiled and run, the keybrd object scans the keyboard matrix.
 If a key is pressed, the keybrd object sends a scancod to the computer.
 
+two main parts:
+	1 hardware specifications (keybrd, matrix, rowPort, colPort, LEDPort, row, key)
+	2 matrix layout (transform, scancode)
+
 The keybrd object has the hierarchal composition listed below.
 Each level has a numbered description followed by bulleted classes.
 
@@ -57,4 +61,12 @@ Each level has a numbered description followed by bulleted classes.
  * [l_Code_Null.h](../libraries/keybrd/l_Code_Null.h)
  * [l_scancodes.h](../libraries/keybrd/l_scancodes.h)
  * [l_scancodesNotShifted.h](../libraries/keybrd/l_scancodesNotShifted.h)
+
+## LEDs
+Class c_LED uses a I/O expander pin to turn a LED on and off.
+c_RowPort or c_ColPort (whichever is used by LED) must be instantiated before c_LED is instantiated.
+This is because I/O expander direction register is configured in the c_RowPort and c_ColPort constructors.
+
+the order of instantiations is very important
+the compiler will not give a warning, the keybrd just won't work
 

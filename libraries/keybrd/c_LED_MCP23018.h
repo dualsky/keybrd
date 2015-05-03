@@ -7,8 +7,8 @@
 #include "c_LED.h"
 
 /* Class c_LED_MCP23018 uses a MCP23018 I/O expander pin to turn a LED on and off.
-In keybrd sketch, c_RowPort_MCP23018 instantiation must come before c_LED_MCP23018 instantiation.
-This is because MCP23018 direction register is configured in the c_RowPort_MCP23018 constructor.
+c_RowPort or c_ColPort (whichever is used by LED) must be instantiated before c_LED_MCP23018 is instantiated.
+This is because MCP23018 direction register is configured in the c_RowPort and c_ColPort constructors.
 
 Connect the LED in series with the resistor:
     determin resistor value needed (Internet search: LED resistor value)
