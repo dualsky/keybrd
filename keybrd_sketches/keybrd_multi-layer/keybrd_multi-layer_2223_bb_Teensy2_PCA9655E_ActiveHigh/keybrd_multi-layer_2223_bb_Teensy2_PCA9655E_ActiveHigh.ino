@@ -160,7 +160,8 @@ c_Row rowR1(ptrKey_R1, KEYS_R1_COUNT);
 
 // ---------- RIGHT MATRIX -----------
 c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
-c_ColPort* ptrsColPorts_R[] = { &colPortC_R, &colPortB_R };
+c_ColPort* ptrsColPorts_R[] = { &colPortC_R, &colPortB_R };//adding colPortC_R breaks it
+//c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
 c_Row* const ptrsRow_R[] = { &rowR0, &rowR1 };
 c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 2, ptrsRow_R, 2);
 

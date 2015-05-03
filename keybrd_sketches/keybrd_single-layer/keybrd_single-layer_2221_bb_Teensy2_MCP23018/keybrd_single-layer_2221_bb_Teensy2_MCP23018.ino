@@ -1,8 +1,8 @@
 /* keybrd_single-layer_2221_bb_Teensy2_MCP23018, 8-key layout:
       Left Matrix       Rigth Matrix
       -----------       ------------
-      capsLck  2        3       4
-      null     b        c       d
+      capsLck  2        3       mouse up
+      null     b        c       right click
 with Teensy 2.0 and MCP23018 I/O expander
 test 1
 */
@@ -30,6 +30,10 @@ test 1
 #include "c_LED_MCP23018.h"
 #include "k_Key_LckLED.h"
 
+#include <Mouse.h>
+#include <m_MouseButton.h>
+#include <m_MouseMove.h>
+
 // =============== STATIC MEMBERS =====================
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row::refRowWait = rowWait;
@@ -38,6 +42,10 @@ c_RowWait& c_Row::refRowWait = rowWait;
 void setup() {}
 void loop()
 {
+// =============== KEYS =====================
+m_MouseButton mb_right(MOUSE_RIGHT);
+m_MouseMove mm_up(0,-8,0);          //negative Y is up
+    
 // =============== LEFT =====================
 // -------- LEFT I/O EXPANDER PORTS ---------
 c_IOExpanderPort portA_L(0x20, 0);
@@ -93,11 +101,11 @@ c_ColPort_AVR colPortB_R(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 
 // ----------- RIGHT ROWS OF KEYS ------------
 //row0
-c_Key* const ptrsKey_R0[] = {     &k_3,   &k_4       };
+c_Key* const ptrsKey_R0[] = {     &k_3,   &mm_up      };
 c_Row row_R0(ptrsKey_R0, 2);
 
 //row1
-c_Key* const ptrsKey_R1[] = {     &k_c,   &k_d       };
+c_Key* const ptrsKey_R1[] = {     &k_c,   &mb_right       };
 c_Row row_R1(ptrsKey_R1, 2);
 
 // ------------- RIGHT MATRIX --------------

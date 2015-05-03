@@ -1,9 +1,9 @@
 #include "c_RowPort_AVR.h"
 #include "c_Matrix.h"                           //included in implementation because circular
 
-c_RowPort_AVR::c_RowPort_AVR(volatile unsigned char& DDRx, volatile unsigned char& PORTx,
-                const uint8_t pins):
-            DDR(DDRx = ~0), PORT(PORTx), c_RowPort(pins)
+c_RowPort_AVR::c_RowPort_AVR
+        (volatile unsigned char& DDRx, volatile unsigned char& PORTx, const uint8_t pins):
+        DDR(DDRx = ~0), PORT(PORTx), c_RowPort(pins)
 {}
 
 //strobe uses active low

@@ -12,7 +12,7 @@ void c_RowPort::scan(c_Matrix *const matrix)
     uint8_t pin;                                //active low for row being scanned, one bit per pin
     uint8_t rowState;                           //state of row's keys, one bit per col
 
-    //for each pin of row port
+    //for each row pin
     for (pin = 1; pin > 0; pin <<= 1)           //shift pin until overflow
     {
         if (pin & pins)                         //if pin is connected to row

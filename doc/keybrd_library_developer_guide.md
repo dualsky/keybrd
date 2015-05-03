@@ -123,7 +123,8 @@ Scancodes for multi-layer keybrds are instantiated in:
 	m_mousecodes.h
 ```
 Association diagram:
-``` 
+``` todo, no: put classes next to each other?: rowPort & row, colPort & key, IOEpanderPort & LEDPort
+    leave as is to show 3 components of matrix at same level, which is more important
 	keybrd[1]
 	   |
 	matrix[M] ________________________

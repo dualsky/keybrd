@@ -35,9 +35,9 @@ class c_Matrix
         c_Matrix(c_RowPort *const rp[], const uint8_t rpc,
                  c_ColPort *const cp[], const uint8_t cpc,
                  c_Row *const r[],const uint8_t rc):
-                 ptrsRows(r), ROWS_COUNT(rc),
                  ptrsRowPorts(rp), ROW_PORT_COUNT(rpc),
-                 ptrsColPorts(cp), COL_PORT_COUNT(cpc) {}
+                 ptrsColPorts(cp), COL_PORT_COUNT(cpc),
+                 ptrsRows(r), ROWS_COUNT(rc) {}
 
         //scanMatrix() scans each row of matrix one time
         void scan();

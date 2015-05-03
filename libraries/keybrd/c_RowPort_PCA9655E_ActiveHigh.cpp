@@ -18,7 +18,7 @@ Strobe is turned off after matrix reads the columns.
 */
 void c_RowPort_PCA9655E_ActiveHigh::scanRow(const uint8_t activeHighPin, c_Matrix *const matrix)
 {
-    //strobe on
+    //strobe row on
     Wire.beginTransmission(port.ADDR);
     Wire.write(output);
     Wire.write(port.outputVal |= activeHighPin); //strobe on: set strobe pin output to high
@@ -26,7 +26,7 @@ void c_RowPort_PCA9655E_ActiveHigh::scanRow(const uint8_t activeHighPin, c_Matri
 
     matrix->read();                             //read the IC's column ports
 
-    //strobe off
+    //strobe row off
     Wire.beginTransmission(port.ADDR);
     Wire.write(output);
     Wire.write(port.outputVal &= ~activeHighPin); //strobe off: set strobe pin output to low
