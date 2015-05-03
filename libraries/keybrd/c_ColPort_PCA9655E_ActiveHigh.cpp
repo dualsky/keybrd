@@ -3,6 +3,8 @@
 c_ColPort_PCA9655E_ActiveHigh::c_ColPort_PCA9655E_ActiveHigh(c_IOExpanderPort& port, const uint8_t pins):
             port(port), configuration(port.num + 6), input(port.num), c_ColPort(pins)
 {
+    Wire.begin();
+    
     Wire.beginTransmission(port.ADDR);
     Wire.write(configuration);
     Wire.write(pins);       //0=configure as output (for LED), 1=configure as input (for read)

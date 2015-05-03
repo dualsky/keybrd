@@ -3,6 +3,8 @@
 c_ColPort_MCP23018::c_ColPort_MCP23018(c_IOExpanderPort& port, const uint8_t pins):
     port(port), IODIR(port.num), GPIO(port.num + 0x12), GPPU(port.num + 0x0C), c_ColPort(pins)
 {
+    Wire.begin();
+    
     Wire.beginTransmission(port.ADDR);
     Wire.write(IODIR);
     Wire.write(pins);       //0=configure as output (for LED), 1=configure as input (for read)
