@@ -69,4 +69,4 @@ This is because I/O expander direction register is configured in the c_RowPort a
 
 the order of instantiations is very important
 the compiler will not give a warning, the keybrd just won't work
-
+the safest way to write a keybrd sketch is to instantiate objects in the same order as the example keybrd sketches

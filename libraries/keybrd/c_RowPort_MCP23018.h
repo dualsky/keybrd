@@ -38,8 +38,9 @@ Diode orientation
 -----------------
 The keyboard's matrix is composed of rows and columns.
 The rows and columns are physically connected to the keys.
-The rows and columns are distinguishable by diode orientation (not horizontal/vertical).
-Matrix rows connect to diode anodes and matrix columns as connect to diode cathodes.
+The rows and columns are distinguishable by diode orientation (not horizontal/vertical):
+    cathodes on rows
+    anodes on columns
 
 Pull-up resistors
 -----------------
