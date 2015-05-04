@@ -4,7 +4,6 @@
 #include <inttypes.h>
 #include <Keyboard.h>
 #include "l_Code.h"
-#include "l_ShiftManager.h"
 
 /* Class l_Code_S is composed of one scancode, which it sends when press() or release() is called.
  * "S" stands for Scancode.

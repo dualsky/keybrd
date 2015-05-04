@@ -15,7 +15,7 @@ void l_ShiftManager::restoreShift0()
 //called by l_Code_SNS and l_Code_00, they need all shifts released
 void l_ShiftManager::releaseAllShifts()
 {
-    for (uint8_t i = 0; i < SHIFTS_COUNT; i++)
+    for (uint8_t i = 0; i < SHIFT_COUNT; i++)
         {
         ptrsShifts[i]->syncOSShifted(false);
         }
@@ -24,7 +24,7 @@ void l_ShiftManager::releaseAllShifts()
 //called by l_Code_SNS
 void l_ShiftManager::restoreAllShifts()
 {
-    for (uint8_t i = 0; i < SHIFTS_COUNT; i++)
+    for (uint8_t i = 0; i < SHIFT_COUNT; i++)
         {
         ptrsShifts[i]->restoreKBShifted();
         }
