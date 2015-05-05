@@ -86,7 +86,7 @@ void c_Row::pressRelease(const uint8_t rowState)
     uint8_t colM;                               //column bit mask
     uint8_t col;                                //row index corresponding to a key pointer
 
-    for (colM=1, col=0; col<COLS_COUNT; colM=colM<<1, col++) // for each key in row
+    for (colM=1, col=0; col<COL_COUNT; colM=colM<<1, col++) // for each key in row
         {
         if (colM & isFallingEdge)               //if button was released
             {

@@ -13,7 +13,7 @@ class k_Key_1: public c_Key
         const uint16_t scancode;
 
     public:
-        k_Key_1(const uint16_t sc): scancode(sc) { }
+        k_Key_1(const uint16_t scancode): scancode(scancode) { }
 
         //send scancode to USB for press
         void press();

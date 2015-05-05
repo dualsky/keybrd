@@ -1,8 +1,8 @@
 #include "c_ColPort_AVR_ActiveHigh.h"
 
-c_ColPort_AVR_ActiveHigh::c_ColPort_AVR_ActiveHigh
-    (volatile unsigned char& DDRx, volatile unsigned char& PORTx, volatile unsigned char& PINx, const uint8_t pins):
-    DDR(DDRx = ~pins), PORT(PORTx = pins), PIN(PINx), c_ColPort(pins)
+c_ColPort_AVR_ActiveHigh::c_ColPort_AVR_ActiveHigh(volatile unsigned char& DDRx,
+    volatile unsigned char& PORTx, volatile unsigned char& PINx, const uint8_t pins)
+    : DDR(DDRx = ~pins), PORT(PORTx = pins), PIN(PINx), c_ColPort(pins)
 {}
 
 /* Read port and store it in portState quickly so that strobe is on for shortest possible time.

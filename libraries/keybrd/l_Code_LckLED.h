@@ -18,7 +18,7 @@ class l_Code_LckLED: public l_Code
 
     public:
         //in keybrd sketch, ports should be instantiated before l_Code_LckLED is instantiated
-        l_Code_LckLED(const uint16_t sc, c_LED& led);
+        l_Code_LckLED(const uint16_t scancode, c_LED& LED);
         void press();
         void release();
 };

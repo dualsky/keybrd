@@ -21,8 +21,8 @@ class l_ShiftManager
         l_Code_Shift*const *const ptrsShifts;   //array of shift pointers
         const uint8_t SHIFT_COUNT;
     public:
-        l_ShiftManager(l_Code_Shift *const ps[], const uint8_t sc):
-            ptrsShifts(ps), SHIFT_COUNT(sc) {}
+        l_ShiftManager(l_Code_Shift *const ptrsShifts[], const uint8_t SHIFT_COUNT)
+            : ptrsShifts(), SHIFT_COUNT(SHIFT_COUNT) {}
         void pressShift0();                     //press first element of ptrsShifts[] array
         void restoreShift0();                   //restore first element of ptrsShifts[] array
         void releaseAllShifts();

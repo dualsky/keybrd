@@ -3,7 +3,7 @@
 /* in keybrd sketch, ports should be instantiated before l_Code_LckLED is instantiated
 because LED.off() needs ports to be configured by port constructor
 */
-l_Code_LckLED::l_Code_LckLED(const uint16_t sc, c_LED& led): scancode(sc), LED(led)
+l_Code_LckLED::l_Code_LckLED(const uint16_t scancode, c_LED& LED): scancode(scancode), LED(LED)
 {
     LED.off();                   //todo: set LED to whatever CapsLck is
 }

@@ -1,7 +1,7 @@
 #include "c_ColPort_MCP23018.h"
 
-c_ColPort_MCP23018::c_ColPort_MCP23018(c_IOExpanderPort& port, const uint8_t pins):
-    port(port), IODIR(port.num), GPIO(port.num + 0x12), GPPU(port.num + 0x0C), c_ColPort(pins)
+c_ColPort_MCP23018::c_ColPort_MCP23018(c_IOExpanderPort& port, const uint8_t pins)
+    : port(port), IODIR(port.num), GPIO(port.num + 0x12), GPPU(port.num + 0x0C), c_ColPort(pins)
 {
     Wire.begin();
     

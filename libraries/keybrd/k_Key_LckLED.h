@@ -16,7 +16,7 @@ class k_Key_LckLED: public c_Key
         c_LED& LED;
 
     public:
-        k_Key_LckLED(const uint16_t sc, c_LED& led);
+        k_Key_LckLED(const uint16_t sc, c_LED& LED);
 
         void press();
         void release();

@@ -14,7 +14,7 @@ class l_Code_S: public l_Code
         const uint16_t scancode;
     public:
         l_Code_S(): scancode(0) {};
-        l_Code_S(const uint16_t sc): scancode(sc) { }
+        l_Code_S(const uint16_t scancode): scancode(scancode) { }
         void press();
         void release();
 };

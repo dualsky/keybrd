@@ -16,8 +16,8 @@ class m_Mouse_Move: public m_Mouse
         const uint16_t y;
         const uint16_t wheel;
     public:
-        m_Mouse_Move(const uint16_t x, const uint16_t y, const uint16_t w):
-            x(x), y(y), wheel(w) { }
+        m_Mouse_Move(const uint16_t x, const uint16_t y, const uint16_t wheel)
+            : x(x), y(y), wheel(wheel) { }
         void press();
         void release();
 };

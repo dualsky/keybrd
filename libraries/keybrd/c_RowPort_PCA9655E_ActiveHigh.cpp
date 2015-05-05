@@ -1,8 +1,8 @@
 #include "c_RowPort_PCA9655E_ActiveHigh.h"
 #include "c_Matrix.h"                           //included in implementation because circular
 
-c_RowPort_PCA9655E_ActiveHigh::c_RowPort_PCA9655E_ActiveHigh(c_IOExpanderPort& port, const uint8_t pins):
-                port(port), configuration(port.num + 6), output(port.num + 2), c_RowPort(pins)
+c_RowPort_PCA9655E_ActiveHigh::c_RowPort_PCA9655E_ActiveHigh(c_IOExpanderPort& port, const uint8_t pins)
+    : port(port), configuration(port.num + 6), output(port.num + 2), c_RowPort(pins)
 {
     Wire.begin();
     

@@ -19,7 +19,7 @@ class l_Key_Layered: public c_Key
         uint8_t layerWhenPressed;               //active layer when key was pressed
         static l_LayerManager& refLayerManager;
     public:
-        l_Key_Layered(l_Code* const pa[]): ptrsCodes(pa) {}
+        l_Key_Layered(l_Code* const ptrsCodes[]): ptrsCodes(ptrsCodes) {}
         void press();                           //send scancode to USB for press
         void release();                         //send scancode to USB for release
 };

@@ -25,16 +25,16 @@ class c_Matrix
         const uint8_t COL_PORT_COUNT;
 
         c_Row *const *const ptrsRows;           //array of row pointers
-        const uint8_t ROWS_COUNT;
+        const uint8_t ROW_COUNT;
         uint8_t rowNum;                         //index for ptrsRows[] array
 
     public:
-        c_Matrix(c_RowPort *const rp[], const uint8_t rpc,
-                 c_ColPort *const cp[], const uint8_t cpc,
-                 c_Row *const r[],const uint8_t rc):
-                 ptrsRowPorts(rp), ROW_PORT_COUNT(rpc),
-                 ptrsColPorts(cp), COL_PORT_COUNT(cpc),
-                 ptrsRows(r), ROWS_COUNT(rc) {}
+        c_Matrix(c_RowPort *const ptrsRowPorts[], const uint8_t ROW_PORT_COUNT,
+                 c_ColPort *const ptrsColPorts[], const uint8_t COL_PORT_COUNT,
+                 c_Row *const ptrsRows[],const uint8_t ROW_COUNT)
+            : ptrsRowPorts(ptrsRowPorts), ROW_PORT_COUNT(ROW_PORT_COUNT),
+              ptrsColPorts(ptrsColPorts), COL_PORT_COUNT(COL_PORT_COUNT),
+              ptrsRows(ptrsRows), ROW_COUNT(ROW_COUNT) {}
 
         //scanMatrix() scans each row of matrix one time
         void scan();

@@ -16,8 +16,8 @@ class c_RowWait
         const uint16_t WAIT_MICROSECONDS;       //microseconds delay between row scans
     public:
         c_RowWait( const uint8_t TOTAL_ROW_COUNT=1,     //rows of all matrices
-                   const uint8_t SWITCH_BOUNCE_MILLIS=10 ): //bounce time in milliseconds
-            WAIT_MICROSECONDS(1000 * SWITCH_BOUNCE_MILLIS/(TOTAL_ROW_COUNT*(SAMPLE_COUNT-1))) {}
+                   const uint8_t SWITCH_BOUNCE_MILLIS=10 ) //bounce time in milliseconds
+            :WAIT_MICROSECONDS(1000 * SWITCH_BOUNCE_MILLIS/(TOTAL_ROW_COUNT*(SAMPLE_COUNT-1))) {}
 
         void delay();
 };

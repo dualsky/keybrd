@@ -13,7 +13,7 @@ class l_Key_1: public c_Key
         l_Code* const ptrScanCode;
 
     public:
-        l_Key_1(l_Code* const sc): ptrScanCode(sc) { }
+        l_Key_1(l_Code* const ptrScanCode): ptrScanCode(ptrScanCode) { }
 
         //send scancode to USB for press
         void press();

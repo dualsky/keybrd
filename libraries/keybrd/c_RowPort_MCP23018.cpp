@@ -1,8 +1,8 @@
 #include "c_RowPort_MCP23018.h"
 #include "c_Matrix.h"                           //included in implementation because circular
 
-c_RowPort_MCP23018::c_RowPort_MCP23018(c_IOExpanderPort& port, const uint8_t pins):
-                port(port), IODIR(port.num), GPIO(port.num + 0x12), c_RowPort(pins)
+c_RowPort_MCP23018::c_RowPort_MCP23018(c_IOExpanderPort& port, const uint8_t pins)
+    : port(port), IODIR(port.num), GPIO(port.num + 0x12), c_RowPort(pins)
 {
     Wire.begin();
     

@@ -14,7 +14,7 @@ class m_Mouse_Button: public m_Mouse
     private:
         const uint16_t scancode;                //MOUSE_LEFT MOUSE_RIGHT MOUSE_MIDDLE
     public:
-        m_Mouse_Button(const uint16_t sc): scancode(sc) { }
+        m_Mouse_Button(const uint16_t scancode): scancode(scancode) { }
         void press();
         void release();
 };

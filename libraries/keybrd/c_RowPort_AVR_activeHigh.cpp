@@ -14,8 +14,8 @@ Seems to be necessary in order to allow the phototransistors to turn completely 
 */
 
 c_RowPort_AVR_ActiveHigh::c_RowPort_AVR_ActiveHigh
-    (volatile unsigned char& DDRx, volatile unsigned char& PORTx, const uint8_t pins):
-    DDR(DDRx = ~0), PORT(PORTx), c_RowPort(pins)
+        (volatile unsigned char& DDRx, volatile unsigned char& PORTx, const uint8_t pins)
+    : DDR(DDRx = ~0), PORT(PORTx), c_RowPort(pins)
 {}
 
 void c_RowPort_AVR_ActiveHigh::scanRow(const uint8_t activeHighPin, c_Matrix *const matrix)

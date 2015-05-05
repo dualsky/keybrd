@@ -172,6 +172,8 @@ not
 
     void printArray( char* array);
 
+* In constructor's initialization list, use same names for fields and constructor parameters
+	this is less confusing if the constructor gets moved the implementation file
 * Do not use new or malloc (to make memory leaks impossible).
 * If class has any non-[POD](http://en.wikipedia.org/wiki/Plain_old_data_structure) data members, [do not inline constructors and destructors](http://www.chromium.org/developers/coding-style/cpp-dos-and-donts).
 * Document class in .h file, above the class declaration.

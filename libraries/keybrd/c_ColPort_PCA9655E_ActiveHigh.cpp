@@ -1,7 +1,8 @@
 #include "c_ColPort_PCA9655E_ActiveHigh.h"
 
-c_ColPort_PCA9655E_ActiveHigh::c_ColPort_PCA9655E_ActiveHigh(c_IOExpanderPort& port, const uint8_t pins):
-            port(port), configuration(port.num + 6), input(port.num), c_ColPort(pins)
+c_ColPort_PCA9655E_ActiveHigh::c_ColPort_PCA9655E_ActiveHigh
+        (c_IOExpanderPort& port, const uint8_t pins)
+    : port(port), configuration(port.num + 6), input(port.num), c_ColPort(pins)
 {
     Wire.begin();
     

@@ -24,10 +24,10 @@ class c_Row
         uint8_t debounced;                      //each bit is a debounced value of row's key
 
         c_Key*const *const ptrsKeys;            //row is composed of an array of Keys
-        const uint8_t COLS_COUNT;               //number of keys in row
+        const uint8_t COL_COUNT;               //number of keys in row
     public:
-        c_Row(c_Key *const pk[], const uint8_t cc):
-            ptrsKeys(pk), COLS_COUNT(cc), i(0), debounced(0) { }
+        c_Row(c_Key *const ptrsKeys[], const uint8_t col_count)
+            : ptrsKeys(ptrsKeys), COL_COUNT(COL_COUNT), i(0), debounced(0) { }
 
         void pressRelease(const uint8_t sample); //send one row of key actions to USB
 };
