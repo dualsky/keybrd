@@ -21,7 +21,7 @@ void c_ColPort_PCA9655E_ActiveHigh::read()
     Wire.write(input);                          //input immediately before requestFrom
     Wire.endTransmission(false);                //PCA9655E needs false to send a restart
 
-    Wire.requestFrom(port.ADDR, static_cast<uint8_t>(1)); //request one byte from input port
+    Wire.requestFrom(port.ADDR, 1u);            //request one byte from input port
 
     portState = ~Wire.read();
 }

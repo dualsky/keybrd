@@ -16,7 +16,7 @@ test 2
 //keybrd library files
 #include <l_Code_SNS.h>
 #include <l_Code_SS.h>
-#include <l_Code_00.h>
+#include <l_Code_SNS_00.h>
 #include <objects_scancode.h>
 #include <l_ShiftManager.h>
 #include <l_Key_Layered.h>
@@ -58,7 +58,7 @@ void loop()
 // ========= CODES ==========
 l_Code_SNS sns_b(KEY_B);                        //scancode not shifted
 l_Code_SNS ss_d(KEY_D);                         //scancode shifted
-l_Code_00 code_00;                              //double zero
+l_Code_SNS_00 sns_00;                            //double zero
 
 // ------------ LAYER CODES -------------
 l_Code_Layer l_alpha(0);
@@ -143,7 +143,7 @@ l_Key_Layered k_R01(prtsCodes_R01);
 l_Key_1 k_R02(&l_capsLck_R);
 
 //row_R1
-l_Key_1 k_R10(&code_00);
+l_Key_1 k_R10(&sns_00);
 l_Key_1 k_R11(&code_null);
 l_Key_1 k_R12(&s_shift);
 

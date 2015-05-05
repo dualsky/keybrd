@@ -31,8 +31,8 @@ test 1
 #include "k_Key_LckLED.h"
 
 #include <Mouse.h>
-#include <m_MouseButton.h>
-#include <m_MouseMove.h>
+#include <m_Mouse_Button.h>
+#include <m_Mouse_Move.h>
 
 // =============== STATIC MEMBERS =====================
 c_RowWait rowWait(4, 10);
@@ -43,8 +43,8 @@ void setup() {}
 void loop()
 {
 // =============== KEYS =====================
-m_MouseButton mb_right(MOUSE_RIGHT);
-m_MouseMove mm_up(0,-8,0);          //negative Y is up
+m_Mouse_Button mb_right(MOUSE_RIGHT);
+m_Mouse_Move mm_up(0,-8,0);          //negative Y is up
     
 // =============== LEFT =====================
 // -------- LEFT I/O EXPANDER PORTS ---------

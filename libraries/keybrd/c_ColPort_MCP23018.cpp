@@ -26,7 +26,7 @@ void c_ColPort_MCP23018::read()
     Wire.write(GPIO);                           //GPIO immediately before requestFrom
     Wire.endTransmission();
 
-    Wire.requestFrom(port.ADDR, static_cast<uint8_t>(1)); //request one byte from input port
+    Wire.requestFrom(port.ADDR, 1u);            //request one byte from input port
 
     portState = Wire.read();
 Serial.print("  ADDR3=");  Serial.print(port.ADDR, BIN);

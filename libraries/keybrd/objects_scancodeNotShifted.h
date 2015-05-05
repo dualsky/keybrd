@@ -10,10 +10,10 @@
  * This has been tested on teensy2.0.
  */
 #include <l_Code_SNS.h>
-#include <l_Code_00.h>
+#include <l_Code_SNS_00.h>
 
 // ********** SCANCODES NOT SHIFTED *********
-l_Code_00 code_00;                              //double zero
+l_Code_SNS_00 sns_00;                           //double zero
 
 l_Code_SNS sns_1(KEY_1);                        //could get similar effect with s_pad1
 l_Code_SNS sns_2(KEY_2);

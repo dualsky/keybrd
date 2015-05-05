@@ -12,7 +12,7 @@ void l_ShiftManager::restoreShift0()
     ptrsShifts[0]->restoreKBShifted();
 }
 
-//called by l_Code_SNS and l_Code_00, they need all shifts released
+//called by l_Code_SNS and l_Code_SNS_00, they need all shifts released
 void l_ShiftManager::releaseAllShifts()
 {
     for (uint8_t i = 0; i < SHIFT_COUNT; i++)
