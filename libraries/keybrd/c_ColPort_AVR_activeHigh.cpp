@@ -1,7 +1,7 @@
 #include "c_ColPort_AVR_ActiveHigh.h"
 
 c_ColPort_AVR_ActiveHigh::c_ColPort_AVR_ActiveHigh(volatile unsigned char& DDRx,
-    volatile unsigned char& PORTx, volatile unsigned char& PINx, const uint8_t pins)
+        volatile unsigned char& PORTx, volatile unsigned char& PINx, const uint8_t pins)
     : DDR(DDRx = ~pins), PORT(PORTx = pins), PIN(PINx), c_ColPort(pins)
 {}
 

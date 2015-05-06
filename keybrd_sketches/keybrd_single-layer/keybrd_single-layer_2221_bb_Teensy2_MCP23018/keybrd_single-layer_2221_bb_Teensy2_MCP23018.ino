@@ -3,10 +3,10 @@
       -----------       ------------
       capsLck  2        3       mouse up
       null     b        c       right click
-with Teensy 2.0 and MCP23018 I/O expander
+
 test 1
 */
-// ========== INCLUDES ==========
+// ================ INCLUDES ===================
 //Arduino library files
 #include <Keyboard.h>
 #include <Wire.h>
@@ -34,91 +34,91 @@ test 1
 #include <m_Mouse_Button.h>
 #include <m_Mouse_Move.h>
 
-// =============== STATIC MEMBERS =====================
+// ============= STATIC MEMBERS ================
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row::refRowWait = rowWait;
 
-// ############### MAIN #####################
+// ################# MAIN ######################
 void setup() {}
 void loop()
 {
-// =============== KEYS =====================
+// ================== KEYS =====================
 m_Mouse_Button mb_right(MOUSE_RIGHT);
-m_Mouse_Move mm_up(0,-8,0);          //negative Y is up
+m_Mouse_Move mm_up(0,-8,0);                     //negative Y is up
     
-// =============== LEFT =====================
-// -------- LEFT I/O EXPANDER PORTS ---------
+// ================== LEFT =====================
+// -------- LEFT I/O EXPANDER PORTS ------------
 c_IOExpanderPort portA_L(0x20, 0);
 c_IOExpanderPort portB_L(0x20, 1);
 
-// --------------- LEFT ROW PORTS -------------
+// ------------- LEFT ROW PORTS ----------------
 // row: 0   1
 // pin: B0  B1
 
 c_RowPort_MCP23018 rowPortB_L(portB_L, 1<<0 | 1<<1 );
 
-// --------------- LEFT COL PORTS -------------
+// ------------- LEFT COL PORTS ----------------
 // col: 0   1
 // pin: A0  A1
 
 c_ColPort_MCP23018 colPortA_L(portA_L, 1<<0 | 1<<1 );
 
-// ------------ LEFT LED KEYS -------------
-c_LED_MCP23018 capsLck_LED_L(portB_L, 1<<2);   //green top row port
+// ------------- LEFT LED KEYS -----------------
+c_LED_MCP23018 capsLck_LED_L(portB_L, 1<<2);
 k_Key_LckLED k_capsLck(KEY_CAPS_LOCK, capsLck_LED_L);
 
-// ----------- LEFT ROWS OF KEYS ------------
+// --------------- LEFT ROWS -------------------
 //row0
-c_Key* const ptrsKey_L0[] = {     &k_capsLck,   &k_2      };
+c_Key* ptrsKey_L0[] = {     &k_capsLck,   &k_2      };
 c_Row row_L0(ptrsKey_L0, 2);
 
 //row1
-c_Key* const ptrsKey_L1[] = {     &k_null,    &k_b      };
+c_Key* ptrsKey_L1[] = {     &k_null,    &k_b      };
 c_Row row_L1(ptrsKey_L1, 2);
 
-// ------------- LEFT MATRIX --------------
-c_Row* const ptrsRows_L[] = { &row_L0, &row_L1 };
+// -------------- LEFT MATRIX ------------------
+c_Row* ptrsRows_L[] = { &row_L0, &row_L1 };
 c_RowPort* ptrsRowPorts_L[] = { &rowPortB_L };
 c_ColPort* ptrsColPorts_L[] = { &colPortA_L };
 c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRows_L, 2);
 
-// =============== RIGHT ====================
+// ================= RIGHT =====================
 // this test shows how pins from any port can be used
 // AVR PORTB is shared by c_RowPort_AVR (pin B2) and c_ColPort_AVR (pins B0 and B1)
 // rowPort uses pins B2 and F1
-// --------------- RIGHT ROW PORTS -------------
+// ------------ RIGHT ROW PORTS ----------------
 // row: 0   1
 // pin: B2  F1              (testing row with pins from two different ports)
 
 c_RowPort_AVR rowPortB_R(DDRB, PORTB, 1<<2 );
 c_RowPort_AVR rowPortF_R(DDRF, PORTF, 1<<1 );
 
-// --------------- RIGHT COL PORTS -------------
+// ------------ RIGHT COL PORTS ----------------
 // col: 0   1
 // pin: B0  B1
 
 c_ColPort_AVR colPortB_R(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 
-// ----------- RIGHT ROWS OF KEYS ------------
+// -------------- RIGHT KEYS -------------------
 //row0
-c_Key* const ptrsKey_R0[] = {     &k_3,   &mm_up      };
+c_Key* ptrsKey_R0[] = {     &k_3,   &mm_up      };
 c_Row row_R0(ptrsKey_R0, 2);
 
 //row1
-c_Key* const ptrsKey_R1[] = {     &k_c,   &mb_right       };
+c_Key* ptrsKey_R1[] = {     &k_c,   &mb_right       };
 c_Row row_R1(ptrsKey_R1, 2);
 
-// ------------- RIGHT MATRIX --------------
-c_Row* const ptrsRows_R[] = { &row_R0, &row_R1 };
+// ------------- RIGHT MATRIX ------------------
+c_Row* ptrsRows_R[] = { &row_R0, &row_R1 };
 c_RowPort* ptrsRowPorts_R[] = { &rowPortB_R, &rowPortF_R };
 c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
 c_Matrix matrix_R(ptrsRowPorts_R, 2, ptrsColPorts_R, 1, ptrsRows_R, 2);
 
-// ============== KEYBOARD =============
-c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
+// =============== KEYBOARD ====================
+c_Matrix* ptrsMatrix[] = { &matrix_L, &matrix_R };
 c_Keybrd keybrd(ptrsMatrix, 2);
 
-// ================ RUN ================
+// ================== RUN ======================
     keybrd.begin(); 
 
     while (true)

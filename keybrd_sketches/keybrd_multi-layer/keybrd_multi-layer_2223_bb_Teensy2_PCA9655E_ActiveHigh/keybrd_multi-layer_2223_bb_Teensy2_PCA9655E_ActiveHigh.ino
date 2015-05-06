@@ -8,7 +8,7 @@ letter b should print lowercase "b" even when shift is pressed
 letter d should print uppercase "D" even when shift is not pressed
 test 2
 */
-// ========== INCLUDES =========
+// ================ INCLUDES ===================
 //Arduino library files
 #include <Keyboard.h>
 #include <Wire.h>
@@ -39,11 +39,11 @@ test 2
 #include "c_LED_PCA9655E.h"
 #include "l_Code_LckLED.h"
 
-// =============== STATIC MEMBERS =====================
+// ============= STATIC MEMBERS ================
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row::refRowWait = rowWait;
 
-l_Code_Shift* const ptrsShift[] = { &s_shift };
+l_Code_Shift* ptrsShift[] = { &s_shift };
 l_ShiftManager shiftManager(ptrsShift, 1);
 l_ShiftManager& l_Code::refShiftManager = shiftManager;
 
@@ -51,45 +51,45 @@ l_LayerManager layerManager;
 l_LayerManager&  l_Code_Layer::refLayerManager = layerManager;
 l_LayerManager& l_Key_Layered::refLayerManager = layerManager;
 
-// ############### MAIN #####################
+// ################# MAIN ######################
 void setup() {}
 void loop()
 {
-// ========= CODES ==========
+// ================= CODES =====================
 l_Code_SNS sns_b(KEY_B);                        //scancode not shifted
 l_Code_SNS ss_d(KEY_D);                         //scancode shifted
-l_Code_SNS_00 sns_00;                            //double zero
+l_Code_SNS_00 sns_00;                           //double zero
 
-// ------------ LAYER CODES -------------
+// -------------- LAYER CODES ------------------
 l_Code_Layer l_alpha(0);
 l_Code_Layer l_sym(1);
 
-// =============== LEFT =====================
-// -------- LEFT I/O EXPANDER PORTS ---------
+// ================== LEFT =====================
+// -------- LEFT I/O EXPANDER PORTS ------------
 c_IOExpanderPort port0_L(0x20, 0);
 c_IOExpanderPort port1_L(0x20, 1);
 
-// --------------- LEFT ROW PORTS -------------
+// ------------- LEFT ROW PORTS ----------------
 // row: 0   1
 // pin: B0  B1
 
 c_RowPort_PCA9655E_ActiveHigh rowPort0_L(port0_L, 1<<0 | 1<<1 );
 
-// --------------- LEFT COL PORTS -------------
+// ------------- LEFT COL PORTS ----------------
 // col: 0   1
 // pin: A0  A1
 
 c_ColPort_PCA9655E_ActiveHigh colPort1_L(port1_L, 1<<0 | 1<<1 );
 
-// ------------ LEFT LED CODES -------------
-c_LED_PCA9655E capsLck_LED_L(port0_L, 1<<7);    //blue
+// ------------- LEFT LED CODES ----------------
+c_LED_PCA9655E capsLck_LED_L(port0_L, 1<<7);
 l_Code_LckLED l_capsLck_L(KEY_CAPS_LOCK, capsLck_LED_L);
 
-// ---------- LEFT KEYS -----------
-//row_L0                   {alpha        sym      };
+// --------------- LEFT KEYS -------------------
+//row_L0                   {alpha        sym    };
 l_Key_1 k_L00(&l_capsLck_L);
 
-l_Code * prtsCodes_L01[] = {&sns_b,        &s_at  };
+l_Code * prtsCodes_L01[] = {&sns_b,      &s_at  };
 l_Key_Layered k_L01(prtsCodes_L01);
 
 //row_L1
@@ -97,47 +97,47 @@ l_Key_1 k_L10(&l_alpha);
 
 l_Key_1 k_L11(&l_sym);
 
-// ---------- LEFT ROWS ----------
+// --------------- LEFT ROWS -------------------
 //row_L0
-c_Key* const ptrKey_L0[] = { &k_L00, &k_L01 };
-const uint8_t KEYS_L0_COUNT = sizeof(ptrKey_L0)/sizeof(ptrKey_L0[0]);
+c_Key* ptrKey_L0[] = { &k_L00, &k_L01 };
+uint8_t KEYS_L0_COUNT = sizeof(ptrKey_L0)/sizeof(ptrKey_L0[0]);
 c_Row rowL0(ptrKey_L0, KEYS_L0_COUNT);
 
 //row_L1
-c_Key* const ptrKey_L1[] = { &k_L10, &k_L11 };
-const uint8_t KEYS_L1_COUNT = sizeof(ptrKey_L1)/sizeof(ptrKey_L1[0]);
+c_Key* ptrKey_L1[] = { &k_L10, &k_L11 };
+uint8_t KEYS_L1_COUNT = sizeof(ptrKey_L1)/sizeof(ptrKey_L1[0]);
 c_Row rowL1(ptrKey_L1, KEYS_L1_COUNT);
 
-// ---------- LEFT MATRIX -----------
+// -------------- LEFT MATRIX ------------------
 c_RowPort* ptrsRowPorts_L[] = { &rowPort0_L };
 c_ColPort* ptrsColPorts_L[] = { &colPort1_L };
-c_Row* const ptrsRow_L[] = { &rowL0, &rowL1 };
+c_Row* ptrsRow_L[] = { &rowL0, &rowL1 };
 c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRow_L, 2);
 
-// =============== RIGHT ====================
-// --------------- RIGHT ROW PORTS -------------
+// ================= RIGHT =====================
+// ------------ RIGHT ROW PORTS ----------------
 // row: 0   1
 // pin: F0  F1
 
 c_RowPort_AVR_ActiveHigh rowPortF_R(DDRF, PORTF, 1<<0 | 1<<1 );
 
-// --------------- RIGHT COL PORTS -------------
+// ------------ RIGHT COL PORTS ----------------
 // col: 0   1
 // pin: B0  B1
 
 c_ColPort_AVR_ActiveHigh colPortC_R(DDRC, PORTC, PINC, 1<<7 );
 c_ColPort_AVR_ActiveHigh colPortB_R(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 
-// ------------ RIGHT LED CODES -------------
-c_LED_AVR capsLck_LED_R(PORTB, 1<<3);           //red
+// ------------ RIGHT LED CODES ----------------
+c_LED_AVR capsLck_LED_R(PORTB, 1<<3);
 l_Code_LckLED l_capsLck_R(KEY_CAPS_LOCK, capsLck_LED_R);
 
-// ---------- RIGHT KEYS -----------
-//row_R0                   {alpha        sym      };
-l_Code * prtsCodes_R00[] = {&s_c,        &s_number  };
+// -------------- RIGHT KEYS -------------------
+//row_R0                   {alpha       sym        };
+l_Code * prtsCodes_R00[] = {&s_c,       &s_number  };
 l_Key_Layered k_R00(prtsCodes_R00);
 
-l_Code * prtsCodes_R01[] = {&ss_d,       &s_dollar  };
+l_Code * prtsCodes_R01[] = {&ss_d,      &s_dollar  };
 l_Key_Layered k_R01(prtsCodes_R01);
 
 l_Key_1 k_R02(&l_capsLck_R);
@@ -147,29 +147,28 @@ l_Key_1 k_R10(&sns_00);
 l_Key_1 k_R11(&code_null);
 l_Key_1 k_R12(&s_shift);
 
-// ---------- RIGHT ROWS ----------
+// -------------- RIGHT ROWS -------------------
 //row_R0
-c_Key* const ptrKey_R0[] = { &k_R00, &k_R01, &k_R02 };
-const uint8_t KEYS_R0_COUNT = sizeof(ptrKey_R0)/sizeof(ptrKey_R0[0]);
+c_Key* ptrKey_R0[] = { &k_R00, &k_R01, &k_R02 };
+uint8_t KEYS_R0_COUNT = sizeof(ptrKey_R0)/sizeof(ptrKey_R0[0]);
 c_Row rowR0(ptrKey_R0, KEYS_R0_COUNT);
 
 //row_R1
-c_Key* const ptrKey_R1[] = { &k_R10, &k_R11, &k_R12 };
-const uint8_t KEYS_R1_COUNT = sizeof(ptrKey_R1)/sizeof(ptrKey_R1[0]);
+c_Key* ptrKey_R1[] = { &k_R10, &k_R11, &k_R12 };
+uint8_t KEYS_R1_COUNT = sizeof(ptrKey_R1)/sizeof(ptrKey_R1[0]);
 c_Row rowR1(ptrKey_R1, KEYS_R1_COUNT);
 
-// ---------- RIGHT MATRIX -----------
+// ------------- RIGHT MATRIX ------------------
 c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
-c_ColPort* ptrsColPorts_R[] = { &colPortC_R, &colPortB_R };//adding colPortC_R breaks it
-//c_ColPort* ptrsColPorts_R[] = { &colPortB_R };
-c_Row* const ptrsRow_R[] = { &rowR0, &rowR1 };
+c_ColPort* ptrsColPorts_R[] = { &colPortC_R, &colPortB_R };
+c_Row* ptrsRow_R[] = { &rowR0, &rowR1 };
 c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 2, ptrsRow_R, 2);
 
-// ========== KEYBOARD ===========
-c_Matrix* const ptrsMatrix[] = { &matrix_L, &matrix_R };
+// =============== KEYBOARD ====================
+c_Matrix* ptrsMatrix[] = { &matrix_L, &matrix_R };
 c_Keybrd keybrd(ptrsMatrix, 2);
 
-// ========== RUN ===========
+// ================== RUN ======================
     keybrd.begin();
 
     while (true)
