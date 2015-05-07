@@ -24,4 +24,4 @@ Add features to DodoHand sketch as described in the DataHand Pro II User Guide:
 * NUM LOCK
 * Sticky Mouse Buttons
 * Double Strike
-* LEDs
+* LEDs indicate numLck and capsLck state

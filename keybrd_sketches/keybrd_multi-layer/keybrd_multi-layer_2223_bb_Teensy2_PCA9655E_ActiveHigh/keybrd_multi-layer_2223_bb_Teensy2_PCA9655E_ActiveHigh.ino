@@ -1,4 +1,4 @@
-/* keybrd_multi-layer_2223_bb_Teensy2_PCA9655E_ActiveHigh.ino layout:
+/* test 2 - keybrd_multi-layer_2223_bb_Teensy2_PCA9655E_ActiveHigh.ino layout:
       Left Matrix             Rigth Matrix
       -----------------       -----------------
       capsLck_L   b @         c #    d $    capsLck_R
@@ -6,58 +6,64 @@
 
 letter b should print lowercase "b" even when shift is pressed
 letter d should print uppercase "D" even when shift is not pressed
-test 2
 */
+// ################# GLOBAL ####################
 // ================ INCLUDES ===================
 //Arduino library files
 #include <Keyboard.h>
 #include <Wire.h>
 
 //keybrd library files
+#include <l_Code_Shift>
+#include <l_ShiftManager.h>
+
 #include <l_Code_SNS.h>
 #include <l_Code_SS.h>
 #include <l_Code_SNS_00.h>
+#include <l_Code_LckLED.h>
 #include <objects_scancode.h>
-#include <l_ShiftManager.h>
-#include <l_Key_Layered.h>
+
 #include <l_Key_1.h>
-#include <c_Row.h>
-#include <c_RowPort_AVR_ActiveHigh.h>
-#include <c_ColPort_AVR_ActiveHigh.h>
+#include <l_Key_Layered.h>
+
+#include <c_IOExpanderPort.h>
 #include <c_RowPort_PCA9655E_ActiveHigh.h>
 #include <c_ColPort_PCA9655E_ActiveHigh.h>
-#include <c_Matrix_Teensy2.h>
+#include <c_LED_PCA9655E.h>
+
+#include <c_RowPort_AVR_ActiveHigh.h>
+#include <c_ColPort_AVR_ActiveHigh.h>
+#include <c_LED_AVR.h>
+
+#include <c_RowWait.h>
+#include <c_Row.h>
 #include <c_Matrix.h>
 #include <c_Keybrd.h>
 
 //keybrd_Layers library files
-#include <l_Code_Layer.h>
 #include <l_LayerManager.h>
-
-#include "c_IOExpanderPort.h"
-#include "c_LED_AVR.h"
-#include "c_LED_PCA9655E.h"
-#include "l_Code_LckLED.h"
+#include <l_Code_Layer.h>
 
 // ============= STATIC MEMBERS ================
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row::refRowWait = rowWait;
 
-l_Code_Shift* ptrsShift[] = { &s_shift };
-l_ShiftManager shiftManager(ptrsShift, 1);
+l_Code_Shift* ptrsShifts[] = { &s_shift };
+l_ShiftManager shiftManager(ptrsShifts, 1);
 l_ShiftManager& l_Code::refShiftManager = shiftManager;
 
 l_LayerManager layerManager;
 l_LayerManager&  l_Code_Layer::refLayerManager = layerManager;
 l_LayerManager& l_Key_Layered::refLayerManager = layerManager;
 
-// ################# MAIN ######################
+// ################## MAIN #####################
 void setup() {}
 void loop()
 {
 // ================= CODES =====================
+// --------------- SCAN CODES ------------------
 l_Code_SNS sns_b(KEY_B);                        //scancode not shifted
-l_Code_SNS ss_d(KEY_D);                         //scancode shifted
+l_Code_SS  ss_d(KEY_D);                         //scancode shifted
 l_Code_SNS_00 sns_00;                           //double zero
 
 // -------------- LAYER CODES ------------------
@@ -86,6 +92,7 @@ c_LED_PCA9655E capsLck_LED_L(port0_L, 1<<7);
 l_Code_LckLED l_capsLck_L(KEY_CAPS_LOCK, capsLck_LED_L);
 
 // --------------- LEFT KEYS -------------------
+// todo: keys should not be named after row or listed under LEFT/RIGHT, keys can go anywhere
 //row_L0                   {alpha        sym    };
 l_Key_1 k_L00(&l_capsLck_L);
 
@@ -111,8 +118,8 @@ c_Row rowL1(ptrKey_L1, KEYS_L1_COUNT);
 // -------------- LEFT MATRIX ------------------
 c_RowPort* ptrsRowPorts_L[] = { &rowPort0_L };
 c_ColPort* ptrsColPorts_L[] = { &colPort1_L };
-c_Row* ptrsRow_L[] = { &rowL0, &rowL1 };
-c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRow_L, 2);
+c_Row* ptrsRows_L[] = { &rowL0, &rowL1 };
+c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRows_L, 2);
 
 // ================= RIGHT =====================
 // ------------ RIGHT ROW PORTS ----------------
@@ -161,8 +168,8 @@ c_Row rowR1(ptrKey_R1, KEYS_R1_COUNT);
 // ------------- RIGHT MATRIX ------------------
 c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
 c_ColPort* ptrsColPorts_R[] = { &colPortC_R, &colPortB_R };
-c_Row* ptrsRow_R[] = { &rowR0, &rowR1 };
-c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 2, ptrsRow_R, 2);
+c_Row* ptrsRows_R[] = { &rowR0, &rowR1 };
+c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 2, ptrsRows_R, 2);
 
 // =============== KEYBOARD ====================
 c_Matrix* ptrsMatrix[] = { &matrix_L, &matrix_R };

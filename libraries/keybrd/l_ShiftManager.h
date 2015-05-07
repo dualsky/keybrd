@@ -22,7 +22,7 @@ class l_ShiftManager
         const uint8_t SHIFT_COUNT;
     public:
         l_ShiftManager(l_Code_Shift *const ptrsShifts[], const uint8_t SHIFT_COUNT)
-            : ptrsShifts(), SHIFT_COUNT(SHIFT_COUNT) {}
+            : ptrsShifts(ptrsShifts), SHIFT_COUNT(SHIFT_COUNT) {}
         void pressShift0();                     //press first element of ptrsShifts[] array
         void restoreShift0();                   //restore first element of ptrsShifts[] array
         void releaseAllShifts();

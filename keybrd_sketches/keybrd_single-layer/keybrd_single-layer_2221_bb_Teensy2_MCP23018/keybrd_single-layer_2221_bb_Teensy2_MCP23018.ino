@@ -1,11 +1,10 @@
-/* keybrd_single-layer_2221_bb_Teensy2_MCP23018, 8-key layout:
+/* test 1 - keybrd_single-layer_2221_bb_Teensy2_MCP23018, 8-key layout:
       Left Matrix       Rigth Matrix
       -----------       ------------
       capsLck  2        3       mouse up
       null     b        c       right click
-
-test 1
 */
+// ################# GLOBAL ####################
 // ================ INCLUDES ===================
 //Arduino library files
 #include <Keyboard.h>
@@ -38,7 +37,7 @@ test 1
 c_RowWait rowWait(4, 10);
 c_RowWait& c_Row::refRowWait = rowWait;
 
-// ################# MAIN ######################
+// ################## MAIN #####################
 void setup() {}
 void loop()
 {
