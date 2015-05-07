@@ -4,35 +4,10 @@
  */
 // ################# GLOBAL ####################
 // ================ INCLUDES ===================
+//Arudino library files
 #include <Keyboard.h>
 #include <Mouse.h>
 #include <Wire.h>
-
-/* //keybrd library files
-#include <objects_scancode.h>
-#include <m_MouseButton.h>
-#include <m_MouseMove.h>
-#include <l_Code_00.h>
-#include <l_Key_1.h>
-#include <l_Key_Layered.h>
-#include <c_Row.h>
-#include <c_RowWait.h>
-#include <c_Matrix_Teensy2.h>
-#include <c_Matrix_MCP23018.h>
-#include <c_Matrix.h>
-#include <c_Keybrd.h>
-#include <l_ShiftManager.h>
-
-//keybrd_Layers library files (custom classes for multi-layer keyboards)
-#include <l_Code_NormalLock.h>
-#include <l_Code_NAS.h>
-#include <l_Code_NASLock.h>
-#include <l_Code_NASHold.h>
-#include <l_Code_NASTenKeyLock.h>
-#include <l_Code_MF.h>
-#include <l_Code_MFLock.h>
-#include <l_Code_MFMouseArrowLock.h>
-#include <l_LayerManager.h>*/
 
 //keybrd library files
 #include <l_Code_Shift>
@@ -137,37 +112,32 @@ m_Mouse_Button mb_2(MOUSE_MIDDLE);
 m_Mouse_Button mb_3(MOUSE_RIGHT);
 
 /* ============ KEY COORDINATES ================
-Key names identify the key's position by coordinates defined in the tables below.
-Finger coordinates are hand+direction+column.  For example:
-        k_Ln0  is key at Left north pinky
-Thumb coordinates are hand+direction.  For example:
-        k_Rtdd is key at Right thumb hard down
+Key names identify the key's position by coordinates
+Key coordinates are matrix+row+column.  For example:
+        k_L01  is key at Left matrix, row 0, column 1
 
 -------- Fist coordinate is L or R matrix --------
 matrix letter:          L       R
 meaning:                Left    Right
 
 ---- Second coordinate is row number -----
-left row number:        0       1       2       3       4
-finger direction:       north   east    center  south   west
+L row numbers for col 0-3:  0       1       2       3       4
+finger direction:           north   east    center  south   west
 
-right row number:       n       w       c       s       e
-right row number:       0       1       2       3       4
-finger direction:       north   west    center  south   east
+R row numbers for col 0-3:  0       1       2       3       4
+finger direction:           north   west    center  south   east
  (west and east are swapped compared to left matrix because right PCB is flipped)
 
-row number, col 4:      tn      tk      td
-row number, col 4:      0       1       2
-thumb direction:        nail    knuckle down
+row numbers for col 4:      0       1       2
+thumb direction:            nail    knuckle down
 
-row number, col 5:      thd     tp      tu
-row number, col 5:      0       1       2
-thumb direction:        hard    pad     up
-                        down
+row numbers for col 5:      0       1       2
+thumb direction:            hard    pad     up
+                            down
 
 ------- Third coordinate is column number ------
-column number:          0       1       2       3       4       5
-meaning:                pinky   ring    middle  index   thumb   thumb
+column number:              0       1       2       3       4       5
+finger:                     pinky   ring    middle  index   thumb   thumb
 */
 
 // ================== LEFT =====================
@@ -218,7 +188,7 @@ l_Key_Layered k_L13(ptrsCodes_L13);
 l_Code* ptrsCodes_L20[] = {&s_a,        &s_1,           &s_comma,       &code_null,     &code_null};
 l_Key_Layered k_L20(ptrsCodes_L20);                 //todo: replace above code_null with L/R Modf
 
-l_Code* ptrsCodes_L21[] = {&s_s,        &s_2,           &s_dollar,      &mb_3,  &mb_3};
+l_Code* ptrsCodes_L21[] = {&s_s,        &s_2,           &s_dollar,      &mb_3,          &mb_3};
 l_Key_Layered k_L21(ptrsCodes_L21);
 
 l_Code* ptrsCodes_L22[] = {&s_d,        &s_3,           &s_ampersand,   &l_mouseOn,     &l_mouseOn};
@@ -251,47 +221,47 @@ l_Key_Layered k_L42(ptrsCodes_L42);
 l_Code* ptrsCodes_L43[] = {&s_doubleQuote,&s_slash,     &s_left,        &m_leftQuick,   &s_left};
 l_Key_Layered k_L43(ptrsCodes_L43);
 
-//thumb col 4 keys
-l_Key_1 k_L04(&s_tab);                         //thumb nail
-l_Key_1 k_L14(&s_ctrl);                        //thumb knuckle
-l_Key_1 k_L24(&s_shift);                       //thumb down
+//thumb col-4 keys
+l_Key_1 k_L04(&s_tab);                          //thumb nail
+l_Key_1 k_L14(&s_ctrl);                         //thumb knuckle
+l_Key_1 k_L24(&s_shift);                        //thumb down
 
-//thumb col 5 keys
-l_Key_1 k_L05(&s_capsLock);                   //thumb hard down
-l_Key_1 k_L15(&s_enter);                       //thumb pad
-l_Key_1 k_L25(&l_normal);                      //thumb up
+//thumb col-5 keys
+l_Key_1 k_L05(&s_capsLock);                     //thumb hard down
+l_Key_1 k_L15(&s_enter);                        //thumb pad
+l_Key_1 k_L25(&l_normal);                       //thumb up
 
 // --------------- LEFT ROWS -------------------
 //                             pinky    ring  middle   index  thumb  thumb
 //row_L0 north          col:       0       1       2       3      4      5
-c_Key* const ptrKeys_L0[] = { &k_L00, &k_L01, &k_L02, &k_L03, &k_L04, &k_L05};
-const uint8_t KEYS_L0_COUNT = sizeof(ptrKeys_L0)/sizeof(ptrKeys_L0[0]);
+c_Key* ptrKeys_L0[] = { &k_L00, &k_L01, &k_L02, &k_L03, &k_L04, &k_L05};
+uint8_t KEYS_L0_COUNT = sizeof(ptrKeys_L0)/sizeof(ptrKeys_L0[0]);
 c_Row row_L0(ptrKeys_L0, KEYS_L0_COUNT);
 
 //row_L1 east
-c_Key* const ptrKeys_L1[] = { &k_L10, &k_L11, &k_L12, &k_L13, &k_L14, &k_L15 };
-const uint8_t KEYS_L1_COUNT = sizeof(ptrKeys_L1)/sizeof(ptrKeys_L1[0]);
+c_Key* ptrKeys_L1[] = { &k_L10, &k_L11, &k_L12, &k_L13, &k_L14, &k_L15 };
+uint8_t KEYS_L1_COUNT = sizeof(ptrKeys_L1)/sizeof(ptrKeys_L1[0]);
 c_Row row_L1(ptrKeys_L1, KEYS_L1_COUNT);
 
 //row_L2 center
-c_Key* const ptrKeys_L2[] = { &k_L20, &k_L21, &k_L22, &k_L23, &k_L24, &k_L25 };
-const uint8_t KEYS_L2_COUNT = sizeof(ptrKeys_L2)/sizeof(ptrKeys_L2[0]);
+c_Key* ptrKeys_L2[] = { &k_L20, &k_L21, &k_L22, &k_L23, &k_L24, &k_L25 };
+uint8_t KEYS_L2_COUNT = sizeof(ptrKeys_L2)/sizeof(ptrKeys_L2[0]);
 c_Row row_L2(ptrKeys_L2, KEYS_L2_COUNT);
 
 //row_L3 south
-c_Key* const ptrKeys_L3[] = { &k_L30, &k_L31, &k_L32, &k_L33 };
-const uint8_t KEYS_L3_COUNT = sizeof(ptrKeys_L3)/sizeof(ptrKeys_L3[0]);
+c_Key* ptrKeys_L3[] = { &k_L30, &k_L31, &k_L32, &k_L33 };
+uint8_t KEYS_L3_COUNT = sizeof(ptrKeys_L3)/sizeof(ptrKeys_L3[0]);
 c_Row row_L3(ptrKeys_L3, KEYS_L3_COUNT);
 
 //row_L4 west
-c_Key* const ptrKeys_L4[] = { &k_L40, &k_L41, &k_L42, &k_L43 };
-const uint8_t KEYS_L4_COUNT = sizeof(ptrKeys_L4)/sizeof(ptrKeys_L4[0]);
+c_Key* ptrKeys_L4[] = { &k_L40, &k_L41, &k_L42, &k_L43 };
+uint8_t KEYS_L4_COUNT = sizeof(ptrKeys_L4)/sizeof(ptrKeys_L4[0]);
 c_Row row_L4(ptrKeys_L4, KEYS_L4_COUNT);
 
 // -------------- LEFT MATRIX ------------------
 c_RowPort* ptrsRowPorts_L[] = { &rowPortF_L };
 c_ColPort* ptrsColPorts_L[] = { &colPortB_L, &colPortD_L };
-c_Row* const ptrsRows_L[] = { &row_L0, &row_L1, &row_L2, &row_L3, &row_L4 };
+c_Row* ptrsRows_L[] = { &row_L0, &row_L1, &row_L2, &row_L3, &row_L4 };
 c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 2, ptrsRows_L, 5);
 
 // ================= RIGHT =====================
@@ -303,7 +273,7 @@ c_RowPort_PCA9655E_ActiveHigh rowPort1_R(port1_R, 1<<0 | 1<<1 | 1<<2 | 1<<3 | 1<
 c_IOExpanderPort port0_R(0x30, 0);
 c_ColPort_PCA9655E_ActiveHigh colPort0_R(port0_R, 1<<0 | 1<<1 | 1<<2 | 1<<3 | 1<<4 | 1<<5 );
 //(on schematic https://geekhack.org/index.php?topic=41422.msg1680696#msg1680696 Reply #418,
-//column port to pin mapping appears reversed because right PCB is flipped)
+// column port to pin mapping appears reversed because right PCB is flipped)
 
 // ------------- RIGHT LED CODES ---------------
 c_LED_PCA9655E LED_0_R(port0_R, 1<<6);
@@ -345,7 +315,7 @@ l_Key_Layered k_R13(ptrsCodes_R13);
 l_Code * ptrsCodes_R20[]= {&s_semicolon, &s_0,          &s_period,      &s_pause,       &s_pause};
 l_Key_Layered k_R20(ptrsCodes_R20);
 
-l_Code * ptrsCodes_R21[]= {&s_l,        &s_9,           &s_6,       &s_printscreen, &s_printscreen};
+l_Code * ptrsCodes_R21[]= {&s_l,        &s_9,           &s_6,        &s_printscreen, &s_printscreen};
 l_Key_Layered k_R21(ptrsCodes_R21);
 
 l_Code * ptrsCodes_R22[]= {&s_k,        &s_8,           &s_5,           &l_arrowOn,     &l_arrowOn};
@@ -355,7 +325,7 @@ l_Code * ptrsCodes_R23[]= {&s_j,        &s_7,           &s_4,           &mb_2,  
 l_Key_Layered k_R23(ptrsCodes_R23);
 
 //row_R3 south
-l_Code * ptrsCodes_R30[]= {&s_slash,    &s_question,    &s_slash,       &s_pageDown,   &s_pageDown};
+l_Code * ptrsCodes_R30[]= {&s_slash,    &s_question,    &s_slash,       &s_pageDown,    &s_pageDown};
 l_Key_Layered k_R30(ptrsCodes_R30);
 
 l_Code * ptrsCodes_R31[]= {&s_period,   &s_period,      &s_3,           &s_F9,          &s_F9};
@@ -379,51 +349,51 @@ l_Key_Layered k_R42(ptrsCodes_R42);
 l_Code * ptrsCodes_R43[]= {&s_quote,    &s_underscore,  &sns_00,        &m_right,       &s_right};
 l_Key_Layered k_R43(ptrsCodes_R43);
 
-//thumb col 4 keys
-l_Key_1 k_R04(&s_backspace);                   //thumb nail
-l_Key_1 k_R14(&s_alt);                         //thumb knuckle
-l_Key_1 k_R24(&l_NASLock);                     //thumb down
+//thumb col-4 keys
+l_Key_1 k_R04(&s_backspace);                    //thumb nail
+l_Key_1 k_R14(&s_alt);                          //thumb knuckle
+l_Key_1 k_R24(&l_NAS);                          //thumb down
 
-//thumb col 5 keys
-l_Key_1 k_R05(&l_NAS);                        //thumb hard down
-l_Key_1 k_R15(&s_space);                       //thumb pad
-l_Key_1 k_R25(&l_MF);                          //thumb up
+//thumb col-5 keys
+l_Key_1 k_R05(&l_NASLock);                      //thumb hard down
+l_Key_1 k_R15(&s_space);                        //thumb pad
+l_Key_1 k_R25(&l_MF);                           //thumb up
 
 // -------------- RIGHT ROWS -------------------
 //                             pinky    ring  middle   index  thumb  thumb
 //row_R0 north          col:       0       1       2       3      4      5
-c_Key* const ptrKeys_R0[] = { &k_R00, &k_R01, &k_R02, &k_R03, &k_R04, &k_R05 };
-const uint8_t KEYS_R0_COUNT = sizeof(ptrKeys_R0)/sizeof(ptrKeys_R0[0]);
+c_Key* ptrKeys_R0[] = { &k_R00, &k_R01, &k_R02, &k_R03, &k_R04, &k_R05 };
+uint8_t KEYS_R0_COUNT = sizeof(ptrKeys_R0)/sizeof(ptrKeys_R0[0]);
 c_Row row_R0(ptrKeys_R0, KEYS_R0_COUNT);
 
 //row_R1 west
-c_Key* const ptrKeys_R1[] = { &k_R10, &k_R11, &k_R12, &k_R13, &k_R14, &k_R15 };
-const uint8_t KEYS_R1_COUNT = sizeof(ptrKeys_R1)/sizeof(ptrKeys_R1[0]);
+c_Key* ptrKeys_R1[] = { &k_R10, &k_R11, &k_R12, &k_R13, &k_R14, &k_R15 };
+uint8_t KEYS_R1_COUNT = sizeof(ptrKeys_R1)/sizeof(ptrKeys_R1[0]);
 c_Row row_R1(ptrKeys_R1, KEYS_R1_COUNT);
 
 //row_R2 center
-c_Key* const ptrKeys_R2[] = { &k_R20, &k_R21, &k_R22, &k_R23, &k_R24, &k_R25 };
-const uint8_t KEYS_R2_COUNT = sizeof(ptrKeys_R2)/sizeof(ptrKeys_R2[0]);
+c_Key* ptrKeys_R2[] = { &k_R20, &k_R21, &k_R22, &k_R23, &k_R24, &k_R25 };
+uint8_t KEYS_R2_COUNT = sizeof(ptrKeys_R2)/sizeof(ptrKeys_R2[0]);
 c_Row row_R2(ptrKeys_R2, KEYS_R2_COUNT);
 
 //row_R3 south
-c_Key* const ptrKeys_R3[] = { &k_R30, &k_R31, &k_R32, &k_R33 };
-const uint8_t KEYS_R3_COUNT = sizeof(ptrKeys_R3)/sizeof(ptrKeys_R3[0]);
+c_Key* ptrKeys_R3[] = { &k_R30, &k_R31, &k_R32, &k_R33 };
+uint8_t KEYS_R3_COUNT = sizeof(ptrKeys_R3)/sizeof(ptrKeys_R3[0]);
 c_Row row_R3(ptrKeys_R3, KEYS_R3_COUNT);
 
 //row_R4 east
-c_Key* const ptrKeys_R4[] = { &k_R40, &k_R41, &k_R42, &k_R43 };
-const uint8_t KEYS_R4_COUNT = sizeof(ptrKeys_R4)/sizeof(ptrKeys_R4[0]);
+c_Key* ptrKeys_R4[] = { &k_R40, &k_R41, &k_R42, &k_R43 };
+uint8_t KEYS_R4_COUNT = sizeof(ptrKeys_R4)/sizeof(ptrKeys_R4[0]);
 c_Row row_R4(ptrKeys_R4, KEYS_R4_COUNT);
 
 // ------------- RIGHT MATRIX ------------------
 c_RowPort* ptrsRowPorts_R[] = { &rowPort1_R };
 c_ColPort* ptrsColPorts_R[] = { &colPort0_R };
-c_Row* const ptrsRows_R[] = { &row_R0, &row_R1, &row_R2, &row_R3, &row_R4 };
+c_Row* ptrsRows_R[] = { &row_R0, &row_R1, &row_R2, &row_R3, &row_R4 };
 c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 1, ptrsRows_R, 5);
 
 // =============== KEYBOARD ====================
-c_Matrix* const ptrsMatrices[] = { &matrix_L, &matrix_R };
+c_Matrix* ptrsMatrices[] = { &matrix_L, &matrix_R };
 c_Keybrd keybrd(ptrsMatrices, 2);
 
 // ================== RUN ======================
