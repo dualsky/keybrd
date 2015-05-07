@@ -250,29 +250,29 @@ l_Code* ptrsCodes_Lw3[] = {&s_doubleQuote,&s_slash,     &s_left,        &m_leftQ
 l_Key_Layered k_Lw3(ptrsCodes_Lw3);
 
 //thumb col 4 keys
-l_Key_1 k_Ltn(&s_tab);
-l_Key_1 k_Ltk(&s_ctrl);
-l_Key_1 k_Ltd(&s_shift);
+l_Key_1 k_Ltn4(&s_tab);                         //thumb nail
+l_Key_1 k_Ltk4(&s_ctrl);                        //thumb knuckle
+l_Key_1 k_Ltd4(&s_shift);                       //thumb down
 
 //thumb col 5 keys
-l_Key_1 k_Lthd(&s_capsLock);
-l_Key_1 k_Ltp(&s_enter);
-l_Key_1 k_Ltu(&l_normal);
+l_Key_1 k_Lthd5(&s_capsLock);                   //thumb hard down
+l_Key_1 k_Ltp5(&s_enter);                       //thumb pad
+l_Key_1 k_Ltu5(&l_normal);                      //thumb up
 
 // --------------- LEFT ROWS -------------------
 //                             pinky    ring  middle   index  thumb  thumb
 //row_L0 north          col:       0       1       2       3      4      5
-c_Key* const ptrKeys_L0[] = { &k_Ln0, &k_Ln1, &k_Ln2, &k_Ln3, &k_Ltn, &k_Lthd};
+c_Key* const ptrKeys_L0[] = { &k_Ln0, &k_Ln1, &k_Ln2, &k_Ln3, &k_Ltn4, &k_Lthd5};
 const uint8_t KEYS_L0_COUNT = sizeof(ptrKeys_L0)/sizeof(ptrKeys_L0[0]);
 c_Row row_L0(ptrKeys_L0, KEYS_L0_COUNT);
 
 //row_L1 east
-c_Key* const ptrKeys_L1[] = { &k_Le0, &k_Le1, &k_Le2, &k_Le3, &k_Ltk, &k_Ltp };
+c_Key* const ptrKeys_L1[] = { &k_Le0, &k_Le1, &k_Le2, &k_Le3, &k_Ltk4, &k_Ltp5 };
 const uint8_t KEYS_L1_COUNT = sizeof(ptrKeys_L1)/sizeof(ptrKeys_L1[0]);
 c_Row row_L1(ptrKeys_L1, KEYS_L1_COUNT);
 
 //row_L2 center
-c_Key* const ptrKeys_L2[] = { &k_Lc0, &k_Lc1, &k_Lc2, &k_Lc3, &k_Ltd, &k_Ltu };
+c_Key* const ptrKeys_L2[] = { &k_Lc0, &k_Lc1, &k_Lc2, &k_Lc3, &k_Ltd4, &k_Ltu5 };
 const uint8_t KEYS_L2_COUNT = sizeof(ptrKeys_L2)/sizeof(ptrKeys_L2[0]);
 c_Row row_L2(ptrKeys_L2, KEYS_L2_COUNT);
 
@@ -312,6 +312,7 @@ c_LED_PCA9655E LED_D6_3_R(port1_R, 1<<6);
 //l_Code_LckLED l_capsLck_R(KEY_CAPS_LOCK, capsLck_LED_R);
 
 // -------------- RIGHT KEYS -------------------
+//(finger keys within each row are listed from pinky to index finger)
 //Layers:                 {normal,      10KeyOff,       10KeyOn,        mouseOn,        arrowOn };
 //row_R0 north
 l_Code * ptrsCodes_Rn0[]= {&s_p,        &s_rightParen,  &s_asterisk,    &s_pageUp,      &s_pageUp};
@@ -342,7 +343,7 @@ l_Key_Layered k_Re3(ptrsCodes_Re3);
 l_Code * ptrsCodes_Rc0[]= {&s_semicolon, &s_0,          &s_period,      &s_pause,       &s_pause};
 l_Key_Layered k_Rc0(ptrsCodes_Rc0);
 
-l_Code * ptrsCodes_Rc1[]= {&s_l,        &s_9,           &s_6,           &s_printscreen, &s_printscreen};
+l_Code * ptrsCodes_Rc1[]= {&s_l,        &s_9,           &s_6,       &s_printscreen, &s_printscreen};
 l_Key_Layered k_Rc1(ptrsCodes_Rc1);
 
 l_Code * ptrsCodes_Rc2[]= {&s_k,        &s_8,           &s_5,           &l_arrowOn,     &l_arrowOn};
@@ -378,29 +379,29 @@ l_Code * ptrsCodes_Rw3[]= {&s_h,        &s_6,           &s_0,           &m_left,
 l_Key_Layered k_Rw3(ptrsCodes_Rw3);
 
 //thumb col 4 keys
-l_Key_1 k_Rtn(&s_backspace);
-l_Key_1 k_Rtk(&s_alt);
-l_Key_1 k_Rtd(&l_NASLock);
+l_Key_1 k_Rtn4(&s_backspace);                   //thumb nail
+l_Key_1 k_Rtk4(&s_alt);                         //thumb knuckle
+l_Key_1 k_Rtd4(&l_NASLock);                     //thumb down
 
 //thumb col 5 keys
-l_Key_1 k_Rthd(&l_NAS);
-l_Key_1 k_Rtp(&s_space);
-l_Key_1 k_Rtu(&l_MF);
+l_Key_1 k_Rthd5(&l_NAS);                        //thumb hard down
+l_Key_1 k_Rtp5(&s_space);                       //thumb pad
+l_Key_1 k_Rtu5(&l_MF);                          //thumb up
 
 // -------------- RIGHT ROWS -------------------
 //                             pinky    ring  middle   index  thumb  thumb
 //row_R0 north          col:       0       1       2       3      4      5
-c_Key* const ptrKeys_R0[] = { &k_Rn0, &k_Rn1, &k_Rn2, &k_Rn3, &k_Rtn, &k_Rtd };
+c_Key* const ptrKeys_R0[] = { &k_Rn0, &k_Rn1, &k_Rn2, &k_Rn3, &k_Rtn4, &k_Rthd5 };
 const uint8_t KEYS_R0_COUNT = sizeof(ptrKeys_R0)/sizeof(ptrKeys_R0[0]);
 c_Row row_R0(ptrKeys_R0, KEYS_R0_COUNT);
 
 //row_R1 west (west and east are swapped compared to left matrix because right PCB is flipped)
-c_Key* const ptrKeys_R1[] = { &k_Rw0, &k_Rw1, &k_Rw2, &k_Rw3, &k_Rtk, &k_Rtp };
+c_Key* const ptrKeys_R1[] = { &k_Rw0, &k_Rw1, &k_Rw2, &k_Rw3, &k_Rtk4, &k_Rtp5 };
 const uint8_t KEYS_R1_COUNT = sizeof(ptrKeys_R1)/sizeof(ptrKeys_R1[0]);
 c_Row row_R1(ptrKeys_R1, KEYS_R1_COUNT);
 
 //row_R2 center
-c_Key* const ptrKeys_R2[] = { &k_Rc0, &k_Rc1, &k_Rc2, &k_Rc3, &k_Rtd, &k_Rtu };
+c_Key* const ptrKeys_R2[] = { &k_Rc0, &k_Rc1, &k_Rc2, &k_Rc3, &k_Rtd4, &k_Rtu5 };
 const uint8_t KEYS_R2_COUNT = sizeof(ptrKeys_R2)/sizeof(ptrKeys_R2[0]);
 c_Row row_R2(ptrKeys_R2, KEYS_R2_COUNT);
 
