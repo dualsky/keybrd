@@ -71,20 +71,12 @@ l_Code_Layer l_alpha(0);
 l_Code_Layer l_sym(1);
 
 // ================== LEFT =====================
-// -------- LEFT I/O EXPANDER PORTS ------------
-c_IOExpanderPort port0_L(0x20, 0);
-c_IOExpanderPort port1_L(0x20, 1);
-
 // ------------- LEFT ROW PORTS ----------------
-// row: 0   1
-// pin: B0  B1
-
+c_IOExpanderPort port0_L(0x20, 0);
 c_RowPort_PCA9655E_ActiveHigh rowPort0_L(port0_L, 1<<0 | 1<<1 );
 
 // ------------- LEFT COL PORTS ----------------
-// col: 0   1
-// pin: A0  A1
-
+c_IOExpanderPort port1_L(0x20, 1);
 c_ColPort_PCA9655E_ActiveHigh colPort1_L(port1_L, 1<<0 | 1<<1 );
 
 // ------------- LEFT LED CODES ----------------
@@ -92,7 +84,6 @@ c_LED_PCA9655E capsLck_LED_L(port0_L, 1<<7);
 l_Code_LckLED l_capsLck_L(KEY_CAPS_LOCK, capsLck_LED_L);
 
 // --------------- LEFT KEYS -------------------
-// todo: keys should not be named after row or listed under LEFT/RIGHT, keys can go anywhere
 //row_L0                   {alpha        sym    };
 l_Key_1 k_L00(&l_capsLck_L);
 
@@ -108,30 +99,24 @@ l_Key_1 k_L11(&l_sym);
 //row_L0
 c_Key* ptrKey_L0[] = { &k_L00, &k_L01 };
 uint8_t KEYS_L0_COUNT = sizeof(ptrKey_L0)/sizeof(ptrKey_L0[0]);
-c_Row rowL0(ptrKey_L0, KEYS_L0_COUNT);
+c_Row row_L0(ptrKey_L0, KEYS_L0_COUNT);
 
 //row_L1
 c_Key* ptrKey_L1[] = { &k_L10, &k_L11 };
 uint8_t KEYS_L1_COUNT = sizeof(ptrKey_L1)/sizeof(ptrKey_L1[0]);
-c_Row rowL1(ptrKey_L1, KEYS_L1_COUNT);
+c_Row row_L1(ptrKey_L1, KEYS_L1_COUNT);
 
 // -------------- LEFT MATRIX ------------------
 c_RowPort* ptrsRowPorts_L[] = { &rowPort0_L };
 c_ColPort* ptrsColPorts_L[] = { &colPort1_L };
-c_Row* ptrsRows_L[] = { &rowL0, &rowL1 };
+c_Row* ptrsRows_L[] = { &row_L0, &row_L1 };
 c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRows_L, 2);
 
 // ================= RIGHT =====================
 // ------------ RIGHT ROW PORTS ----------------
-// row: 0   1
-// pin: F0  F1
-
 c_RowPort_AVR_ActiveHigh rowPortF_R(DDRF, PORTF, 1<<0 | 1<<1 );
 
 // ------------ RIGHT COL PORTS ----------------
-// col: 0   1
-// pin: B0  B1
-
 c_ColPort_AVR_ActiveHigh colPortC_R(DDRC, PORTC, PINC, 1<<7 );
 c_ColPort_AVR_ActiveHigh colPortB_R(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 
@@ -158,17 +143,17 @@ l_Key_1 k_R12(&s_shift);
 //row_R0
 c_Key* ptrKey_R0[] = { &k_R00, &k_R01, &k_R02 };
 uint8_t KEYS_R0_COUNT = sizeof(ptrKey_R0)/sizeof(ptrKey_R0[0]);
-c_Row rowR0(ptrKey_R0, KEYS_R0_COUNT);
+c_Row row_R0(ptrKey_R0, KEYS_R0_COUNT);
 
 //row_R1
 c_Key* ptrKey_R1[] = { &k_R10, &k_R11, &k_R12 };
 uint8_t KEYS_R1_COUNT = sizeof(ptrKey_R1)/sizeof(ptrKey_R1[0]);
-c_Row rowR1(ptrKey_R1, KEYS_R1_COUNT);
+c_Row row_R1(ptrKey_R1, KEYS_R1_COUNT);
 
 // ------------- RIGHT MATRIX ------------------
 c_RowPort* ptrsRowPorts_R[] = { &rowPortF_R };
 c_ColPort* ptrsColPorts_R[] = { &colPortC_R, &colPortB_R };
-c_Row* ptrsRows_R[] = { &rowR0, &rowR1 };
+c_Row* ptrsRows_R[] = { &row_R0, &row_R1 };
 c_Matrix matrix_R(ptrsRowPorts_R, 1, ptrsColPorts_R, 2, ptrsRows_R, 2);
 
 // =============== KEYBOARD ====================

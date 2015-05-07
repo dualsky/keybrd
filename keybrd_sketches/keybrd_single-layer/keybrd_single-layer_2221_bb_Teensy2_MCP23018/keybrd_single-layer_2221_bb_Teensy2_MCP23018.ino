@@ -46,20 +46,12 @@ m_Mouse_Button mb_right(MOUSE_RIGHT);
 m_Mouse_Move mm_up(0,-8,0);                     //negative Y is up
     
 // ================== LEFT =====================
-// -------- LEFT I/O EXPANDER PORTS ------------
-c_IOExpanderPort portA_L(0x20, 0);
-c_IOExpanderPort portB_L(0x20, 1);
-
 // ------------- LEFT ROW PORTS ----------------
-// row: 0   1
-// pin: B0  B1
-
+c_IOExpanderPort portB_L(0x20, 1);
 c_RowPort_MCP23018 rowPortB_L(portB_L, 1<<0 | 1<<1 );
 
 // ------------- LEFT COL PORTS ----------------
-// col: 0   1
-// pin: A0  A1
-
+c_IOExpanderPort portA_L(0x20, 0);
 c_ColPort_MCP23018 colPortA_L(portA_L, 1<<0 | 1<<1 );
 
 // ------------- LEFT LED KEYS -----------------
@@ -86,16 +78,10 @@ c_Matrix matrix_L(ptrsRowPorts_L, 1, ptrsColPorts_L, 1, ptrsRows_L, 2);
 // AVR PORTB is shared by c_RowPort_AVR (pin B2) and c_ColPort_AVR (pins B0 and B1)
 // rowPort uses pins B2 and F1
 // ------------ RIGHT ROW PORTS ----------------
-// row: 0   1
-// pin: B2  F1              (testing row with pins from two different ports)
-
 c_RowPort_AVR rowPortB_R(DDRB, PORTB, 1<<2 );
-c_RowPort_AVR rowPortF_R(DDRF, PORTF, 1<<1 );
+c_RowPort_AVR rowPortF_R(DDRF, PORTF, 1<<1 );   //(testing row with pins from two different ports)
 
 // ------------ RIGHT COL PORTS ----------------
-// col: 0   1
-// pin: B0  B1
-
 c_ColPort_AVR colPortB_R(DDRB, PORTB, PINB, 1<<0 | 1<<1 );
 
 // -------------- RIGHT KEYS -------------------
