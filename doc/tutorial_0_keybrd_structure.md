@@ -1,5 +1,7 @@
 keybrd Tutorial 0 - keybrd single-layer
 =======================================
+todo: update this file
+
 keybrd tutorial 0 lays the foundation for tutorials 1 and 2.
 After reading these tutorials you will be able to understand a keybrd sketch and be able to modify it to suite your own keyboard design.
 

@@ -1,5 +1,6 @@
 keybrd Tutorial 2 - keybrd multi-layer
 =======================================
+todo: update this file
 
 ## keybrd sketch walkthrough for multi-layer split keyboard
 We will step though a sketch for a 2-matrix keyboard with 3 layers.

@@ -7,6 +7,40 @@ Version 1.0.0 will be released when the public API is stable.
 
 ## [Unreleased][unreleased]
 
+## [0.3.0] - 2015-05-08
+### Added
+* Teensy2.0 and PCA9655E I/O expander can scan ports as active low or active high.
+* port classes make it easy for user to specify IC ports and pins:
+	c_RowPort
+	c_RowPort_AVR
+	c_RowPort_AVR_ActiveHigh
+	c_RowPort_MCP23018
+	c_RowPort_PCA9655E
+
+	c_ColPort
+	c_ColPort_AVR
+	c_ColPort_AVR_ActiveHigh
+	c_ColPort_MCP23018
+	c_ColPort_PCA9655E
+	c_ColPort_PCA9655E_ActiveHigh
+
+	c_IOExpanderPort
+* LED classes to turn LEDs on/off:
+	c_LED
+	c_LED_AVR
+	c_LED_MCP23018
+	c_LED_PCA9655E
+
+### Changed
+* Renamed 4 classes (which changed public API):
+
+| Old Name                | New Name               |
+|-------------------------|------------------------|
+| c_Row_Ex                | c_Row                  |
+| l_Code_00               | l_Code_SNS_00          |
+| m_MouseButton           | m_Mouse_Button         |
+| m_MouseMove             | m_Mouse_Move           |
+
 ## [0.2.0] - 2015-02-18
 ### Added
 * tutorial_1_keybrd_single-layer.md

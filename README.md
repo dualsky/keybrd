@@ -15,7 +15,7 @@ keybrd library leverages the Arduino environment to create keyboard firmware tha
 
 > The public API should not be considered stable.
 > Currently the keybrd library is limited to 8x8 matrices, which is enough for compact or split keyboards.
-> 16x16 matrix capability is under development for one-piece full-size keyboards.
+> 16x16 matrix capability for one-piece full-size keyboards will be added later.
 
 The library runs on Teensy 2.0 microcontroller and MCP23018 I/O expander.
 A PCA9655E I/O expander will be added soon.

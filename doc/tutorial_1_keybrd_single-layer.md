@@ -1,5 +1,6 @@
 keybrd Tutorial 1 - keybrd single-layer
 =======================================
+todo: update this file
 
 ## keybrd sketch walkthrough for single-layer one-piece keyboard
 We will step though a sketch for a simple keyboard.

@@ -85,6 +85,8 @@ Compile and load:
 * The Teensy boot loader window opens, press and release the tiny pushbutton on the Teensy circuit board.
 
 ## Sample keybrd Sketches
+todo: update this section
+
 Sample keybrd sketches are in the keybrd_sketches folder, grouped by layer scheme.
 The sketches use the following naming conventions.
 
@@ -102,6 +104,25 @@ where
 * **version** is version number
 
 **keybrd** and **layerScheme** are mandatory, remaining parts are optional.
+
+## Troubleshooting check list
+Below is a listing of things to check when a new keybrd sketch or keyboard is having trouble.
+
+Development-environment items to check:
+ * After changing and loading a hex file that affects the I/O expander initializations,
+ it is necessary to depower and power the I/O expander (unplug and replug USB) for the change to take effect.
+
+ * if the keybrd_Layers Folder was changed, see section "Move the keybrd_Layers Folder"
+
+keybrd sketch code to check:
+ * some of the constructors take array-element-count arguments arguments, make sure that the correct counts are passed to the constructors.
+
+ * c_RowPort or c_ColPort must be instantiated before an I/O expander c_LED object is instantiated.
+This is because the I/O expander's direction register is configured in the c_RowPort and c_ColPort constructors.
+
+Hardware items to check:
+ * connections
+ * diode orientation
 
 ## test suite
 keybrd_test_suite.odt

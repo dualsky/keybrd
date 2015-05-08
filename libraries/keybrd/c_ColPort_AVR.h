@@ -5,6 +5,7 @@
 #include "c_ColPort.h"
 
 /* One microcontroller port with pins connected to matrix columns.
+ * This has been tested on Teensy 2.0, and probably works on other AVR microcontrollers as well.
  * Port is read from pin 0 up.
  */
 class c_ColPort_AVR : public c_ColPort

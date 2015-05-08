@@ -48,13 +48,13 @@ Classes inheritance diagrams:
 	         /       |         \
 	c_LED_AVR  c_LED_MCP23018  c_LED_PCA9655E
 
-	              ______ c_PortRows ______
+	              ______ c_RowPort _______  	one RowPort class for each type of IC
 	             /           |            \
-	c_PortRows_AVR  c_PortRows_MCP23018  c_PortRows_PCA9655E   one PortRows class for each type of IC
+	c_RowPort_AVR  c_RowPort_MCP23018  c_RowPort_PCA9655E
  
-	              ______ c_PortCols ______
+	              ______ c_ColPort _______  	one ColPort class for each type of IC
 	             /           |            \
-	c_PortCols_AVR  c_PortCols_MCP23018  c_PortCols_PCA9655E   one PortCols class for each type of IC
+	c_ColPort_AVR  c_ColPort_MCP23018  c_ColPort_PCA9655E
  
 	c_IOExpanderPort
 
